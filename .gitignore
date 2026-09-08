@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+report/
+*.duckdb
+*.duckdb.wal
+run_state.json
+data/schema_probe.json
+.env
+run_schedule.log
+tmp/
+report/site/

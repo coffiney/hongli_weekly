@@ -1,0 +1,121 @@
+# hongli_weekly base config (spec v2.3)
+version: "2.3"
+
+window:
+  hist_years: 5          # spread history window (rank layer)
+  y10_hist_years: 10     # treasury history for z-score layer
+  eps_years: 5           # mid-cycle EPS window
+  payout_years: 5        # sustainable payout window
+  fin_from: "2015"       # financials fetch start (cycle percentile + streaks)
+  div_from: "2015"       # dividend fetch start (streaks)
+  kline_years: 6         # kline fetch depth (5y window + margin)
+
+valuation:
+  theta_box: 0.10        # rate box half-width (|z|<=1 pure rank, >=2 pure de-trend)
+  blend_span: 0.20       # smoothing weight on previous s_val
+  w_ttm_cyclical: 0.30   # ttm-yield weight for cyclical sectors
+  w_ttm_defensive: 0.60  # ttm-yield weight for defensive sectors
+  w_ttm_default: 0.45
+  min_spread_points: 36  # monthly points required for rank layer
+  ideal_payout: [0.30, 0.70]
+
+sustainability:
+  roe_full: 0.12         # roe considered full at 12%
+  cont_full_years: 15    # dividend continuity full at 15 years
+  payout_weights: {payout: 0.40, fcf: 0.35, trend: 0.25}
+  fcf_full: 1.5
+  fcf_zero: 0.5
+
+quality:
+  weights: {roe: 0.45, stability: 0.30, continuity: 0.25}
+
+tiers:                   # composite score -> rating (higher = cheaper/attractive)
+  极高估: 10
+  高估: 25
+  偏高: 40
+  合理: 60
+  偏低: 75
+  低估: 88
+
+matrix:
+  v_band: {low: 0.40, high: 0.65}   # s_val: <low=cheap(low), >high=expensive(high)
+  q_band: {C: 0.85, A: 1.15}        # q_rel vs sector median
+  q_weight_sus: 0.5
+  q_weight_q: 0.5
+  min_sector_for_rel: 5             # sector median needs >=5 names else universe median
+  llm_candidate_cells: [low_A, low_B, mid_A]
+  trap_cell: low_C
+  matrix_colors:
+    low_A: "#1a7a3a"
+    low_B: "#7bc47f"
+    low_C: "#f0c93c"
+    mid_A: "#5aa860"
+    mid_B: "#f0c93c"
+    mid_C: "#9db8a0"
+    high_A: "#e89a3c"
+    high_B: "#d9534f"
+    high_C: "#a02622"
+    no_data: "#9e9e9e"
+
+weights:                 # composite weights by sector type (sum=1)
+  defensive: {val: 0.40, sus: 0.25, cyc: 0.05, q: 0.30}
+  infra:     {val: 0.40, sus: 0.25, cyc: 0.10, q: 0.25}
+  bank:      {val: 0.35, sus: 0.20, cyc: 0.10, q: 0.35}
+  insurance: {val: 0.30, sus: 0.20, cyc: 0.15, q: 0.35}
+  cyclical:  {val: 0.30, sus: 0.20, cyc: 0.30, q: 0.20}
+  consumer:  {val: 0.30, sus: 0.30, cyc: 0.05, q: 0.35}
+  pharma:    {val: 0.30, sus: 0.30, cyc: 0.05, q: 0.35}
+  watch:     {val: 0.30, sus: 0.25, cyc: 0.15, q: 0.30}
+
+sector_type_map:         # universe sector label -> sector type (weights key)
+  bank: bank
+  insurance: insurance
+  coal: cyclical
+  steel: cyclical
+  oil_chem: cyclical
+  realestate: watch
+  power: defensive
+  highway_port: defensive
+  telecom: defensive
+  utility: defensive
+  infra: infra
+  consumer: consumer
+  pharma: pharma
+  other: watch
+
+amazingdata:
+  account_file: "C:/Users/Admin/Documents/agent_lab/xy/account.txt"
+  host_primary: "101.230.159.234"
+  host_backup: "140.206.44.234"
+  port: 8600
+  cache_dir: "data/amazing_cache"
+  max_traffic_mb: 300    # hard abort budget per run
+  kline_batch: 25
+
+db:
+  path: "data/hongli.duckdb"
+
+notify:
+  feishu_webhook: ""  # 飞书机器人 webhook，推送到群时填入
+  # 可选：把 report/ 目录发布到公网后填基地址，通知自动带在线链接
+  public_base_url: "https://6f19c65d800a42a4a542c5b8ed626afd.app.workbuddy.link"
+
+llm:
+  model: "glm-4.7"       # agent-plan model; override via HONGLI_LLM_MODEL
+  base_url: ""           # left blank per user instruction
+  api_key_env: "HONGLI_LLM_API_KEY"
+  temperature: 0.2
+  top_n_recommend: 10
+  prompt_version: "v3"
+  price_anchors:
+    target_yield_floor: 0.045   # anchor A
+    risk_premium: 0.05          # anchor G
+    g_cap: 0.06
+    g_floor_spread: 0.02
+    range_pos: 0.30             # anchor B (52w range position)
+    yield_floor: 0.045          # anchor C
+    d_target_composite: 40.0    # anchor D (composite solve target)
+
+report:
+  out_dir: "report"
+  highlight_changes: true

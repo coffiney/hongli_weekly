@@ -1,0 +1,12 @@
+# local SDK wheels (install manually):
+#   pip install ../xy/wheels/tgw-1.0.8.7-py3-none-any.whl
+#   pip install ../xy/wheels/AmazingData-1.1.8-cp313-none-any.whl
+duckdb>=1.0
+pandas>=2.0
+numpy>=1.26
+PyYAML>=6.0
+Jinja2>=3.1
+openai>=1.40
+psutil>=5.9
+pytest>=8.0
+requests

@@ -1,0 +1,137 @@
+# 红利标的池（code: 6位A股代码, name: 简称, sector: 板块标签）
+# 说明：原作者83只清单未留存（小红书原文OCR缺失），本池为程序化构建的
+# 红利代表性标的池，覆盖银行/煤炭/电力/交运/钢铁/石化/消费/医药等高股息板块。
+# 数据缺失的标的会按缺失协议标记，不会被编造。
+universe:
+  # 银行
+  - {code: "601398", name: 工商银行, sector: bank}
+  - {code: "601939", name: 建设银行, sector: bank}
+  - {code: "601288", name: 农业银行, sector: bank}
+  - {code: "601988", name: 中国银行, sector: bank}
+  - {code: "601328", name: 交通银行, sector: bank}
+  - {code: "601658", name: 邮储银行, sector: bank}
+  - {code: "600036", name: 招商银行, sector: bank}
+  - {code: "601166", name: 兴业银行, sector: bank}
+  - {code: "600000", name: 浦发银行, sector: bank}
+  - {code: "600016", name: 民生银行, sector: bank}
+  - {code: "601818", name: 光大银行, sector: bank}
+  - {code: "601009", name: 南京银行, sector: bank}
+  - {code: "601169", name: 北京银行, sector: bank}
+  - {code: "002142", name: 宁波银行, sector: bank}
+  - {code: "600926", name: 杭州银行, sector: bank}
+  - {code: "600919", name: 江苏银行, sector: bank}
+  # 保险
+  - {code: "601318", name: 中国平安, sector: insurance}
+  - {code: "601336", name: 新华保险, sector: insurance}
+  - {code: "601628", name: 中国人寿, sector: insurance}
+  - {code: "601601", name: 中国太保, sector: insurance}
+  - {code: "601319", name: 中国人保, sector: insurance}
+  # 通信
+  - {code: "600941", name: 中国移动, sector: telecom}
+  - {code: "601728", name: 中国电信, sector: telecom}
+  - {code: "600050", name: 中国联通, sector: telecom}
+  # 煤炭
+  - {code: "601088", name: 中国神华, sector: coal}
+  - {code: "601898", name: 中煤能源, sector: coal}
+  - {code: "601225", name: 陕西煤业, sector: coal}
+  - {code: "600188", name: 兖矿能源, sector: coal}
+  - {code: "601666", name: 平煤股份, sector: coal}
+  - {code: "600985", name: 淮北矿业, sector: coal}
+  - {code: "601699", name: 潞安环能, sector: coal}
+  - {code: "000983", name: 山西焦煤, sector: coal}
+  - {code: "000937", name: 冀中能源, sector: coal}
+  - {code: "600123", name: 兰花科创, sector: coal}
+  - {code: "601918", name: 新集能源, sector: coal}
+  - {code: "000552", name: 甘肃能化, sector: coal}
+  # 电力
+  - {code: "600900", name: 长江电力, sector: power}
+  - {code: "600025", name: 华能水电, sector: power}
+  - {code: "600886", name: 国投电力, sector: power}
+  - {code: "600674", name: 川投能源, sector: power}
+  - {code: "600027", name: 华电国际, sector: power}
+  - {code: "600795", name: 国电电力, sector: power}
+  - {code: "600011", name: 华能国际, sector: power}
+  - {code: "601991", name: 大唐发电, sector: power}
+  - {code: "600023", name: 浙能电力, sector: power}
+  - {code: "600642", name: 申能股份, sector: power}
+  - {code: "000543", name: 皖能电力, sector: power}
+  - {code: "600863", name: 内蒙华电, sector: power}
+  - {code: "000883", name: 湖北能源, sector: power}
+  - {code: "601985", name: 中国核电, sector: power}
+  - {code: "003816", name: 中国广核, sector: power}
+  # 高速公路/港口/铁路
+  - {code: "600377", name: 宁沪高速, sector: highway_port}
+  - {code: "000429", name: 粤高速Ａ, sector: highway_port}
+  - {code: "600012", name: 皖通高速, sector: highway_port}
+  - {code: "600350", name: 山东高速, sector: highway_port}
+  - {code: "001965", name: 招商公路, sector: highway_port}
+  - {code: "600548", name: 深高速, sector: highway_port}
+  - {code: "601006", name: 大秦铁路, sector: highway_port}
+  - {code: "601333", name: 广深铁路, sector: highway_port}
+  - {code: "601000", name: 唐山港, sector: highway_port}
+  - {code: "601298", name: 青岛港, sector: highway_port}
+  - {code: "600018", name: 上港集团, sector: highway_port}
+  - {code: "600017", name: 日照港, sector: highway_port}
+  - {code: "601326", name: 秦港股份, sector: highway_port}
+  # 钢铁
+  - {code: "600019", name: 宝钢股份, sector: steel}
+  - {code: "000932", name: 华菱钢铁, sector: steel}
+  - {code: "600282", name: 南钢股份, sector: steel}
+  - {code: "600782", name: 新钢股份, sector: steel}
+  - {code: "002110", name: 三钢闽光, sector: steel}
+  - {code: "600507", name: 方大特钢, sector: steel}
+  - {code: "000898", name: 鞍钢股份, sector: steel}
+  - {code: "000825", name: 太钢不锈, sector: steel}
+  # 石油石化/化工
+  - {code: "600028", name: 中国石化, sector: oil_chem}
+  - {code: "601857", name: 中国石油, sector: oil_chem}
+  - {code: "600938", name: 中国海油, sector: oil_chem}
+  - {code: "600346", name: 恒力石化, sector: oil_chem}
+  - {code: "002493", name: 荣盛石化, sector: oil_chem}
+  - {code: "601233", name: 桐昆股份, sector: oil_chem}
+  - {code: "600989", name: 宝丰能源, sector: oil_chem}
+  - {code: "600426", name: 华鲁恒升, sector: oil_chem}
+  - {code: "000830", name: 鲁西化工, sector: oil_chem}
+  - {code: "600309", name: 万华化学, sector: oil_chem}
+  # 建筑/基建
+  - {code: "601668", name: 中国建筑, sector: infra}
+  - {code: "601800", name: 中国交建, sector: infra}
+  - {code: "601390", name: 中国中铁, sector: infra}
+  - {code: "601186", name: 中国铁建, sector: infra}
+  - {code: "601669", name: 中国电建, sector: infra}
+  # 家电/消费
+  - {code: "000651", name: 格力电器, sector: consumer}
+  - {code: "000333", name: 美的集团, sector: consumer}
+  - {code: "600690", name: 海尔智家, sector: consumer}
+  - {code: "002508", name: 老板电器, sector: consumer}
+  - {code: "000921", name: 海信家电, sector: consumer}
+  - {code: "002032", name: 苏泊尔, sector: consumer}
+  - {code: "000895", name: 双汇发展, sector: consumer}
+  - {code: "600887", name: 伊利股份, sector: consumer}
+  - {code: "000848", name: 承德露露, sector: consumer}
+  - {code: "603156", name: 养元饮品, sector: consumer}
+  - {code: "002304", name: 洋河股份, sector: consumer}
+  - {code: "600660", name: 福耀玻璃, sector: consumer}
+  # 医药
+  - {code: "601607", name: 上海医药, sector: pharma}
+  - {code: "600062", name: 华润双鹤, sector: pharma}
+  - {code: "000963", name: 华东医药, sector: pharma}
+  - {code: "000999", name: 华润三九, sector: pharma}
+  - {code: "600535", name: 天士力, sector: pharma}
+  - {code: "600566", name: 济川药业, sector: pharma}
+  - {code: "600750", name: 江中药业, sector: pharma}
+  - {code: "002422", name: 科伦药业, sector: pharma}
+  - {code: "600085", name: 同仁堂, sector: pharma}
+  - {code: "000538", name: 云南白药, sector: pharma}
+  - {code: "002036", name: 华特达因, sector: pharma}
+  # 地产（可持续性风险高，归入 watch 权重）
+  - {code: "600048", name: 保利发展, sector: realestate}
+  - {code: "600325", name: 华发股份, sector: realestate}
+  - {code: "000002", name: 万科Ａ, sector: realestate}
+  # 公用事业
+  - {code: "601158", name: 重庆水务, sector: utility}
+  - {code: "000598", name: 兴蓉环境, sector: utility}
+  - {code: "600008", name: 首创环保, sector: utility}
+  - {code: "600461", name: 洪城环境, sector: utility}
+  - {code: "601139", name: 深圳燃气, sector: utility}
+  - {code: "600803", name: 新奥股份, sector: utility}
