@@ -22,9 +22,12 @@ valuation:
 sustainability:
   roe_full: 0.12         # roe considered full at 12%
   cont_full_years: 15    # dividend continuity full at 15 years
-  payout_weights: {payout: 0.40, fcf: 0.35, trend: 0.25}
+  payout_weights: {payout: 0.35, fcf: 0.30, cfo: 0.15, trend: 0.20}  # cfo = 现金流质量维度(七维检验)
   fcf_full: 1.5
   fcf_zero: 0.5
+  cfo_full: 1.5          # OCF/NP >= 1.5 现金流质量满分
+  cfo_pass: 1.0          # OCF/NP >= 1.0 合格（七维检验：经营现金流-净利润>=1）
+  cfo_zero: 0.4          # OCF/NP <= 0.4 零分（现金流恶化）
 
 quality:
   weights: {roe: 0.45, stability: 0.30, continuity: 0.25}
@@ -97,8 +100,8 @@ db:
 
 notify:
   feishu_webhook: ""  # 飞书机器人 webhook，推送到群时填入
-  # 可选：把 report/ 目录发布到公网后填基地址，通知自动带在线链接
-  public_base_url: "https://6f19c65d800a42a4a542c5b8ed626afd.app.workbuddy.link"
+  # 在线报告基地址（GitHub Pages，定时脚本 run_weekly.bat 自动更新）
+  public_base_url: "https://coffiney.github.io/hongli_weekly"
 
 llm:
   model: "glm-4.7"       # agent-plan model; override via HONGLI_LLM_MODEL

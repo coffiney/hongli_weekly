@@ -20,6 +20,7 @@ from .db import connect, init_schema, record_run
 from .ingest import ingest_all
 from .llm.client import output_guard, run_llm
 from .llm.price_anchors import compute_anchors, price_zone
+from .metrics.cashflow import compute_ocf_np
 from .metrics.cycle import compute_cycle
 from .metrics.quality import compute_quality
 from .metrics.rate_neutral import rank_spread_v2
@@ -162,8 +163,37 @@ def compute_all(con, universe: list[dict], cfg: dict, asof: str) -> list[StockRe
         r.s_val = f2.s_val
         r.flags.extend(f2.flags)
 
-        # --- factor 3: sustainability ---
-        f3 = compute_sustainability(dps_by_year, eps_by_year, None, cfg)  # FCF table absent -> renorm
+        # --- factor 3: sustainability (+ cash-flow quality from akshare table) ---
+        # akshare batch API provides OCF only (no NETPROFIT); NP falls back to
+        # the income table (parent_net_profit) already ingested from the SDK.
+        cf = con.execute(
+            "SELECT report_period, ocf, net_profit FROM cash_flow "
+            "WHERE code=? AND report_period LIKE '%1231' ORDER BY report_period",
+            [code]).fetchdf()
+        ocf_by_year: dict[int, float] = {}
+        np_by_year: dict[int, float] = {}
+        if len(cf):
+            for _, row in cf.iterrows():
+                y = int(str(row["report_period"])[:4])
+                if row["ocf"] is not None and np.isfinite(row["ocf"]):
+                    ocf_by_year[y] = float(row["ocf"])
+                if row["net_profit"] is not None and np.isfinite(row["net_profit"]):
+                    np_by_year[y] = float(row["net_profit"])
+        if len(inc):
+            for _, row in inc.iterrows():
+                rp = str(row["report_period"])
+                if not rp.endswith("1231"):
+                    continue
+                y = int(rp[:4])
+                if y not in np_by_year and row["parent_net_profit"] is not None \
+                        and np.isfinite(row["parent_net_profit"]):
+                    np_by_year[y] = float(row["parent_net_profit"])
+        ocf_np_ratio = compute_ocf_np(ocf_by_year, np_by_year)
+        r.ocf_np = ocf_np_ratio
+        if ocf_np_ratio is None:
+            r.flags.append("MISSING_CFO")
+        f3 = compute_sustainability(dps_by_year, eps_by_year, None, cfg,
+                                    ocf_np_ratio=ocf_np_ratio)
         r.s_sus = f3.s_sus
         r.flags.extend(f3.flags)
 
@@ -277,6 +307,17 @@ def rows_for_report(results: list[StockResult]) -> list[dict]:
             vol_tag_parts.append("低波✅" if vol <= 0.25 else "波动⚠️")
             if r.sus_yield and vol <= 0.25 and r.sus_yield > 0.055:
                 vol_tag_parts.append("🔥加速线")
+        # cash-flow tag (七维检验: OCF/NP>=1 合格, >=1.5 优秀)
+        onp = getattr(r, "ocf_np", None)
+        if onp is not None:
+            if onp >= 1.5:
+                vol_tag_parts.append("现金流✅✅")
+            elif onp >= 1.0:
+                vol_tag_parts.append("现金流✅")
+            elif onp < 0.6:
+                vol_tag_parts.append("现金流❌")
+            else:
+                vol_tag_parts.append("现金流⚠️")
         out.append({
             "code": r.code, "name": r.name, "sector": r.sector,
             "price": r.price, "sus_yield": r.sus_yield, "ttm_yield": r.ttm_yield,
@@ -286,6 +327,7 @@ def rows_for_report(results: list[StockResult]) -> list[dict]:
             "zone": getattr(r, "zone", None),
             "ann_vol": vol,
             "vol_tag": " ".join(vol_tag_parts),
+            "ocf_np": onp,
             "anchor_str": ", ".join(sorted(r.anchors.keys())) if r.anchors else "",
         })
     return out

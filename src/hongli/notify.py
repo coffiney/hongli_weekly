@@ -39,10 +39,22 @@ def _render_rows_md(items: list[dict], vol_threshold: float = 0.25) -> str:
         if r.get("sus_yield") and vol is not None and vol <= vol_threshold \
                 and r["sus_yield"] > 0.055:
             accel = "｜🔥息率>5.5%+低波(加速线)"
+        # 现金流标记 (七维检验: OCF/NP>=1 合格, >=1.5 优秀)
+        onp = r.get("ocf_np")
+        cfo_tag = ""
+        if onp is not None:
+            if onp >= 1.5:
+                cfo_tag = "｜现金流✅✅"
+            elif onp >= 1.0:
+                cfo_tag = "｜现金流✅"
+            elif onp < 0.6:
+                cfo_tag = "｜现金流❌"
+            else:
+                cfo_tag = "｜现金流⚠️"
         lines.append(
             f"**{r['name']}（{r['code']}）**｜{r['tier']}｜"
             f"现价 {r.get('price', '-')}｜股息率 {sy}｜"
-            f"52w波动 {vol_s}{vol_tag}{accel}｜"
+            f"52w波动 {vol_s}{vol_tag}{accel}{cfo_tag}｜"
             f"买入参考 < {buy}｜卖出参考 > {sell}"
         )
     return "\n".join(lines)

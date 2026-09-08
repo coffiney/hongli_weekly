@@ -4,6 +4,8 @@ Schema (v2.3):
 - kline(code DATE close volume amount)
 - income(code, ann_date, report_period, eps, roe, parent_equity, revenue)
 - dividend(code, ann_date, ex_date, dps_pretax, report_period)
+- profit_express(code, ann_date, report_period, roe_weighted, ...)
+- cash_flow(code, report_period, ocf, net_profit, capex)  -- akshare 东财源
 - treasury(date, y10)
 - runs(run_id, asof, meta JSON)
 """
@@ -33,6 +35,10 @@ CREATE TABLE IF NOT EXISTS dividend (
 );CREATE TABLE IF NOT EXISTS profit_express (
     code VARCHAR, ann_date DATE, report_period VARCHAR,
     roe_weighted DOUBLE, parent_equity DOUBLE, eps DOUBLE, net_asset_ps DOUBLE
+);
+CREATE TABLE IF NOT EXISTS cash_flow (
+    code VARCHAR, report_period VARCHAR, ocf DOUBLE, net_profit DOUBLE,
+    capex DOUBLE, PRIMARY KEY (code, report_period)
 );
 CREATE TABLE IF NOT EXISTS treasury (
     tdate DATE, y10 DOUBLE,

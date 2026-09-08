@@ -174,6 +174,91 @@ def fetch_treasury(ses: AmazingSession, years: int = 10) -> dict[str, pd.DataFra
             return {}
 
 
+def fetch_cash_flow_akshare(codes: list[str], from_year: str = "2015") -> pd.DataFrame:
+    """Cash-flow statements from akshare (东方财富) — fills the gap left by the
+    AmazingData server whose cash-flow endpoint fails server-side.
+
+    Primary: ak.stock_xjll_em(date=YYYY1231) — one request per annual report
+    date, covers the whole market (~5200 rows). We fetch from_year..last year.
+    Fallback for missing codes: ak.stock_cash_flow_sheet_by_report_em(symbol)
+    (per-stock, full history incl. latest interim).
+
+    Returns DataFrame: code, report_period(YYYY1231), ocf, net_profit, capex.
+    Never raises — returns whatever it managed to fetch (宁缺毋造 upstream flags).
+    """
+    import akshare as ak
+
+    code_set = {str(c).zfill(6) for c in codes}
+
+    def _em_code(c: str) -> str:
+        return ("SH" if c.startswith(("6", "9", "5")) else
+                "BJ" if c.startswith(("4", "8")) else "SZ") + c
+
+    this_year = _today().year
+    years = list(range(int(from_year), this_year))  # complete annual reports only
+    rows: list[pd.DataFrame] = []
+    have: set[str] = set()
+    for y in years:
+        try:
+            df = ak.stock_xjll_em(date=f"{y}1231")
+        except Exception as e:  # noqa: BLE001
+            print(f"[fetch] cash_flow batch {y} failed: {e}")
+            continue
+        if df is None or len(df) == 0:
+            continue
+        d = df.rename(columns={"股票代码": "code",
+                               "经营性现金流-现金流量净额": "ocf",
+                               "净现金流-净现金流": "ncf"})
+        d["code"] = d["code"].astype(str).str.zfill(6)
+        d = d[d["code"].isin(code_set)]
+        if "ocf" not in d.columns:
+            continue
+        d = d[d["ocf"].notna()]
+        if len(d):
+            have.update(d["code"])
+            rows.append(pd.DataFrame({
+                "code": d["code"], "report_period": f"{y}1231",
+                "ocf": pd.to_numeric(d["ocf"], errors="coerce"),
+            }))
+
+    # fallback: per-stock full history for codes the batch API missed
+    missing = sorted(code_set - have)
+    if missing:
+        print(f"[fetch] cash_flow batch missed {len(missing)} codes -> per-stock fallback")
+        for c in missing[:40]:  # hard cap to bound runtime
+            try:
+                df = ak.stock_cash_flow_sheet_by_report_em(symbol=_em_code(c))
+            except Exception as e:  # noqa: BLE001
+                print(f"[fetch] cash_flow per-stock {c} failed: {e}")
+                continue
+            if df is None or len(df) == 0 or "NETCASH_OPERATE" not in df.columns:
+                continue
+            d = df[df["REPORT_DATE"].astype(str).str.contains("12-31")].copy()
+            d = d[d["NETCASH_OPERATE"].notna()]
+            if not len(d):
+                continue
+            d["report_period"] = pd.to_datetime(d["REPORT_DATE"]).dt.strftime("%Y1231")
+            d["code"] = c
+            d = d[d["report_period"].str[:4].astype(int) >= int(from_year)]
+            rows.append(pd.DataFrame({
+                "code": d["code"], "report_period": d["report_period"],
+                "ocf": pd.to_numeric(d["NETCASH_OPERATE"], errors="coerce"),
+                "net_profit": (pd.to_numeric(d.get("NETPROFIT"), errors="coerce")
+                               if "NETPROFIT" in df.columns else None),
+                "capex": (pd.to_numeric(d.get("CONSTRUCT_LONG_ASSET"), errors="coerce")
+                          if "CONSTRUCT_LONG_ASSET" in df.columns else None),
+            }))
+            time.sleep(0.5)  # be gentle with the public endpoint
+
+    if not rows:
+        return pd.DataFrame(columns=["code", "report_period", "ocf", "net_profit", "capex"])
+    out = pd.concat(rows, ignore_index=True)
+    for col in ("net_profit", "capex"):
+        if col not in out.columns:
+            out[col] = None
+    return out.drop_duplicates(subset=["code", "report_period"])
+
+
 def fetch_stock_basic(ses: AmazingSession, codes: list[str]) -> pd.DataFrame:
     try:
         return ses.info_data.get_stock_basic(code_list=[to_sdk_code(c) for c in codes])

@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 
 from . import db
-from .xy.fetch import (fetch_dividend, fetch_income, fetch_kline,
-                       fetch_profit_express, fetch_treasury)
+from .xy.fetch import (fetch_cash_flow_akshare, fetch_dividend, fetch_income,
+                       fetch_kline, fetch_profit_express, fetch_treasury)
 
 
 def normalize_kline(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
@@ -158,6 +158,34 @@ def normalize_treasury(raw) -> pd.DataFrame:
     return d[["tdate", "y10"]].dropna().drop_duplicates(subset=["tdate"])
 
 
+_CFO_COLS = {"code": "code", "report_period": "report_period",
+             "ocf": "ocf", "net_profit": "net_profit", "capex": "capex"}
+
+
+def normalize_cash_flow(raw) -> pd.DataFrame:
+    """akshare cash-flow rows -> DuckDB schema. Keeps annual report periods
+    (YYYY1231). raw may be DataFrame or dict[code]->DataFrame."""
+    if isinstance(raw, dict):
+        parts = [v for v in raw.values() if v is not None and len(v) > 0]
+        raw = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
+    cols = list(_CFO_COLS.values())
+    if raw is None or len(raw) == 0:
+        return pd.DataFrame(columns=cols)
+    d = raw.copy()
+    for m in [c for c in cols if c not in d.columns]:
+        d[m] = None
+    d = d.rename(columns=_CFO_COLS)
+    d["code"] = d["code"].astype(str).str.split(".").str[0].str.zfill(6)
+    d["report_period"] = d["report_period"].astype(str)
+    d = d[d["report_period"].str.endswith("1231")]  # annual reports only
+    for c in ["ocf", "net_profit", "capex"]:
+        d[c] = pd.to_numeric(d[c], errors="coerce")
+    # OCF is the factor's core input; rows without it are dead weight
+    d = d.dropna(subset=["ocf"])
+    return d[cols].drop_duplicates(subset=["code", "report_period"]).sort_values(
+        ["code", "report_period"])
+
+
 def ingest_all(con, ses, universe: list[dict], cfg: dict) -> dict:
     """Full backfill/refresh. Returns stats dict. Reads once, writes locally."""
     codes = [u["code"] for u in universe]
@@ -189,6 +217,16 @@ def ingest_all(con, ses, universe: list[dict], cfg: dict) -> dict:
     stats["px_rows"] = db.upsert_dataframe(con, "profit_express", pxdf,
                                            ["code", "report_period"])
     stats["px_codes"] = pxdf["code"].nunique() if len(pxdf) else 0
+
+    # --- cash flow (akshare; AmazingData cash-flow endpoint fails server-side) ---
+    try:
+        cfo_raw = fetch_cash_flow_akshare(codes, from_year=w["fin_from"])
+    except Exception as e:  # noqa: BLE001 — akshare outage must not kill the run
+        print(f"[fetch] cash_flow akshare unavailable: {e}")
+        cfo_raw = pd.DataFrame()
+    cfdf = normalize_cash_flow(cfo_raw)
+    stats["cf_rows"] = db.upsert_dataframe(con, "cash_flow", cfdf, ["code", "report_period"])
+    stats["cf_codes"] = cfdf["code"].nunique() if len(cfdf) else 0
 
     # --- treasury ---
     tre_raw = fetch_treasury(ses, years=w["y10_hist_years"])

@@ -11,8 +11,9 @@ FLAG_KLINE = "MISSING_KLINE"
 FLAG_Y10 = "MISSING_Y10"
 FLAG_SUS = "MISSING_SUSTAINABILITY"
 FLAG_Q = "MISSING_QUALITY"
+FLAG_CFO = "MISSING_CFO"
 
-ALL_FLAGS = [FLAG_EPS, FLAG_DIV, FLAG_KLINE, FLAG_Y10, FLAG_SUS, FLAG_Q]
+ALL_FLAGS = [FLAG_EPS, FLAG_DIV, FLAG_KLINE, FLAG_Y10, FLAG_SUS, FLAG_Q, FLAG_CFO]
 
 
 @dataclass
@@ -84,6 +85,7 @@ class StockResult:
     anchors: dict = field(default_factory=dict)   # pricing anchors (objective)
     zone: tuple | None = None                     # (buy_below, sell_above)
     ann_vol: Optional[float] = None               # 52w annualized vol of weekly returns (ratio)
+    ocf_np: Optional[float] = None                # median 3y OCF/net-profit (ratio)
     notes: str = ""
 
 

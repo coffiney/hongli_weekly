@@ -10,3 +10,4 @@ openai>=1.40
 psutil>=5.9
 pytest>=8.0
 requests
+akshare>=1.18

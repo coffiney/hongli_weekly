@@ -34,6 +34,9 @@ def load_config() -> dict:
         cfg["llm"]["model"] = os.environ["HONGLI_LLM_MODEL"]
     if os.environ.get("HONGLI_LLM_BASE_URL"):
         cfg["llm"]["base_url"] = os.environ["HONGLI_LLM_BASE_URL"]
+    # secrets live in .env only (never committed); config holds placeholder
+    if os.environ.get("HONGLI_FEISHU_WEBHOOK"):
+        cfg.setdefault("notify", {})["feishu_webhook"] = os.environ["HONGLI_FEISHU_WEBHOOK"]
     return cfg
 
 
