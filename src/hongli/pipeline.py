@@ -330,6 +330,9 @@ def rows_for_report(results: list[StockResult]) -> list[dict]:
             "ocf_np": onp,
             "anchor_str": ", ".join(sorted(r.anchors.keys())) if r.anchors else "",
         })
+    # order by recommendation strength (matrix cell > cashflow > lowvol > composite)
+    from .scoring.ranking import sort_candidates
+    out = sort_candidates(out)
     return out
 
 

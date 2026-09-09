@@ -15,10 +15,12 @@ import requests
 
 
 def _pick_watchlist(rows: list[dict], cfg: dict, top_n: int = 3) -> list[dict]:
-    """值得关注 = llm_candidate_cells 中 composite 最高的 top_n 只."""
+    """值得关注 = 推荐程度排序（scoring/ranking.py，与 HTML 候选表同序）的 top_n.
+
+    rows 已由 rows_for_report 按推荐程度排好：矩阵格 low_A>mid_A>low_B、
+    现金流警示降级、低波优先、综合分决胜。这里只做兜底过滤。"""
     cells = set(cfg["matrix"]["llm_candidate_cells"])
-    cands = [r for r in rows if r.get("matrix_cell") in cells and r.get("composite")]
-    cands.sort(key=lambda r: -(r["composite"] or 0))
+    cands = [r for r in rows if r.get("matrix_cell") in cells]
     return cands[:top_n]
 
 

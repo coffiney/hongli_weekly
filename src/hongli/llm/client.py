@@ -33,8 +33,9 @@ def llm_available(cfg: dict) -> bool:
 
 def build_prompt(rows: list[dict], cfg: dict) -> str:
     cells = set(cfg["matrix"]["llm_candidate_cells"])
+    # rows already ordered by recommendation strength (scoring/ranking.py)
     cands = [r for r in rows if r.get("matrix_cell") in cells]
-    top = sorted(cands, key=lambda r: -(r.get("composite") or 0))[: cfg["llm"]["top_n_recommend"]]
+    top = cands[: cfg["llm"]["top_n_recommend"]]
     data = []
     for r in top:
         data.append({
