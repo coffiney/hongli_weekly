@@ -259,6 +259,50 @@ def fetch_cash_flow_akshare(codes: list[str], from_year: str = "2015") -> pd.Dat
     return out.drop_duplicates(subset=["code", "report_period"])
 
 
+def fetch_roe_akshare(codes: list[str], from_year: str = "2015") -> pd.DataFrame:
+    """Annual weighted ROE from akshare 业绩报表 (东方财富) — fills the gap left
+    by AmazingData: the server's balance-sheet endpoint fails, so income rows
+    carry no parent_equity, and only ~70/119 universe names publish 业绩快报
+    (the official-ROE primary source). This batch API covers the whole market
+    per annual report date (~11k rows) with 净资产收益率 (weighted).
+
+    Returns DataFrame: code, report_period(YYYY1231), roe_weighted(percent),
+    eps, net_asset_ps. Never raises — partial data beats no data (宁缺毋造
+    still applies: rows without ROE are dropped upstream).
+    """
+    import akshare as ak
+
+    code_set = {str(c).zfill(6) for c in codes}
+    this_year = _today().year
+    years = list(range(int(from_year), this_year))  # complete annual reports only
+    rows = []
+    for y in years:
+        try:
+            df = ak.stock_yjbb_em(date=f"{y}1231")
+        except Exception as e:  # noqa: BLE001
+            print(f"[fetch] roe batch {y} failed: {e}")
+            continue
+        if df is None or len(df) == 0 or "净资产收益率" not in df.columns:
+            continue
+        d = df.rename(columns={"股票代码": "code", "净资产收益率": "roe_weighted",
+                               "每股收益": "eps", "每股净资产": "net_asset_ps"})
+        d["code"] = d["code"].astype(str).str.zfill(6)
+        d = d[d["code"].isin(code_set)]
+        d = d[d["roe_weighted"].notna()]
+        if len(d):
+            rows.append(pd.DataFrame({
+                "code": d["code"], "report_period": f"{y}1231",
+                "roe_weighted": pd.to_numeric(d["roe_weighted"], errors="coerce"),
+                "eps": pd.to_numeric(d["eps"], errors="coerce"),
+                "net_asset_ps": pd.to_numeric(d["net_asset_ps"], errors="coerce"),
+            }))
+    if not rows:
+        return pd.DataFrame(columns=["code", "report_period", "roe_weighted",
+                                     "eps", "net_asset_ps"])
+    return pd.concat(rows, ignore_index=True).drop_duplicates(
+        subset=["code", "report_period"])
+
+
 def fetch_stock_basic(ses: AmazingSession, codes: list[str]) -> pd.DataFrame:
     try:
         return ses.info_data.get_stock_basic(code_list=[to_sdk_code(c) for c in codes])

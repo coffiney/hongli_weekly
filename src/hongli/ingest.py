@@ -9,7 +9,8 @@ import pandas as pd
 
 from . import db
 from .xy.fetch import (fetch_cash_flow_akshare, fetch_dividend, fetch_income,
-                       fetch_kline, fetch_profit_express, fetch_treasury)
+                       fetch_kline, fetch_profit_express, fetch_roe_akshare,
+                       fetch_treasury)
 
 
 def normalize_kline(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
@@ -227,6 +228,33 @@ def ingest_all(con, ses, universe: list[dict], cfg: dict) -> dict:
     cfdf = normalize_cash_flow(cfo_raw)
     stats["cf_rows"] = db.upsert_dataframe(con, "cash_flow", cfdf, ["code", "report_period"])
     stats["cf_codes"] = cfdf["code"].nunique() if len(cfdf) else 0
+
+    # --- ROE from akshare 业绩报表 (fills 业绩快报 gap: ~49/119 names have no
+    #     official ROE because the server balance-sheet endpoint fails) ---
+    try:
+        roe_raw = fetch_roe_akshare(codes, from_year=w["fin_from"])
+    except Exception as e:  # noqa: BLE001
+        print(f"[fetch] roe akshare unavailable: {e}")
+        roe_raw = pd.DataFrame()
+    if len(roe_raw):
+        # upsert whole df, but keep AmazingData 业绩快报 rows authoritative:
+        # delete-then-insert would clobber them. Instead only insert akshare
+        # rows whose (code, report_period) is absent from existing px data.
+        existing = con.execute(
+            "SELECT code, report_period FROM profit_express").fetchdf()
+        if len(existing):
+            have = set(map(tuple, existing.values.tolist()))
+            mask = roe_raw.apply(
+                lambda r: (r["code"], r["report_period"]) not in have, axis=1)
+            roe_new = roe_raw[mask]
+        else:
+            roe_new = roe_raw
+        stats["roe_ak_rows"] = db.upsert_dataframe(con, "profit_express", roe_new,
+                                                  ["code", "report_period"])
+        stats["roe_ak_codes"] = roe_new["code"].nunique() if len(roe_new) else 0
+    else:
+        stats["roe_ak_rows"] = 0
+        stats["roe_ak_codes"] = 0
 
     # --- treasury ---
     tre_raw = fetch_treasury(ses, years=w["y10_hist_years"])
