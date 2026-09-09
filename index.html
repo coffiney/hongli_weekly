@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="Ebb9IP0X1dAbt7iRFrQeSF">
+<head data-page-node-id="gPRMREMMxJfnoW95RFztsj">
+<meta charset="utf-8" data-page-node-id="05iHU1NTI7beYycccu90IH">
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="sTtS5QRbqiYElVI8gXEVkH">
+<title>红利周报 2026-09-09 · 估值×质量双维矩阵</title>
+<style>
+  :root { --ink:#1c2430; --muted:#66707d; --line:#e3e7ec; --bg:#f6f8fa; }
+  * { box-sizing:border-box; }
+  body { font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+         color:var(--ink); background:var(--bg); margin:0; padding:24px; }
+  .wrap { max-width:1180px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  h2 { font-size:17px; margin:28px 0 10px; border-left:4px solid #2f6fb2; padding-left:8px; }
+  .sub { color:var(--muted); font-size:12.5px; margin-bottom:18px; }
+  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .stat { background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .stat .n { font-size:20px; font-weight:700; }
+  .stat .l { font-size:11.5px; color:var(--muted); margin-top:2px; }
+  table { border-collapse:collapse; width:100%; background:#fff; font-size:12.5px;
+          border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  th { background:#eef2f6; text-align:left; padding:7px 9px; font-weight:600;
+       border-bottom:1px solid var(--line); white-space:nowrap; }
+  td { padding:6px 9px; border-bottom:1px solid #f0f2f5; white-space:nowrap; }
+  tr:hover td { background:#f7fafd; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .chip { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px;
+          color:#fff; font-weight:600; }
+  .flags { color:#b45309; font-size:10.5px; }
+  .matrix-wrap { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; }
+  .mx { border-collapse:collapse; }
+  .mx td { width:118px; height:74px; border:3px solid #fff; border-radius:6px;
+           vertical-align:top; padding:6px 7px; font-size:10.5px; color:#fff;
+           text-align:left; line-height:1.35; }
+  .mx .cell-name { font-weight:700; font-size:12px; }
+  .mx th.axis { background:transparent; color:var(--muted); font-size:11px;
+                padding:4px; text-align:center; width:118px; font-weight:600; }
+  .legend { font-size:11.5px; color:var(--muted); line-height:1.9; max-width:300px; }
+  .dot { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; }
+  .note { background:#fff8e6; border:1px solid #f2dfa9; border-radius:8px;
+          padding:10px 14px; font-size:12.5px; margin-top:16px; }
+  .llm { background:#fff; border:1px solid var(--line); border-radius:10px;
+         padding:14px 18px; font-size:13px; line-height:1.8; white-space:pre-wrap; }
+  .none { color:var(--muted); font-size:13px; background:#fff; border:1px dashed var(--line);
+          border-radius:10px; padding:14px; }
+  footer { margin-top:28px; color:var(--muted); font-size:11px; text-align:center; }
+</style>
+</head>
+<body data-page-node-id="e0QVqD2yB2DySzyHsEs2Z6"><div class="wrap" data-page-node-id="P4oyJUts074xAhkCDPoMXU">
+  <h1 data-page-node-id="V394G6U4FbZcZ8zLYXrGpS">红利股周报 · 估值 × 质量双维矩阵</h1>
+  <div class="sub" data-page-node-id="aDV0KOaB9QesrHTdx1V0L5">数据截至 2026-09-09 · 生成于 2026-09-09 13:06 · 样本 119 只 ·
+    数据源：银河星耀数智 AmazingData · 版本 v2.3</div>
+
+  <div class="cards" data-page-node-id="KcHdy8xiJvojnRzA7ezyIt">
+    <div class="stat" data-page-node-id="tADFFqUBjvqhfdzVFHm8EA"><div class="n" data-page-node-id="mcHDeGgPv0naHmfDVHR8os">119</div><div class="l" data-page-node-id="kFaFAV881ekCjiRkzDx48t">覆盖标的</div></div>
+    <div class="stat" data-page-node-id="FGHsKvXaHDYoYsdwKrL7T9"><div class="n" data-page-node-id="zu1mCm3tuyYIRE4Rc6y6bI">119</div><div class="l" data-page-node-id="cCjqcPiKhYlfEw0M6uIlJL">有效评级</div></div>
+    <div class="stat" data-page-node-id="0HaoQj0JmgByI0Mb63pGFk"><div class="n" data-page-node-id="i3VtPpCb4nF4tefpBDuZQu">0</div><div class="l" data-page-node-id="bFayLkjguv8NB89evqEXQZ">数据缺失标记</div></div>
+    <div class="stat" data-page-node-id="mwMkpRUobxzV7O7CWywhSw"><div class="n" data-page-node-id="4BoKTmGEXWV3e0yb6yj7wY">2</div><div class="l" data-page-node-id="lhsd2gqe1xSb8C7Sz7Xz7Z">价值陷阱区（low×C）</div></div>
+  </div>
+
+  <h2 data-page-node-id="h3PqJrVQCiHHKl4YUdG6Ag">一、双维矩阵总览</h2>
+  <div class="matrix-wrap" data-page-node-id="RMfwDBtdQLjI0NBCdLly1n">
+    <table class="mx" data-page-node-id="4wgrDsWcDaPM2rgAOnQuu4">
+      <tr data-page-node-id="LBQYMBdwrClEnUd8ITrDOL"><th class="axis" data-page-node-id="dEHjXmPqZsDGEDfVADlTs8"></th><th class="axis" data-page-node-id="oBkKwzYmJKxFBmCkJkMmFk">质量 C（弱）</th><th class="axis" data-page-node-id="Ytczg4kCCAssTphDzFmrzM">质量 B（中）</th><th class="axis" data-page-node-id="pSMUHlSPIxSyivfnETX4p9">质量 A（强）</th></tr>
+      
+      <tr data-page-node-id="uDlN4EjzuAWvY355BCx5E5">
+        <th class="axis" data-page-node-id="7yDLTLgXBaPJv1Qj4HsXJC">低估值
+(s_val<0.40)</th>
+        
+        
+        <td style="background:#f0c93c;" data-page-node-id="ei96L79N5XxaC2Mgvf6Nb9">
+          <div class="cell-name" data-page-node-id="SR0CLG2nwBOLJT7Nw5QN2K">陷阱警示</div>
+          <div data-page-node-id="YfsQ9EMaD5SX28bdcXU4ly">2 只</div>
+        </td>
+        
+        
+        <td style="background:#7bc47f;" data-page-node-id="1YUE1gkSoZn9CXZ01xZRm1">
+          <div class="cell-name" data-page-node-id="fOW5M4J6hiKdAHyka3cQzj">低估·质中</div>
+          <div data-page-node-id="fjvIT3L6DZ2ND2bCFtqF99">24 只</div>
+        </td>
+        
+        
+        <td style="background:#1a7a3a;" data-page-node-id="PBV6YEYHkWEuttcA7Ao2NK">
+          <div class="cell-name" data-page-node-id="G1BI2sWlJ0vDxWoHCU16x7">低估·质优</div>
+          <div data-page-node-id="txSpxdGD2OMtlwlqlAJnTr">3 只</div>
+        </td>
+        
+      </tr>
+      
+      <tr data-page-node-id="q1aDr2GyOM3BkgVMQMKUP8">
+        <th class="axis" data-page-node-id="TEdIY3quBVRBZ94uMsSRlj">合理
+(0.40–0.65)</th>
+        
+        
+        <td style="background:#9db8a0;" data-page-node-id="OGvuA0Rl8XaD5VsDi3faOr">
+          <div class="cell-name" data-page-node-id="3QnG9UuYx2HjIK0AaV3GLL">合理·质弱</div>
+          <div data-page-node-id="cghNm9zEY3kQsU7UvC5q2E">1 只</div>
+        </td>
+        
+        
+        <td style="background:#f0c93c;" data-page-node-id="NWdhogOChEA9sEPXX6xRvr">
+          <div class="cell-name" data-page-node-id="mh3iqbt7oQjomUt6jLpC4m">合理·质中</div>
+          <div data-page-node-id="0iSGS45xQy92CLdAtzeuDA">21 只</div>
+        </td>
+        
+        
+        <td style="background:#5aa860;" data-page-node-id="rrVnpqSWzdNRNYBpR6eNw3">
+          <div class="cell-name" data-page-node-id="SvjbCxiHrmUWHupc72ZMyV">合理·质优</div>
+          <div data-page-node-id="I4lKzwymIMqrSVIae2Xbr5">3 只</div>
+        </td>
+        
+      </tr>
+      
+      <tr data-page-node-id="8wRroZc9ZxtoylQhE5Ka7Q">
+        <th class="axis" data-page-node-id="lDZHC8KQPUb6CFbhkfvcsV">高估值
+(>0.65)</th>
+        
+        
+        <td style="background:#a02622;" data-page-node-id="ZqczAwdBcz3yMZhHiM0ZrR">
+          <div class="cell-name" data-page-node-id="Afdy4X2FGWwJxXB5jjrDXl">高估·质弱</div>
+          <div data-page-node-id="qhYFs6svpRv0Gm7Ctr54pW">13 只</div>
+        </td>
+        
+        
+        <td style="background:#d9534f;" data-page-node-id="ngehCP4k5QCICJWCkvyBOU">
+          <div class="cell-name" data-page-node-id="6aEdLj1AXnWZuYTsrOHizm">高估·质中</div>
+          <div data-page-node-id="NCZBVYvSqjwFGdzIvH3CVo">50 只</div>
+        </td>
+        
+        
+        <td style="background:#e89a3c;" data-page-node-id="aadAFr471UsRhvcsGDA2Sa">
+          <div class="cell-name" data-page-node-id="VbPKfgzIyd954ucFMizH3l">高估·质优</div>
+          <div data-page-node-id="utk1KfY7KpsdBG0cgH5GRf">2 只</div>
+        </td>
+        
+      </tr>
+      
+    </table>
+    <div class="legend" data-page-node-id="aoddpE4U7ZmpkmkqRYc4ZZ">
+      <div data-page-node-id="sfGYKQCin66DMhhHSR4jnW"><span class="dot" style="background:#1a7a3a" data-page-node-id="cf3peEMWL7tXPjrGLi6I0K"></span>低估值×高质量 —— 核心候选</div>
+      <div data-page-node-id="RkCLM2N8Tj7pcHeQQuAOqQ"><span class="dot" style="background:#f0c93c" data-page-node-id="SJRhS4te9sVOPu0WckbYGb"></span>低估值×低质量 —— <b data-page-node-id="HzceMrwZjwPHI5XM7tDxZj">价值陷阱警示区</b>（不进入建议）</div>
+      <div data-page-node-id="VfCHG3IfUUm65EevO85pSh"><span class="dot" style="background:#a02622" data-page-node-id="NWaEzlko2Riz8c3gGoPKKj"></span>高估值×低质量 —— 规避</div>
+      <div data-page-node-id="NV7asN7FYkDRbj2CwY8q7o"><span class="dot" style="background:#e89a3c" data-page-node-id="BngprHGUGa05RciWNburvb"></span>高估值×高质量 —— 优质但偏贵</div>
+      <div data-page-node-id="bBoyJx7AUSnFqKro7pKGYY"><span class="dot" style="background:#9e9e9e" data-page-node-id="O9ytxV95vA7U45rjw6FjwR"></span>数据缺失，无评级（缺失≥2项因子）</div>
+      <div style="margin-top:6px" data-page-node-id="FDFMSWnmt4LCMPneqFfKsd">纵轴：s_val（利率中性估值分，越低越便宜）；<br data-page-node-id="xUM2bZPEPxbCoMTr6nx0qd">
+        横轴：q_rel = (0.5×s_sus + 0.5×s_q) / 板块中位数</div>
+    </div>
+  </div>
+
+  
+  <h2 data-page-node-id="b41jD4RbBvaZ526wxa2TQb">二、LLM 分析师点评</h2>
+  <div class="llm" data-page-node-id="aCQMRn6y7iv4EnkNtSlj0Z">### 市场总结
+
+当前红利资产整体估值合理，但内部分化明显：煤炭板块中中煤能源已突破算法卖出价，需防范回调；陕西煤业处于买点附近，可关注。优质消费、电力、高速等标的处于合理区间，现金流稳健、波动较低，适合作为底仓持有。中国平安虽估值合理，但需留意宏观利率影响。操作上，建议遵循买入/卖出价格锚，在区间内持有，不追高，等待波动中的加仓机会。
+
+### 标点评
+
+**陕西煤业（601225）**  
+买入价25.71，卖出价41.14，现价恰为买价，现金流优秀但波动偏高。建议买入。  
+
+**中煤能源（601898）**  
+买入价9.42，卖出价14.21，现价14.90已高于卖出价，估值偏高，波动显著。建议观望。  
+
+**中国石油（601857）**  
+买入价10.44，卖出价16.71，现价11.30处于区间内，现金流强，波动可控。建议持有。  
+
+**中国平安（601318）**  
+买入价49.30，卖出价78.88，现价55.70合理，现金流表现好，波动中等。建议持有。  
+
+**兖矿能源（600188）**  
+买入价16.00，卖出价25.60，现价21.50合理，股息率7.25%具吸引力，但波动高。建议持有。  
+
+**南钢股份（600282）**  
+买入价3.85，卖出价6.17，现价4.78处于区间内，现金流尚可，波动偏高。建议持有。  
+
+**美的集团（000333）**  
+买入价81.56，卖出价130.49，现价85.15合理，低波且现金流优质。建议持有。  
+
+**海信家电（000921）**  
+买入价25.72，卖出价41.15，现价27.67合理，低波，现金流稳健。建议持有。  
+
+**申能股份（600642）**  
+买入价8.52，卖出价13.63，现价8.52正好在买点，电力现金流稳定。建议买入。  
+
+**粤高速Ａ（000429）**  
+买入价11.19，卖出价17.90，现价12.72合理，现金流稳健，防御属性强。建议持有。</div>
+  
+
+  <h2 data-page-node-id="g8Yn5FyITJrSkN916LIeUI">三、候选标的（低估值 × 质量 A/B）</h2>
+  
+  <table data-page-node-id="zkRZPrdIk1PvDhQfaUsB3d">
+    <tr data-page-node-id="uvrmyz2r5jUBLIh2oecxOu"><th data-page-node-id="eZH0XD1oJAOQYUGdVpovv8">代码</th><th data-page-node-id="iXRnFgPAGjnzVLRyvQ1ROf">名称</th><th data-page-node-id="NbGd3QHSh47Q5RsItMkdj5">板块</th><th class="num" data-page-node-id="Z6BSDqQcQYOHJJFxkR1xI1">现价</th><th class="num" data-page-node-id="DfUvk6rr4kUl5gSFNOEddM">可持续股息率</th>
+        <th class="num" data-page-node-id="XRujAFTDIIFWzXT5TYbnGV">52w波动</th><th data-page-node-id="7DE6u0Y2fsSKOwKH7x02MQ">低波/现金流</th>
+        <th data-page-node-id="SmOrtmVaMRfPDg1imOXDk1">矩阵</th><th class="num" data-page-node-id="1BYUGuwv3MiETLZnQ2Q7Ww">综合分</th><th data-page-node-id="9uoijUyC5wDPoa5bQhj1CD">评级</th>
+        <th class="num" data-page-node-id="LX1jEi7Ma9IuXLuKYCKNob">买入参考价</th><th class="num" data-page-node-id="g3PVG0EijJWJmRGPiLEFw0">卖出参考价</th><th data-page-node-id="2FpZ5qkyNWz8te4qzFz7mv">价格锚</th></tr>
+    
+    <tr data-page-node-id="FCN8SmNQtJmFuveaGoOPEA">
+      <td data-page-node-id="A1tTHb1xGv6Q440IowPz1a">601225</td><td data-page-node-id="8zle421pECjMoXI0D5ghay">陕西煤业</td><td data-page-node-id="TfsyQg31nMk1hVwXEBkdUK">coal</td>
+      <td class="num" data-page-node-id="IlE4URfUqwaYwI4UGDstx7">25.71</td>
+      <td class="num" data-page-node-id="AV2LUu3Nb3bYdg2VDBlEca">5.67%</td>
+      <td class="num" data-page-node-id="tOOysDxhXLmBDeUBfrfBJA">37%</td>
+      <td data-page-node-id="aWvOalOCE0MXCsozxO8Jmu">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="16tt3APSGL1Dsg7yRaR9hg"><span class="chip" style="background:#1a7a3a" data-page-node-id="Z1rt54IVzopDNW2fvFDIuJ">low_A</span></td>
+      <td class="num" data-page-node-id="jlM7TWxkVDSy3EeZx9eaqi">56</td>
+      <td data-page-node-id="GhVY4vPzCofevKg3N06WmD">偏高</td>
+      <td class="num" data-page-node-id="ENK6EVPZDREH2fn0jKHedE">25.71</td>
+      <td class="num" data-page-node-id="ikiVPMtfHagFTtHyBUANFo">41.14</td>
+      <td class="flags" data-page-node-id="T2oxeCoTNeBU9N6hOqhbEQ">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="WVRpamyxIKFPNW8iEkCf5e">
+      <td data-page-node-id="XkhcsonTfC51LooN1O6uQi">601898</td><td data-page-node-id="0pEyAJa0uUGOYDVMIb1VQU">中煤能源</td><td data-page-node-id="2yCntNeNwJfQfLlqk6gmm5">coal</td>
+      <td class="num" data-page-node-id="ZQjShP1rB9s6ADW3TSBjMX">14.90</td>
+      <td class="num" data-page-node-id="rxSj3ZERb54kunAP5qNgKI">2.89%</td>
+      <td class="num" data-page-node-id="TBJUq1VlxXJoofRcQE3bvA">46%</td>
+      <td data-page-node-id="vGtQnEZY3MERLXRQ2sbTxd">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="FqquTDrWmfg8SahJrej9QE"><span class="chip" style="background:#1a7a3a" data-page-node-id="EcBNW9swElbLjs7E4RaTcO">low_A</span></td>
+      <td class="num" data-page-node-id="FkwYFgcz5PrSmpLNtfZQ8d">55</td>
+      <td data-page-node-id="rx4OxljePNIq1BlXOJ3xoH">偏高</td>
+      <td class="num" data-page-node-id="kwHEIcxvb5yFscXS8EcoDl">9.42</td>
+      <td class="num" data-page-node-id="Aa5gD4uNCeGyzR21F7uawP">14.21</td>
+      <td class="flags" data-page-node-id="ShxDzpUiPOTw1XMgoNoqcX">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="nwqG8nEPnmiVgwWAFRhIaY">
+      <td data-page-node-id="gMERBb0n3LXm3R7RMlAx2F">601857</td><td data-page-node-id="NZHzCkyOifpbVwErYheWzn">中国石油</td><td data-page-node-id="XfJ8vwMENtCuRpYaijOyGy">oil_chem</td>
+      <td class="num" data-page-node-id="LGEVQndKfI2p50VBzOQwCA">11.30</td>
+      <td class="num" data-page-node-id="ZSDFtjydK4KMB82d5rcVYD">4.16%</td>
+      <td class="num" data-page-node-id="DlR716BaG47vbz15ir1OuX">36%</td>
+      <td data-page-node-id="hPZDHW55EKR1Oi6ZVpUWFr">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="Bl4q4q9WcMqqzOnxnrBbys"><span class="chip" style="background:#1a7a3a" data-page-node-id="BatxBEQsjYLjzFFPUGTST6">low_A</span></td>
+      <td class="num" data-page-node-id="qi35sntA7nJAEQ15UgzRxT">50</td>
+      <td data-page-node-id="HkMe1oRIEroMiOPOxxJlgb">偏高</td>
+      <td class="num" data-page-node-id="RhSQSMWgg2aLpy3CD74CmG">10.44</td>
+      <td class="num" data-page-node-id="n0PaIHZWBDoyKU07Flpzq4">16.71</td>
+      <td class="flags" data-page-node-id="2ApsGysU23b8dtRRDjzQUj">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="0AnNpiniFVxhFeGSLZAe6J">
+      <td data-page-node-id="P6apJbGUFAOJzQiSE0TIuM">601318</td><td data-page-node-id="pmyx7GLvBaVcXOdMWnwdK5">中国平安</td><td data-page-node-id="fztblQVjACx53YE0wveurP">insurance</td>
+      <td class="num" data-page-node-id="XUhE4DmSwtJLgUBEpV6uFR">55.70</td>
+      <td class="num" data-page-node-id="wn4SEAuGWU6Hv53ES2meGg">3.98%</td>
+      <td class="num" data-page-node-id="i6QOxAkmYfDtEZ1RYNQCyd">27%</td>
+      <td data-page-node-id="Pxn9sjpEJj0JNq5glFkT2k">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="qboSmTUZyq1RsmxdLOGOyG"><span class="chip" style="background:#5aa860" data-page-node-id="mX8DpRuTYLmEMW2QN2tnfC">mid_A</span></td>
+      <td class="num" data-page-node-id="VDcFzOcQusePOCJgNN9q0c">71</td>
+      <td data-page-node-id="mYkllVad2wk6TjFEMbElkq">合理</td>
+      <td class="num" data-page-node-id="s40m2C0YytDF7EFgcmrb9E">49.3</td>
+      <td class="num" data-page-node-id="OIND7yTFkTPHdCdC0b9wTf">78.88</td>
+      <td class="flags" data-page-node-id="b35VHCXjsiaieKV4W6ddpi">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="5hGXgfWJre2faiaNXWtrvg">
+      <td data-page-node-id="ihMZHB3WWF6MiDoCPs8u08">600188</td><td data-page-node-id="np69VdLytrC1njAF3H9i9L">兖矿能源</td><td data-page-node-id="WZ9RvWbQZR3Oksm0FmFyac">coal</td>
+      <td class="num" data-page-node-id="7GwQMWbQZJHktYsH4zbPRS">21.50</td>
+      <td class="num" data-page-node-id="GozMRGsQFbqTNIbOO0x93C">7.25%</td>
+      <td class="num" data-page-node-id="coAPWHCbqE0QWdnyGK2Ro6">49%</td>
+      <td data-page-node-id="n2XT9LnCLs8Z5CF3aIbHaR">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="jYLYNQxN0BNqpEnejD6qEy"><span class="chip" style="background:#5aa860" data-page-node-id="2ccGW2qZiKH3GMPopQbo9V">mid_A</span></td>
+      <td class="num" data-page-node-id="4K3Lu3jMM53uOnPICOsyq1">71</td>
+      <td data-page-node-id="xZdy8RzkpsQn9Ch8sYcXGx">合理</td>
+      <td class="num" data-page-node-id="PTsHdJUE6MVLTPbAvlFXwE">16.0</td>
+      <td class="num" data-page-node-id="Z9FjR0uqhY8I7c0Kso5g7a">25.6</td>
+      <td class="flags" data-page-node-id="0BXWW4JOv04juZGanbfeiv">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="6vwP5UQjeLKJieVad0tJwB">
+      <td data-page-node-id="XYcQbmjy46H0VkXKenKEFr">600282</td><td data-page-node-id="SsDaFNYyxhHm2BnEw0T91Y">南钢股份</td><td data-page-node-id="tRp8hHN27NFNu1zWHYpj1e">steel</td>
+      <td class="num" data-page-node-id="VLgH6p5KUXpVKJeF09z2zv">4.78</td>
+      <td class="num" data-page-node-id="ob7vArk2AfXDIEf4zlSGxq">3.63%</td>
+      <td class="num" data-page-node-id="39N64eXS8BFSDWFNn4xgeB">31%</td>
+      <td data-page-node-id="YvbWqEXc0kXSOp0ycb7XeB">波动⚠️ 现金流✅</td>
+      <td data-page-node-id="O3xN3EUrgAA4yJphBSPoH3"><span class="chip" style="background:#5aa860" data-page-node-id="76TYHP3mlk4NtmDhSBf1bx">mid_A</span></td>
+      <td class="num" data-page-node-id="aOJQrUsgYDResJetVDhXIu">58</td>
+      <td data-page-node-id="zM8RnMtNBsMXQhaoE3MKK8">偏高</td>
+      <td class="num" data-page-node-id="2rgoA6IyeJkrcHRDsgEENI">3.85</td>
+      <td class="num" data-page-node-id="tYGLkvPs6dyI9510hSOC0r">6.17</td>
+      <td class="flags" data-page-node-id="iaKr7Son33CD4RlVjLT10p">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="tcHwBeXBedJDlxHDOVFiqG">
+      <td data-page-node-id="jkNlkbpX9fd2tsxTjatl9B">000333</td><td data-page-node-id="uT47t44gp0qtKN4sb0oMYl">美的集团</td><td data-page-node-id="Emtopu20ZJa2YnTLNRqpYv">consumer</td>
+      <td class="num" data-page-node-id="ZUDyfnW0BzqerqFqdOySxJ">85.15</td>
+      <td class="num" data-page-node-id="JBt7KsKBZW1C82wiE1lq36">4.31%</td>
+      <td class="num" data-page-node-id="Hz6ghKg3T0IZT1GtvgV49n">17%</td>
+      <td data-page-node-id="G0IcseqDNIyp3SzFKbivVE">低波✅ 现金流✅✅</td>
+      <td data-page-node-id="kicuNG5Ar2nCgVkSbGVMb5"><span class="chip" style="background:#7bc47f" data-page-node-id="zX0RivoidtjyXIaN61spxA">low_B</span></td>
+      <td class="num" data-page-node-id="Jmj1DxpuM55BCYFHAuNMIT">71</td>
+      <td data-page-node-id="oeXEUHGv1aEuIz6fkRfU6z">合理</td>
+      <td class="num" data-page-node-id="Eu3IptfZIfu7exRz5H5ixd">81.56</td>
+      <td class="num" data-page-node-id="ROCxykckP2z3RiGUK3z7RZ">130.49</td>
+      <td class="flags" data-page-node-id="kvdGzdvvCRiaL0g7BTLtbk">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="YPKPjgxNdmVh5D2LO1f9LX">
+      <td data-page-node-id="2D96XZPbAg4q0pPxdlSMY0">000921</td><td data-page-node-id="Fzny4b2IQnDj7NQQnRFLWa">海信家电</td><td data-page-node-id="rr0n7GmkvARF5o7tkRGN3C">consumer</td>
+      <td class="num" data-page-node-id="5R4CXALAbB5AtGaE1NHaAy">27.67</td>
+      <td class="num" data-page-node-id="MTVtpmshdIz2m9om8lMmGT">4.18%</td>
+      <td class="num" data-page-node-id="mXujbtcwD9O1aZ3vv9y1oK">25%</td>
+      <td data-page-node-id="XCBTkfFiBZMrkfYcEAG9rP">低波✅ 现金流✅✅</td>
+      <td data-page-node-id="0gWvKsnUdFbs1QMVCN85DG"><span class="chip" style="background:#7bc47f" data-page-node-id="plQZ6XvcjkTIxRgW9FcdaY">low_B</span></td>
+      <td class="num" data-page-node-id="4STDv6G4Hv0uYXc3umpLlK">67</td>
+      <td data-page-node-id="DUnShyJnHQFQ6jKgTJxJmm">合理</td>
+      <td class="num" data-page-node-id="3lygz750HxMwEHxvcJHCmH">25.72</td>
+      <td class="num" data-page-node-id="t8uQW2taLCfZ90CtcaZDBT">41.15</td>
+      <td class="flags" data-page-node-id="sxt3GMOp4qRvtsxhNg1cZY">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="BuCjnwH0K4O44AYwDGH34t">
+      <td data-page-node-id="W54mDfWHDQODPyI3oJuBdG">600642</td><td data-page-node-id="Ltenot0UOpQgrnm4XFRiD1">申能股份</td><td data-page-node-id="r7kFDRvJxYaIjegbtwWydx">power</td>
+      <td class="num" data-page-node-id="bjySAVe0Hz52evS200iAEo">8.52</td>
+      <td class="num" data-page-node-id="Fi20CIcqKETUFJCq7FHmUE">5.03%</td>
+      <td class="num" data-page-node-id="DG01VxRDXiapd5bUAcwOnc">24%</td>
+      <td data-page-node-id="Gh5TC6XOBvHuPv4pxprkJ7">低波✅ 现金流✅✅</td>
+      <td data-page-node-id="KiAbF5Msev3HWGUZ3mgFNH"><span class="chip" style="background:#7bc47f" data-page-node-id="s03OK3ladLl0hqQRqJeM6M">low_B</span></td>
+      <td class="num" data-page-node-id="wMrDH2ETtTuWFqEmcYb7L4">61</td>
+      <td data-page-node-id="ohO1rfAtnk8LboinA5PDqG">合理</td>
+      <td class="num" data-page-node-id="AMQRiF90u6LJ6WvCmZt71W">8.52</td>
+      <td class="num" data-page-node-id="OX7GeTfpPUjAyS9jHCQBnm">13.63</td>
+      <td class="flags" data-page-node-id="4g7Kk421WxL0nfJGK5PL4F">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="01ANeFNCeQUqsY3CAePjtW">
+      <td data-page-node-id="i5wCkochmGF3tn0U4rC2SC">000429</td><td data-page-node-id="cEKRbQCepKu0FNjMkTq9YG">粤高速Ａ</td><td data-page-node-id="bEdAlEvAtUFC0DiY1ZvDJ4">highway_port</td>
+      <td class="num" data-page-node-id="idmY3J8Uf8pAO40rEvD1qS">12.72</td>
+      <td class="num" data-page-node-id="kj08tT8lkO5UZePzct2EYM">3.96%</td>
+      <td class="num" data-page-node-id="eJPfhBoTTsEinsFmFIqOHA">22%</td>
+      <td data-page-node-id="NCF3ia5mMbz3XwbPg5Zu9l">低波✅ 现金流✅✅</td>
+      <td data-page-node-id="gOANFEJdehqDnCZIA0X1ha"><span class="chip" style="background:#7bc47f" data-page-node-id="wxPJZcbuQHdAQ0FuMOD2yl">low_B</span></td>
+      <td class="num" data-page-node-id="bIXPqoOh2cWN7GFCzHpupE">61</td>
+      <td data-page-node-id="EFgHFdKTefjN4jCRABJhHC">合理</td>
+      <td class="num" data-page-node-id="P0gBO90B5Wboa02ZjQT65L">11.19</td>
+      <td class="num" data-page-node-id="dBdMDYm3BNCJfOxUZbCSKg">17.9</td>
+      <td class="flags" data-page-node-id="MErygWF8mlvObIAU80NRR0">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="6bFpc99ErxxwjcSyCz7C0Q">
+      <td data-page-node-id="ntUusarrE3gDAUS9bv4WfY">601328</td><td data-page-node-id="JqiyTjmHww2X5M6mforrlU">交通银行</td><td data-page-node-id="9yFVBEEv6oQN85QkyFPRDB">bank</td>
+      <td class="num" data-page-node-id="Mwor0kyRABa8MGjGMaA7Mb">7.28</td>
+      <td class="num" data-page-node-id="DQXwQ270DTn4fyepfkgqcr">7.58%</td>
+      <td class="num" data-page-node-id="HCKm83PDtqtUPZ0jeNF0EN">17%</td>
+      <td data-page-node-id="KazqslGWPDIW4ySRNLJxPd">低波✅ 🔥加速线 现金流✅</td>
+      <td data-page-node-id="NvblfESffMpI73jJECbNC8"><span class="chip" style="background:#7bc47f" data-page-node-id="lXCA4Xt6hb5xUTlUi9sEuX">low_B</span></td>
+      <td class="num" data-page-node-id="tHrKRjDKeAkU82OAi3PsKQ">61</td>
+      <td data-page-node-id="T4wUSTuMK871G9SXFPHYbq">合理</td>
+      <td class="num" data-page-node-id="NK0WEZxHqDUBD0WpWDxStw">7.28</td>
+      <td class="num" data-page-node-id="txMaMgn3DFVZWWkftoeLGN">11.65</td>
+      <td class="flags" data-page-node-id="OxFAu3rLdmTpTur14dLj17">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="znpe2z514j7xJzztErp5xT">
+      <td data-page-node-id="5VRM8Cqvb0bznfPmmDKopV">601000</td><td data-page-node-id="pcv5SlmEgEOS55JYZOuTUX">唐山港</td><td data-page-node-id="XIzJmtZYQ2bTt6MwTJB53s">highway_port</td>
+      <td class="num" data-page-node-id="zwYmVN2b9MndwMoOcs46C8">4.51</td>
+      <td class="num" data-page-node-id="TuprRvl8l4yZOt8S080XGb">4.42%</td>
+      <td class="num" data-page-node-id="miCDJyizaj3rEn7OmepCMH">22%</td>
+      <td data-page-node-id="nsYh8tDpalkidTb8iJwLqw">低波✅ 现金流✅</td>
+      <td data-page-node-id="Ps36lufcXPu4DIlRk2NupH"><span class="chip" style="background:#7bc47f" data-page-node-id="Wdsnrt587jSmikaYxA9EBP">low_B</span></td>
+      <td class="num" data-page-node-id="4vsd530qYDGN0bbD3zJXdR">60</td>
+      <td data-page-node-id="UWsS81zTuic5wx5rnXikAD">合理</td>
+      <td class="num" data-page-node-id="N1oYt67Ba0kzLKTpjMBtYQ">4.43</td>
+      <td class="num" data-page-node-id="rmE7IxUJKcMg42Z1nFHHjw">7.08</td>
+      <td class="flags" data-page-node-id="uvWtJOZAWPVFVdVeozdWBO">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="g2HYCfqHFIFcxTU5HjKSPX">
+      <td data-page-node-id="74c27ILEJJpwTOPThx5tJE">600795</td><td data-page-node-id="9sGFXWGIrpl5AcBHMKz4e5">国电电力</td><td data-page-node-id="q1pB6DiUS4F3X8vBrXVzlS">power</td>
+      <td class="num" data-page-node-id="CCxhuCARgXBCD1HqOAbOAp">5.26</td>
+      <td class="num" data-page-node-id="in3Lg8rvEfiR4PAiT2Cdh7">3.82%</td>
+      <td class="num" data-page-node-id="n4uVd0qUAGV2FcUa5YWBVm">25%</td>
+      <td data-page-node-id="mJ6ca85x13HgLvoo4CsdCs">低波✅ 现金流✅✅</td>
+      <td data-page-node-id="i4UvuyvxkjsDfAU6FXMBGs"><span class="chip" style="background:#7bc47f" data-page-node-id="tfHWtDDGNk1jJHd6EGoJLO">low_B</span></td>
+      <td class="num" data-page-node-id="GUXspb6KA6mH8ld9ykGQpF">59</td>
+      <td data-page-node-id="4gRDawBxgWu84W5v2yZt3f">偏高</td>
+      <td class="num" data-page-node-id="JgChYIvh6XgpAW141VU9Wx">4.46</td>
+      <td class="num" data-page-node-id="iu0C9ZqkTbJwv2vqwZB56K">7.14</td>
+      <td class="flags" data-page-node-id="I2XajCGmAbBYJMuUMEQJNQ">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="iLHXRBeBuGGQ7qpoN3sFH6">
+      <td data-page-node-id="hmLCKM6xHjLlwpwvUoXFBa">601298</td><td data-page-node-id="rGMqMqrRhEjJVnQBWiB8BP">青岛港</td><td data-page-node-id="cNFzS2yvr7nOBc42OUpXY4">highway_port</td>
+      <td class="num" data-page-node-id="HVqiZkkQneqetOOvQAmdMc">9.28</td>
+      <td class="num" data-page-node-id="LMuzp0APyHNedp79UTjVCl">3.65%</td>
+      <td class="num" data-page-node-id="eda5pyoXY7BMVX6LXpRdPn">20%</td>
+      <td data-page-node-id="hCduHg8u1LWwPCCNAbYaeh">低波✅ 现金流✅</td>
+      <td data-page-node-id="YipPEmEYhqgbi6OgrJrHQl"><span class="chip" style="background:#7bc47f" data-page-node-id="wAw38awwmVFnzH6mSnHt10">low_B</span></td>
+      <td class="num" data-page-node-id="Zv2Ws6z52Rd0qLyHt25nWB">57</td>
+      <td data-page-node-id="k70HvnM3dj9UcxolsjZ0rX">偏高</td>
+      <td class="num" data-page-node-id="lvqudsnGmhOiSBscAvJNKR">7.53</td>
+      <td class="num" data-page-node-id="TBjdcXMqb008YcMgHTOtFy">12.04</td>
+      <td class="flags" data-page-node-id="feTVRRZMDaK9cpGNlJLnHm">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="Fd4vDULSDQ5vhz3kzG5AoA">
+      <td data-page-node-id="emdoDUPdKFc3i2auTiPNdx">601939</td><td data-page-node-id="dJZtp59VJcygdAb6bF6XQ1">建设银行</td><td data-page-node-id="YzQIIq6NItlglNURIM31Zi">bank</td>
+      <td class="num" data-page-node-id="c7eMgKirfAIwDNDMLiUDyI">10.68</td>
+      <td class="num" data-page-node-id="JPyE36kJqwgAv0SjmmdGWA">5.51%</td>
+      <td class="num" data-page-node-id="hzAEM40YQ4Wmc6BgVsCODX">19%</td>
+      <td data-page-node-id="CxAzt8cA7gPyGbEiD8EnKZ">低波✅ 🔥加速线 现金流✅✅</td>
+      <td data-page-node-id="cxRQldyHVdWFArQbWsJgbN"><span class="chip" style="background:#7bc47f" data-page-node-id="nabBr4jop3EXYEguZLTpsm">low_B</span></td>
+      <td class="num" data-page-node-id="7rxeKoIM0uajLfsjoD5bHq">57</td>
+      <td data-page-node-id="9qFOV0FsKnYKw4zkwc4w1m">偏高</td>
+      <td class="num" data-page-node-id="uMIrM4SndlETQH6rDGFTtL">10.68</td>
+      <td class="num" data-page-node-id="ZKn7Gp2mXILoHtrGnfenNj">17.09</td>
+      <td class="flags" data-page-node-id="bPjncPXsdraeeaRlT3cpxe">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="lyUciHBvNxeLDqFj7DBlQ7">
+      <td data-page-node-id="0dJu9XXUplRnX4PGOHkSzh">601988</td><td data-page-node-id="cHTO9enghx8smBBTEUDnVC">中国银行</td><td data-page-node-id="QBhUceTugrK6DYDrz6XNxx">bank</td>
+      <td class="num" data-page-node-id="3VgV4fV2l1emGYURuChx0X">6.39</td>
+      <td class="num" data-page-node-id="kHcfx5Sh590iBc37T9ARRD">5.51%</td>
+      <td class="num" data-page-node-id="KrtmFobVtznY7E5YTAr4ZW">21%</td>
+      <td data-page-node-id="JlYKGCkKKtSKBYfQOxbS3O">低波✅ 🔥加速线 现金流✅✅</td>
+      <td data-page-node-id="FdKthzOES7081YC6B0nbgQ"><span class="chip" style="background:#7bc47f" data-page-node-id="k0bQEEy0Ss3oVLPcpgdBSj">low_B</span></td>
+      <td class="num" data-page-node-id="ASJ0NiwybAmX4oMqvI2RpI">56</td>
+      <td data-page-node-id="nqVK72Al12XzELpS817oa2">偏高</td>
+      <td class="num" data-page-node-id="wKSWTNBhOYc5As2nkNUviu">6.39</td>
+      <td class="num" data-page-node-id="8JzgW7lsF3TbbqpQqYqBbE">10.22</td>
+      <td class="flags" data-page-node-id="twjHhvSHfMvA1SvBmDUl3P">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="bFVJx31ANvxQZ4AWyfJdvQ">
+      <td data-page-node-id="YNmBAGUyr21YdZM2DA68NO">601398</td><td data-page-node-id="laWCaDIxexzDQjtLffazur">工商银行</td><td data-page-node-id="DZCs59rllfFQobjAI5qX05">bank</td>
+      <td class="num" data-page-node-id="wBNMyUDC4HnW6LpZidjKTC">7.94</td>
+      <td class="num" data-page-node-id="7brxXOFkfYqESyM9xl3AWa">5.60%</td>
+      <td class="num" data-page-node-id="FBLmLpvOlrgN1vg22DWycG">18%</td>
+      <td data-page-node-id="1Mk6Bi1igetwRvA3gxH1rT">低波✅ 🔥加速线 现金流✅✅</td>
+      <td data-page-node-id="nEqbO7Z0f3Mm1S4dRPFiqv"><span class="chip" style="background:#7bc47f" data-page-node-id="dMT2i3VDvOAVPYzy3yGwqF">low_B</span></td>
+      <td class="num" data-page-node-id="pf4tTX9dtmR2rfGFFfok4e">55</td>
+      <td data-page-node-id="yYveDze89TgKO3mur7eaFJ">偏高</td>
+      <td class="num" data-page-node-id="3Z1EjhckOeqBCUDY6bWV3e">7.94</td>
+      <td class="num" data-page-node-id="s7O75bT3DZBBC9oEYDo3Fi">12.7</td>
+      <td class="flags" data-page-node-id="QwkAeyqmIg6rlZp3t6VJwR">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="PyhfD0BYwlMEdjFaFC07qx">
+      <td data-page-node-id="EuMl17EiOSbBLehPkEbaP8">600919</td><td data-page-node-id="YfpQCDiEHPLGGfBYoM73vK">江苏银行</td><td data-page-node-id="BHkeFwTHhLbH7hbEk3F4Tk">bank</td>
+      <td class="num" data-page-node-id="TtlaCJpxeBDzUbpEEh7qAt">12.26</td>
+      <td class="num" data-page-node-id="Zdr4gxxXJ0fHNuZyVRruEO">4.13%</td>
+      <td class="num" data-page-node-id="J9Q7rYLUSwlHbaWyUbaZSH">22%</td>
+      <td data-page-node-id="CseC8YmCAaKy6wXyZWtdH6">低波✅ 现金流✅✅</td>
+      <td data-page-node-id="qcM4h1aqlTKIhvPYbnvZVo"><span class="chip" style="background:#7bc47f" data-page-node-id="3lXs4DDVZLlXYbyNr6fUgE">low_B</span></td>
+      <td class="num" data-page-node-id="a6AbxcEJGZ9R9nM6bNlae3">54</td>
+      <td data-page-node-id="zj9oTIp7Ow4P37HA46pdhw">偏高</td>
+      <td class="num" data-page-node-id="LTTrqU8W2cQCb7VSgYYdb9">11.26</td>
+      <td class="num" data-page-node-id="JMfkZdHHQFle0C2vCun265">18.01</td>
+      <td class="flags" data-page-node-id="O5xYFOs0aNxbfwayCYO9uA">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="JO9S1fQJW1C86LAgbgzKDf">
+      <td data-page-node-id="InXoGFIPiLApAMAkKyDZEq">600750</td><td data-page-node-id="SPtr1QefwRuRP64F87L4Fr">江中药业</td><td data-page-node-id="18W1y3TI6dc89eaYU5hLFq">pharma</td>
+      <td class="num" data-page-node-id="WKKVVCAtZWfmw5sADfDbwk">23.27</td>
+      <td class="num" data-page-node-id="xYplxf639a9pTLVXIXJPzZ">4.17%</td>
+      <td class="num" data-page-node-id="pemdlnt6ukl5QV3D3y2ACQ">29%</td>
+      <td data-page-node-id="VApFrpjdyYlNkexHVTvvvH">波动⚠️ 现金流✅</td>
+      <td data-page-node-id="IZrijsUwrpbCj3QIH7Pbdq"><span class="chip" style="background:#7bc47f" data-page-node-id="JlVgXefZG1LjuO6HsgsIog">low_B</span></td>
+      <td class="num" data-page-node-id="Mq53mSfL0eCppx0sAgiDBE">63</td>
+      <td data-page-node-id="tmFFNHqDMr07GD40Cvqx3Y">合理</td>
+      <td class="num" data-page-node-id="PTIYRf7m4HYxyeUvpXAqVZ">21.58</td>
+      <td class="num" data-page-node-id="MCYJ3cG8YAl19Oa8MpACxJ">34.53</td>
+      <td class="flags" data-page-node-id="d0oEXNwDAy3DV64PQ2WhDN">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="lGlYVZS8ofT2O75jBtmGKD">
+      <td data-page-node-id="gdX01L7Wa4qbTOIxZufcsF">600012</td><td data-page-node-id="dEtBTS4UvxzrTF0fWF8Oof">皖通高速</td><td data-page-node-id="efysq1YHHVzRgAfnjzgUQ9">highway_port</td>
+      <td class="num" data-page-node-id="cQ0OsruzmD42twDg0SWpDl">16.04</td>
+      <td class="num" data-page-node-id="hfBssW3UQNbIWSR7kiZRrH">3.61%</td>
+      <td class="num" data-page-node-id="Tn1Ar2eU8bRVZbx9zISTFj">30%</td>
+      <td data-page-node-id="UMq3hPCiIdIqqCbeJLWGNL">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="nCrWqhf3c8TT9h7X2d8kpn"><span class="chip" style="background:#7bc47f" data-page-node-id="Blgw3gpZ0mXIGSb5mgJHag">low_B</span></td>
+      <td class="num" data-page-node-id="fGJ8aeyvTXcK5EdDv8gr3k">62</td>
+      <td data-page-node-id="zRCMUUQUiAR6m0Hx7yApMu">合理</td>
+      <td class="num" data-page-node-id="A8sHE47KjlpdFGbcrAqwWk">12.87</td>
+      <td class="num" data-page-node-id="B9HKDT8Xzaxrm7IzhXU7QF">20.6</td>
+      <td class="flags" data-page-node-id="BpaeqAaWRAt3Xbp25qcgXC">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="DTGdcdqhB3ROjO6DRjpQbA">
+      <td data-page-node-id="qQ7VsG8uLOaNCgnnOZEKMB">600863</td><td data-page-node-id="BTFuGNrOt72XMzA8EVrGz2">内蒙华电</td><td data-page-node-id="7FhA2rlH3WFM7O3PZq7k7F">power</td>
+      <td class="num" data-page-node-id="9xR9V0yFegrZnTvh67k1Bu">4.84</td>
+      <td class="num" data-page-node-id="hVSTuDTKy5CMyDW8LVo9kv">4.28%</td>
+      <td class="num" data-page-node-id="rUsAIoLSWOCP72tF1P93zT">55%</td>
+      <td data-page-node-id="TFOStntrD9JgezgYrmCL8F">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="rt4E6KXFno2orvkHFzrOAp"><span class="chip" style="background:#7bc47f" data-page-node-id="OFWBrlEmRZyEEhG6Q829NE">low_B</span></td>
+      <td class="num" data-page-node-id="NwoKmoddBMEJmeFXxN54Hf">62</td>
+      <td data-page-node-id="zOuqYbsLkrxjryWAZD7XYR">合理</td>
+      <td class="num" data-page-node-id="n4xCHAsmhhvG22hhGY0mBE">4.6</td>
+      <td class="num" data-page-node-id="sIoAbggRXqURYqc3OdNLt9">7.36</td>
+      <td class="flags" data-page-node-id="I8yjZlCDjHt2HcNGUtBGtu">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="zXeCtDEOBbE6oyd3YEOwOE">
+      <td data-page-node-id="LYrDypn7hr4ZlrCPZFiPCZ">600350</td><td data-page-node-id="6li9Q3MndRuMMpCr2vEZWF">山东高速</td><td data-page-node-id="LtkuGZSaRW7YAITnbh2ZTK">highway_port</td>
+      <td class="num" data-page-node-id="hVU5QKVWIhcrrBhNGK5rs6">10.02</td>
+      <td class="num" data-page-node-id="DPCRSY6j6afxEx982fucX0">4.04%</td>
+      <td class="num" data-page-node-id="0zZJp7YgKVxAASKxtWRtaH">29%</td>
+      <td data-page-node-id="qVUbFn0kEk8ybhVxmfDa7L">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="pMgvuBGf7ZMc61FbWnn6UA"><span class="chip" style="background:#7bc47f" data-page-node-id="9EZ86IhyvqRGs0W715Rj1F">low_B</span></td>
+      <td class="num" data-page-node-id="hr3qQBR41J9we5SrywirxO">61</td>
+      <td data-page-node-id="WDPrsSyHHhviDXGi8ZELVF">合理</td>
+      <td class="num" data-page-node-id="Jq0uSyhZdPwmKOrjbv8prG">8.99</td>
+      <td class="num" data-page-node-id="PkDmzEPLv6zE4sdfvCN34W">14.39</td>
+      <td class="flags" data-page-node-id="qmhs05oOsegwuMIHIZH5MV">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="FldUCBVDfBCfNwAGzuA5t2">
+      <td data-page-node-id="Rm3QMe59AcVczTForyHlok">600985</td><td data-page-node-id="m2wxjwkR3pZL5rOkdirVQ8">淮北矿业</td><td data-page-node-id="CqVzr0pQVaGBBjgBcV1nhR">coal</td>
+      <td class="num" data-page-node-id="19SnZ7htvdn2tCa48XhbW7">16.79</td>
+      <td class="num" data-page-node-id="xVXyKFpABXz5OBaELIbkAQ">7.29%</td>
+      <td class="num" data-page-node-id="xOhw2k1aXAxfKPI4D9Nh02">33%</td>
+      <td data-page-node-id="sUJxCn8hGGj88aGUutZsyd">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="l3hbC2JmYiNbMR36aMjs9C"><span class="chip" style="background:#7bc47f" data-page-node-id="QW6MJ6rO23sqTGRfxoZ5vf">low_B</span></td>
+      <td class="num" data-page-node-id="JGNPA9XC2SL1eyEw1g571N">58</td>
+      <td data-page-node-id="UbXF8YNICfGSRp9H3GNc4d">偏高</td>
+      <td class="num" data-page-node-id="HXOUOXt2i5PmlqPYCQn0HD">15.63</td>
+      <td class="num" data-page-node-id="SU0Ibpuf78Ji6jRAhrCPVy">25.01</td>
+      <td class="flags" data-page-node-id="pG5DVdNakcjXko8BvZkM8Z">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="pI9LUspKfK853rkWKNEEPB">
+      <td data-page-node-id="p8cW1EJ4Q934BnvxQ4vm9d">000543</td><td data-page-node-id="VBQiGfszQMBQQpViYHNAdB">皖能电力</td><td data-page-node-id="Sm8CXAgFhdAQjDXBiJyACO">power</td>
+      <td class="num" data-page-node-id="062CVPM0NBDD2MYPvafWQ4">7.43</td>
+      <td class="num" data-page-node-id="oWd5itwkuH1zeBg0GfNGIs">3.97%</td>
+      <td class="num" data-page-node-id="REKDxDM598eE1h2hFDa3qW">29%</td>
+      <td data-page-node-id="lmB5GLohDbXOBouzV0W21n">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="STnAcNGHzbLrmBzEb9bf18"><span class="chip" style="background:#7bc47f" data-page-node-id="4TyuBJkfjhjqMWJsrpOIH6">low_B</span></td>
+      <td class="num" data-page-node-id="TSZuTGuC4K9kVWsQhJpTzj">57</td>
+      <td data-page-node-id="WaFr9k0vnpW0vsjqiEIma5">偏高</td>
+      <td class="num" data-page-node-id="MbTfPuBh8KSCzixrXILEN8">6.55</td>
+      <td class="num" data-page-node-id="TjbrTTONq8mpJOeVzMgIDv">10.48</td>
+      <td class="flags" data-page-node-id="NusjgvOOsFxIaqKBtGZoeJ">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="97BbSjBgTAQ0J4BfByBUuS">
+      <td data-page-node-id="nvI2Bzw9BMbDD3zpEmhrC9">601288</td><td data-page-node-id="TkWm1wniY2zP5DW4SHrNPO">农业银行</td><td data-page-node-id="uVwA9aFXx92cjqJbrifRV5">bank</td>
+      <td class="num" data-page-node-id="KZEnYfAoFkL00c5ryw4XpD">6.76</td>
+      <td class="num" data-page-node-id="YsyQzNIHCgg1ILVrsdMLmE">5.12%</td>
+      <td class="num" data-page-node-id="AEREDu0rGAFe0JImF5Ydl2">27%</td>
+      <td data-page-node-id="2kAkJzqh5tDxypH03nfOWu">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="7QM0K3OBFmuzV3gp7QvrDB"><span class="chip" style="background:#7bc47f" data-page-node-id="yDY0wXO1H0edB6A0gBVg6F">low_B</span></td>
+      <td class="num" data-page-node-id="LhhYAtXZTU7xWtLfMvDxPW">57</td>
+      <td data-page-node-id="oNbK5INQg7ohUeFUv2JvrA">偏高</td>
+      <td class="num" data-page-node-id="M4lomhKniyNb9FzyAM73El">6.76</td>
+      <td class="num" data-page-node-id="WKNiN497wV1Em6KhLR5H1a">10.82</td>
+      <td class="flags" data-page-node-id="DhlVaosd7OROSW2qDx5Kew">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="Iu7R1Pw7gbP4GRbR9Ac9E7">
+      <td data-page-node-id="UowLESDYM64K9Wb0z2L1Cj">600938</td><td data-page-node-id="aBt1xLwY6tbGDe3in7ZM2N">中国海油</td><td data-page-node-id="EK7tNU1ACwZ2OF9E5fGiy2">oil_chem</td>
+      <td class="num" data-page-node-id="ApMJ9UzHzyNY23yv8KO2j5">34.39</td>
+      <td class="num" data-page-node-id="j5Yv5tIaOynPsCk1se4Ofb">3.73%</td>
+      <td class="num" data-page-node-id="GnZajuWR3SvqjGpuTcr6Y3">37%</td>
+      <td data-page-node-id="Y2nTpsmMBFKYqTsfDKlbHC">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="In7eXIp1ZrQ7RwDkGqpuaZ"><span class="chip" style="background:#7bc47f" data-page-node-id="oObFNKCENY8LuVK4ADJhj5">low_B</span></td>
+      <td class="num" data-page-node-id="3BFAqev9qVVY6p3XbkXopv">52</td>
+      <td data-page-node-id="v8zFNkvF0Im3EjggNIVMfB">偏高</td>
+      <td class="num" data-page-node-id="JCPT0PivUShsqsNgCU5XAz">28.25</td>
+      <td class="num" data-page-node-id="TnycSFiHRl4LuCLSbZNGoM">45.2</td>
+      <td class="flags" data-page-node-id="O7LAsYwH4AWnnwvr0jHkMD">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="xN3cjEbinvCOIbEsXW2yJ9">
+      <td data-page-node-id="o8ZlVptY6KPGQym6G1v7Z9">601336</td><td data-page-node-id="Glan4gT3YE3NaPRbfxs9Ml">新华保险</td><td data-page-node-id="5Ui7AFp8SQZnicQEXptLcQ">insurance</td>
+      <td class="num" data-page-node-id="C3usPbF69Dk6JDyF7dl7PN">60.06</td>
+      <td class="num" data-page-node-id="okZlK8oDDZ8EsQWK1RKZzm">3.31%</td>
+      <td class="num" data-page-node-id="cielBuV9OIEmavMolqKSWT">33%</td>
+      <td data-page-node-id="TmwnGx9p1JmH6pjEWz7l6y">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="1EAoaNyDhkcOWhoi8T2lU1"><span class="chip" style="background:#7bc47f" data-page-node-id="KdrycaHHnrmhBd8OPRdojw">low_B</span></td>
+      <td class="num" data-page-node-id="qMLsif7nsH4viEHqUkRFPk">52</td>
+      <td data-page-node-id="CKmH5eMcMfPkL5CVkB8KIC">偏高</td>
+      <td class="num" data-page-node-id="ILlXQ41WPea14bwKHOmOdF">44.16</td>
+      <td class="num" data-page-node-id="0r9EohgqCng35z69p9Zszj">70.66</td>
+      <td class="flags" data-page-node-id="jUvS6RNzdZHt3UuCwDh3jg">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="C8S5vuH7mTKST5RYxXKEPm">
+      <td data-page-node-id="ImmqHZBkF8smnePiZKTx1C">601088</td><td data-page-node-id="3rPgeDiT5LlzEoocv9slqV">中国神华</td><td data-page-node-id="LEb6Fp20z11tAgYdN3NBEx">coal</td>
+      <td class="num" data-page-node-id="hUm3ROwn0sBF00bxfqa3oJ">46.32</td>
+      <td class="num" data-page-node-id="DG822criaGE7qSMiTLQS36">5.22%</td>
+      <td class="num" data-page-node-id="VCe3Ktjyi2SN74UBmTHckA">29%</td>
+      <td data-page-node-id="mvYZpN8kOrY2T6WNEd0hGx">波动⚠️ 现金流✅✅</td>
+      <td data-page-node-id="1MMqrso63bNxo8J8TzO4Md"><span class="chip" style="background:#7bc47f" data-page-node-id="HXj0nQomfmZcROMZt1eIFU">low_B</span></td>
+      <td class="num" data-page-node-id="lmDMLW4OY0B3icFlV7Dtr1">47</td>
+      <td data-page-node-id="Smi9JMMZ4DyJPsAPMiQOvj">偏高</td>
+      <td class="num" data-page-node-id="DCMY974Qfx4WvrLeR3i15q">46.32</td>
+      <td class="num" data-page-node-id="t4mHWZkCiSWHTgN3zTspcW">74.11</td>
+      <td class="flags" data-page-node-id="ys5czn0lhJsZbH5uqOJN9R">A_target_yield, B_range_pos, C_yield_floor, D_composite_solve, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="sqajcoAtPgDEni31TBSBaM">
+      <td data-page-node-id="26PQmtVjJZ4PCGZ1xxm6SU">601918</td><td data-page-node-id="FfnAQOyTpOnaMKVjNiPFaD">新集能源</td><td data-page-node-id="UFJ8S5fDBX1yMgU2crJFkR">coal</td>
+      <td class="num" data-page-node-id="DQwSH4eNeovMzMfR5UfsPS">10.25</td>
+      <td class="num" data-page-node-id="ZLNG0k7uGDE4uqt2S1giIK">2.16%</td>
+      <td class="num" data-page-node-id="ZTf2vNcPcKuO6uyuBzzxPG">40%</td>
+      <td data-page-node-id="NJjbliC9EZnHlAsYWxGsWg">波动⚠️ 现金流✅</td>
+      <td data-page-node-id="UqPB0VbRVZpdcRx5aWM3iD"><span class="chip" style="background:#7bc47f" data-page-node-id="CAGpQ2Au9TQbDwzXuJpPOU">low_B</span></td>
+      <td class="num" data-page-node-id="XJI9w4asTUCm9H1j1yz1UZ">44</td>
+      <td data-page-node-id="9MLrSDWAWckWO9uYDji5DP">偏高</td>
+      <td class="num" data-page-node-id="7OBXY0vSJAEOCRnR83e98m">3.56</td>
+      <td class="num" data-page-node-id="7QZDHzJ4MtRAsRc0BwuhQ5">4.92</td>
+      <td class="flags" data-page-node-id="90yHD7aFJwU8KbWBBCuS3G">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr data-page-node-id="RhqwKF9Xad7m38KAyldFhl">
+      <td data-page-node-id="a3eLQ5DjhDp0qhBUzrk6O7">600989</td><td data-page-node-id="tflyOy8KpIDFGPUxDDpRc1">宝丰能源</td><td data-page-node-id="eyhndz4KdeSkf4cSrs3mTk">oil_chem</td>
+      <td class="num" data-page-node-id="ky6OHFabobGSIN3PAvP09p">24.39</td>
+      <td class="num" data-page-node-id="YmpSbjlXc4Y9Cv7QOAQjr1">1.89%</td>
+      <td class="num" data-page-node-id="YnCF5Fkiw5MFXiqDGaRed5">43%</td>
+      <td data-page-node-id="xd8YIzjlJ4uAD6W5gGih6j">波动⚠️ 现金流✅</td>
+      <td data-page-node-id="oCWv7MM1W073imuK064S6G"><span class="chip" style="background:#7bc47f" data-page-node-id="K5ICDMoCzdAfoXEqJAfaoK">low_B</span></td>
+      <td class="num" data-page-node-id="6XSm3GYjQPLnt2kwZuua6p">41</td>
+      <td data-page-node-id="EUpT9IORnET9gDjS4U80TZ">偏高</td>
+      <td class="num" data-page-node-id="lKaXzkxxQFP7tPVYZzLYGB">10.27</td>
+      <td class="num" data-page-node-id="iZBnxJ5uzUkGpRRQNmQopG">16.42</td>
+      <td class="flags" data-page-node-id="GSb2jszL3ZcT8JRy1YFNQj">A_target_yield, B_range_pos, C_yield_floor, D_composite_solve, G_gordon</td>
+    </tr>
+    
+  </table>
+  
+
+  <h2 data-page-node-id="9oZZ1AkUaMlKYXlDeq9Lm7">四、全样本明细</h2>
+  <table data-page-node-id="6CDBy7Pze7sATR01rfWqhM">
+    <tr data-page-node-id="fL8OFXUxy2KEELRa9KnYVV"><th data-page-node-id="0GQbj6x4x6OJEEzfN7BNGu">代码</th><th data-page-node-id="zuXAr2lWDEmkjcguFS61xt">名称</th><th data-page-node-id="jHAk2u2RW5E5b3yPGlK50k">板块</th><th class="num" data-page-node-id="q7DLQKyFmutjiu6djCtmiE">现价</th><th class="num" data-page-node-id="xwBtxl5xMS982WIAqXsCZU">s_val</th>
+        <th class="num" data-page-node-id="1KbamGuKIv1tZaTOtZTNLF">s_sus</th><th class="num" data-page-node-id="4fbaUom8bAfePIoNGrRDop">s_cyc</th><th class="num" data-page-node-id="pJAUIHGGQFz7Kq2K9T8SHu">s_q</th><th class="num" data-page-node-id="iLy4LZfmsSN2gtFEZ5730C">q_rel</th>
+        <th class="num" data-page-node-id="PNBxbkvAIYalKpcHsNHk66">OCF/NP</th>
+        <th class="num" data-page-node-id="6YUW9mBowv8WIHfAEZYnWM">综合分</th><th data-page-node-id="ahI6PGN53zVdamECg53jkh">评级</th><th data-page-node-id="c848xfTSHxS8yqxVINlzmp">矩阵</th><th class="num" data-page-node-id="q9PTKxN13jti5RfGvW0mdH">52w波动</th><th data-page-node-id="iH89b2rkcSCRCZMbXOzbM1">缺失标记</th></tr>
+    
+    <tr data-page-node-id="DFKJvPFb1WPSFFutOrcKmH">
+      <td data-page-node-id="kjzKxFAcoycD1QgHWRs5OY">601225</td><td data-page-node-id="ZvsE8CBHQPzKulbtV050C8">陕西煤业</td><td data-page-node-id="mJxKsQvPxWjgvIKYifhLim">coal</td>
+      <td class="num" data-page-node-id="Kqp2Fv2bpIBBVZYS6b8jIF">25.71</td>
+      <td class="num" data-page-node-id="Xvh6zMQFFIljtiUANkONMk">0.32</td>
+      <td class="num" data-page-node-id="Iq8lPqJ0yyI1LFM50lEvDQ">0.88</td>
+      <td class="num" data-page-node-id="zQTzoSyq01k03jUweCZeRu">0.41</td>
+      <td class="num" data-page-node-id="gDBDRbU3qzDtAWDFhkS81L">0.85</td>
+      <td class="num" data-page-node-id="IoAVGkAYBUFY7CV10IS51K">1.31</td>
+      <td class="num" data-page-node-id="0i66rwt0PER6WloCRQS2tc">1.98</td>
+      <td class="num" data-page-node-id="OpZQ1AnMHVvzQHvyrD3qvo">56</td>
+      <td data-page-node-id="EvPJAqxTc8EnLNxLzF1bnu">偏高</td>
+      <td data-page-node-id="EzSgCsPHZuXJG31cA40FoG"><span class="chip" style="background:#1a7a3a" data-page-node-id="zBROZFVXw9RAp7hSzI01bs">low_A</span></td>
+      <td class="num" data-page-node-id="eoX1iE3dHAidFtwPjyiYEJ">37%</td>
+      <td class="flags" data-page-node-id="r53AyBonvNQqi7armG72B3"></td>
+    </tr>
+    
+    <tr data-page-node-id="mFCyststzFij1SjJdeKKzE">
+      <td data-page-node-id="KBldPZwB3tKsoExlRcEPhK">601898</td><td data-page-node-id="TmbzLvW7LyJPO7x65M8CbB">中煤能源</td><td data-page-node-id="Ice9MMOg3tGBawXqo8ihw8">coal</td>
+      <td class="num" data-page-node-id="L9V1XoNZOVXCq8AETaydLy">14.90</td>
+      <td class="num" data-page-node-id="HVawKP789cq4PRLZkoL25o">0.32</td>
+      <td class="num" data-page-node-id="VUTADySWystwPH1XdA3SFm">0.90</td>
+      <td class="num" data-page-node-id="nCECTwTYmUs4qIGcHAAAKE">0.32</td>
+      <td class="num" data-page-node-id="hqJaFWyBt6ENlbhr5h4yDI">0.89</td>
+      <td class="num" data-page-node-id="uWze9rE3sAJajQOiVtHzvV">1.36</td>
+      <td class="num" data-page-node-id="urStNkXyTdy3FFBQ3Jp4dJ">1.77</td>
+      <td class="num" data-page-node-id="Fyu3pGB02yDPlHNsrFPbUv">55</td>
+      <td data-page-node-id="KQWRt26KQtbZbkN7qOBJ1s">偏高</td>
+      <td data-page-node-id="RdrNciFdp2Ewfd6pVKl9Gt"><span class="chip" style="background:#1a7a3a" data-page-node-id="BDUBOg7GGG9IMhIyjbtJWA">low_A</span></td>
+      <td class="num" data-page-node-id="0n5kJRgvrUHeBxYjJKsvao">46%</td>
+      <td class="flags" data-page-node-id="nyUjHvUXHxz7NFEpguDwOJ"></td>
+    </tr>
+    
+    <tr data-page-node-id="oZz1pjjTzp9VDTvQibZ3qo">
+      <td data-page-node-id="iMVHOV05tbbN6grnfbGJ1K">601857</td><td data-page-node-id="4KJqcUOG2HlfPo1rjZtsMj">中国石油</td><td data-page-node-id="RdHG6DHnbu67vZDR9gpyPd">oil_chem</td>
+      <td class="num" data-page-node-id="D3XWnB16FjFRSjnvguxwBL">11.30</td>
+      <td class="num" data-page-node-id="XjL4nOLQgKE2NbgJ4LuAy1">0.24</td>
+      <td class="num" data-page-node-id="UKWmhLjFZgjGCcAw5xPMD5">0.92</td>
+      <td class="num" data-page-node-id="XO8BaY2EICyUBiCQZZ3FHL">0.23</td>
+      <td class="num" data-page-node-id="5NNdSAzfirbsnImy7jeflC">0.86</td>
+      <td class="num" data-page-node-id="YyjijygMs0KX2AEms1iJhc">1.18</td>
+      <td class="num" data-page-node-id="D7k1iLpK2bbF9cjmKA8gIk">2.62</td>
+      <td class="num" data-page-node-id="GWZvZaDXv82xZyuNtpeXbL">50</td>
+      <td data-page-node-id="tif9LJfiOAJLoZdiEGA0rn">偏高</td>
+      <td data-page-node-id="WsgHsEkDZHfKkrXjbhXIdA"><span class="chip" style="background:#1a7a3a" data-page-node-id="quYyFtaEDPiKesnZvQvyAs">low_A</span></td>
+      <td class="num" data-page-node-id="mPxBSmuk61h7npilBj9OER">36%</td>
+      <td class="flags" data-page-node-id="kfp3ZxUViiOx8WlrQOMYGH"></td>
+    </tr>
+    
+    <tr data-page-node-id="uYd1c5hcqaFeclF6OBOweM">
+      <td data-page-node-id="askdazWH4ODuHClUK7wVR8">601318</td><td data-page-node-id="kj3fWTdrzQc4o1Q22sNQEd">中国平安</td><td data-page-node-id="Oy1XYjGhqdpqMrRqa16EOD">insurance</td>
+      <td class="num" data-page-node-id="F71tAC5Ze283QRqYGQjc3p">55.70</td>
+      <td class="num" data-page-node-id="NKyAAKm7GgbTJz8Waybqxt">0.59</td>
+      <td class="num" data-page-node-id="dxsB6C6tmfCG2QqscClOSc">0.92</td>
+      <td class="num" data-page-node-id="a22lfucMPkwkdsunCkF5Te">0.23</td>
+      <td class="num" data-page-node-id="162njAFkP5eLQfkBAv2Abx">0.90</td>
+      <td class="num" data-page-node-id="9clz5rePMoXclRFt9Wb11b">1.19</td>
+      <td class="num" data-page-node-id="GmtCMtY9BmRmbrfuAgM38F">4.21</td>
+      <td class="num" data-page-node-id="ffQojXCA6ckcPiPJ4BnPvO">71</td>
+      <td data-page-node-id="jdYE7zElOA2FZAWhnsfsKd">合理</td>
+      <td data-page-node-id="0IKiBQCaNgaANRoVEAoOea"><span class="chip" style="background:#5aa860" data-page-node-id="Nv3aZ9R6jHCRasbVw4Zeer">mid_A</span></td>
+      <td class="num" data-page-node-id="S2fER0GXdB1aweV0rnUmlG">27%</td>
+      <td class="flags" data-page-node-id="sySEyqLAY2mO06OHW3wNxc"></td>
+    </tr>
+    
+    <tr data-page-node-id="BCxGKKEdIblB340hOiGkF0">
+      <td data-page-node-id="XU21HYNYD17mkkrIuBLlY3">600188</td><td data-page-node-id="bnpPejbgSQlNuAi2PXTsYU">兖矿能源</td><td data-page-node-id="0CrQqo8g4MmPB58yUgJdZJ">coal</td>
+      <td class="num" data-page-node-id="DA0X5S1mkGLwAyo7trJZAa">21.50</td>
+      <td class="num" data-page-node-id="cAyggAVUUMvBySoS8ArUwD">0.52</td>
+      <td class="num" data-page-node-id="KYOVfOG2Ir29Tk66IGBPYw">0.81</td>
+      <td class="num" data-page-node-id="LPlFgXUDwAUdJjO69IRlKf">0.77</td>
+      <td class="num" data-page-node-id="92FWJevKGItvXBgBFSrZJo">0.80</td>
+      <td class="num" data-page-node-id="Wdx5dDfCCjy9bDoj5L7HQn">1.23</td>
+      <td class="num" data-page-node-id="uDRJPHgCukFSu4qIOzrmQq">1.79</td>
+      <td class="num" data-page-node-id="bZP5ayfU7yepBXE0u6JttQ">71</td>
+      <td data-page-node-id="HtQjZM1fjQ2gi2Gkn39Z2l">合理</td>
+      <td data-page-node-id="qvX9qQD4LRbw6QXob8ZXSV"><span class="chip" style="background:#5aa860" data-page-node-id="wP7RtBi7qjgB8WSdg6JYt2">mid_A</span></td>
+      <td class="num" data-page-node-id="Z9rgsFh8Ed9fSWv2VbBLNx">49%</td>
+      <td class="flags" data-page-node-id="jtktP0FWsHdhWwAGiEX2Bc"></td>
+    </tr>
+    
+    <tr data-page-node-id="IHPsOUDENtiF559JlFOIp4">
+      <td data-page-node-id="g34LhCKbNn7HHzuJJlpIVV">600282</td><td data-page-node-id="zOw8Ga0x6BTpAYLEjxx6gs">南钢股份</td><td data-page-node-id="OEAqG5BiW199Rh8nOT29SY">steel</td>
+      <td class="num" data-page-node-id="U467soHJmBDMHhkpFqv9f0">4.78</td>
+      <td class="num" data-page-node-id="fLzyt3BpyMuzMTgCz53T0m">0.45</td>
+      <td class="num" data-page-node-id="HGj7b3n0QsOBkzsrNEpYDP">0.82</td>
+      <td class="num" data-page-node-id="2Y9SrG2NF1hk5keRtO8QYf">0.50</td>
+      <td class="num" data-page-node-id="H3g0MKyC1Au7zkPY7t2azd">0.65</td>
+      <td class="num" data-page-node-id="D8nFdeHXOe5ASkW1fiGKYC">1.58</td>
+      <td class="num" data-page-node-id="kBGXnOPDXl8XaUtadJr19w">1.28</td>
+      <td class="num" data-page-node-id="Q6exIRRWGUVDJpDx3NnzWG">58</td>
+      <td data-page-node-id="5utRbrBcCE9bFH8bfjz14L">偏高</td>
+      <td data-page-node-id="OzpFGNcOmQXwGU9pCWHhxA"><span class="chip" style="background:#5aa860" data-page-node-id="5K9mNGKGV1F5nUqaX2abG0">mid_A</span></td>
+      <td class="num" data-page-node-id="gNH0xAT5Cw56drFXmKeYdR">31%</td>
+      <td class="flags" data-page-node-id="PGf4gQiO5LOjz8EqahD3ee"></td>
+    </tr>
+    
+    <tr data-page-node-id="FN7ozfsJEdqSgU8utVCsQy">
+      <td data-page-node-id="6967rsVNPME0iv2jbhpsvo">000333</td><td data-page-node-id="F1T2Szx6PBT3I39h59b4VP">美的集团</td><td data-page-node-id="1PbUfb1Zggh0rg973gJFZt">consumer</td>
+      <td class="num" data-page-node-id="BaqOQrkcMQGncUvDFmrNSN">85.15</td>
+      <td class="num" data-page-node-id="KgDNu85du4BASkdkAGtBXc">0.37</td>
+      <td class="num" data-page-node-id="wGuhO7uZMDxMDnPs2Z7dXe">0.92</td>
+      <td class="num" data-page-node-id="eE3BI9X6ai0AXPXunFtmnW">0.05</td>
+      <td class="num" data-page-node-id="LqJVQoBLZsuJEXdxtZQh2S">0.91</td>
+      <td class="num" data-page-node-id="zCk5VI4Sz6Vufk2mLq5Lbv">1.08</td>
+      <td class="num" data-page-node-id="BG8bX0zHjvYLky1PHBzBZl">1.57</td>
+      <td class="num" data-page-node-id="VdR2HlpP4t44ubWAgRKGLR">71</td>
+      <td data-page-node-id="1r19efZoNEF5HBqiyq8B8T">合理</td>
+      <td data-page-node-id="xynPfNqWCSiEpHt56oy8w8"><span class="chip" style="background:#7bc47f" data-page-node-id="VGT9qNHYyRsh8vaSG0td4R">low_B</span></td>
+      <td class="num" data-page-node-id="KXIKiM4puAKy310FzJrWnQ">17%</td>
+      <td class="flags" data-page-node-id="xLg8o1c15HFpNPwy8aS8k1"></td>
+    </tr>
+    
+    <tr data-page-node-id="3flNkCuMeUHulouLDocFXr">
+      <td data-page-node-id="PTFKjElPg1CuN0ytfVEBvq">000921</td><td data-page-node-id="Zfh6Fhk4PYCfEM79mAuxnD">海信家电</td><td data-page-node-id="n8yJFHx7hxMZjMhUoW2gSI">consumer</td>
+      <td class="num" data-page-node-id="LvcHEZlyOTz5lwVx5znax4">27.67</td>
+      <td class="num" data-page-node-id="p7bCaVhHoqNMV08TKpb8MZ">0.35</td>
+      <td class="num" data-page-node-id="7cg2Oq8mHyyR4S2qfmbZax">0.90</td>
+      <td class="num" data-page-node-id="6ExBP7kVRaD0MHrdmfaktm">0.14</td>
+      <td class="num" data-page-node-id="whnByPpAVillVcz4GgB3Vg">0.83</td>
+      <td class="num" data-page-node-id="V8pB7l4BcArSdfukRnlQ7B">1.02</td>
+      <td class="num" data-page-node-id="GLpiY0tjmGwBrZnKFhzWqe">1.82</td>
+      <td class="num" data-page-node-id="2T4mlkaezCDW7MnMgfDw1o">67</td>
+      <td data-page-node-id="2WPoYoXTuCGlsImXdSE2sh">合理</td>
+      <td data-page-node-id="JrqS4xQY1acSbRNOPkyWq8"><span class="chip" style="background:#7bc47f" data-page-node-id="Y8nPfn14JIYR5Xf2s0DSfW">low_B</span></td>
+      <td class="num" data-page-node-id="m1y90YdO30S3pmLnJb5ygE">25%</td>
+      <td class="flags" data-page-node-id="RIxIF1hMt3WDDQQPm3lHkf"></td>
+    </tr>
+    
+    <tr data-page-node-id="IkAFHclliwpSZV3jRYCoWP">
+      <td data-page-node-id="IyvsOqNSoc5w7RBAIxC9Gn">600642</td><td data-page-node-id="F9ouDzWdmRwxCVHxtuOBaW">申能股份</td><td data-page-node-id="eqMAVTHD3sonIIBNbTIXLJ">power</td>
+      <td class="num" data-page-node-id="4iT3hldlMJCF8xqgw5AjOG">8.52</td>
+      <td class="num" data-page-node-id="b9U9pbXmdl1bCXiHIVDA7F">0.36</td>
+      <td class="num" data-page-node-id="vs5twMpiC4zPmNlbNsot3B">0.92</td>
+      <td class="num" data-page-node-id="8sRoEiGZJDeYFVkt5kBqIp">0.05</td>
+      <td class="num" data-page-node-id="euuZuCj49Bvy9DCrDvBdsU">0.79</td>
+      <td class="num" data-page-node-id="kq3ynXQIdu89tMySJRBqA5">1.08</td>
+      <td class="num" data-page-node-id="nb5PzKcAUpHQUbtgV9jM6c">2.12</td>
+      <td class="num" data-page-node-id="tlbIlymKv9AM8tiv2V9g9j">61</td>
+      <td data-page-node-id="vk7dW8ntUOSHyhuIMRXGx4">合理</td>
+      <td data-page-node-id="fLeK7QFSPv5p22pA7Z98m5"><span class="chip" style="background:#7bc47f" data-page-node-id="by4mX2YPa4ogky9Hej6F2j">low_B</span></td>
+      <td class="num" data-page-node-id="1XHmX2QFmuv9myjawpztPG">24%</td>
+      <td class="flags" data-page-node-id="HkVrzq4uYxmP1QlQrbE4Wg"></td>
+    </tr>
+    
+    <tr data-page-node-id="lKkp0FLgCw4v05tydNFpBL">
+      <td data-page-node-id="z8tDPV4CECpt43TuE62rCL">000429</td><td data-page-node-id="GL8KeFTKmsYK1sQkJUe9eC">粤高速Ａ</td><td data-page-node-id="64yOEHnhwnqmHDIF3N9SeO">highway_port</td>
+      <td class="num" data-page-node-id="zantOleo6kRSbKSRceR2T5">12.72</td>
+      <td class="num" data-page-node-id="xgVSewlthnbqR0ZuqmAYNg">0.27</td>
+      <td class="num" data-page-node-id="Pwosb21GUj0DpHOzVxiAdI">0.92</td>
+      <td class="num" data-page-node-id="skRQ1M3pwBxVSGCrqRYqwt">0.05</td>
+      <td class="num" data-page-node-id="e4gtfc0FC2RxUc9SdO42bI">0.90</td>
+      <td class="num" data-page-node-id="7Gm1Bj2Nh7Db8Fko365dYS">1.13</td>
+      <td class="num" data-page-node-id="2qVooehEfCHZD7875LueRa">2.08</td>
+      <td class="num" data-page-node-id="tE3ubeWX51CWCSPyoAfHLS">61</td>
+      <td data-page-node-id="DhwEnf0A9HMPWZxe2qqiLK">合理</td>
+      <td data-page-node-id="QgrrM7dpRh8uiduYb13jT0"><span class="chip" style="background:#7bc47f" data-page-node-id="teWIhGzzFmfjfSoCLi3ZXJ">low_B</span></td>
+      <td class="num" data-page-node-id="8FjxUL1WynoHATFW0YI6gw">22%</td>
+      <td class="flags" data-page-node-id="KicpW07wF6Ardhdbl3oLMF"></td>
+    </tr>
+    
+    <tr data-page-node-id="wNqcDCJaFQEJdvC1eHgzx1">
+      <td data-page-node-id="52rW2jBDH2OA4sSuGjuYIE">601328</td><td data-page-node-id="4QBAXLusWnlaujOU25eD1Q">交通银行</td><td data-page-node-id="kY9RZd5cKbPQE4nJqGLIp7">bank</td>
+      <td class="num" data-page-node-id="VSPvB0iPGVPYUMB2N0cJo8">7.28</td>
+      <td class="num" data-page-node-id="rBICEZtvSgvR1G2HuXP011">0.28</td>
+      <td class="num" data-page-node-id="MyuXhiRJKxQCuB9cRHrdVB">0.90</td>
+      <td class="num" data-page-node-id="5eHm6lzkLBtkynQ0vhUTZ7">0.41</td>
+      <td class="num" data-page-node-id="08H5IOpBc1LnDRGaVnLP0t">0.82</td>
+      <td class="num" data-page-node-id="a9EdG0kQsHqc8ubkuV6iNA">0.98</td>
+      <td class="num" data-page-node-id="qTqg9VX14o1Lt9gKAsu2tx">1.39</td>
+      <td class="num" data-page-node-id="T2cjve0XnWjQmfPFbpcbxM">61</td>
+      <td data-page-node-id="ZgwtZiF3yGPlofsxivvlu4">合理</td>
+      <td data-page-node-id="YFcGjwRhpkBDu6pSSHBpMl"><span class="chip" style="background:#7bc47f" data-page-node-id="zbVLjq7pSMbbdUH5ZnDjlD">low_B</span></td>
+      <td class="num" data-page-node-id="amhG6TDnT8gu5q1Ob3Y69G">17%</td>
+      <td class="flags" data-page-node-id="NpWTtG2S5ug2wGlwJqwH37"></td>
+    </tr>
+    
+    <tr data-page-node-id="Hu5kDUGAlt5XodoyrhAH4b">
+      <td data-page-node-id="2kBH8tybCQjMh82gdHI4BW">601000</td><td data-page-node-id="iVKguQtQiCtg5oiy1NQeqz">唐山港</td><td data-page-node-id="l2nkCm9yBlo8rlPHxiqfWq">highway_port</td>
+      <td class="num" data-page-node-id="dFk4Tbp0c5anKfWt00rvKV">4.51</td>
+      <td class="num" data-page-node-id="vqAwO84dH8iQCwnxKygoTu">0.32</td>
+      <td class="num" data-page-node-id="nCySTxGzIo9QOPNaw5EKBK">0.86</td>
+      <td class="num" data-page-node-id="Zxf4toALLt2Ee38JWOAisq">0.23</td>
+      <td class="num" data-page-node-id="ZbPeTiPw7O0MeP2SUWQRaY">0.83</td>
+      <td class="num" data-page-node-id="RQwHLGjcjLDpQ6fgAhR6tP">1.05</td>
+      <td class="num" data-page-node-id="ZMZFpyweVrm2HUinaAjT6c">1.18</td>
+      <td class="num" data-page-node-id="KOzJUBFuknFmxcTYHlpkCx">60</td>
+      <td data-page-node-id="aV4BLepo60Hrn2lEGvZQgQ">合理</td>
+      <td data-page-node-id="dKRaLJZS5BQmH8iG8h1p5X"><span class="chip" style="background:#7bc47f" data-page-node-id="9GeIZ3kkSAdnk81uhds6XX">low_B</span></td>
+      <td class="num" data-page-node-id="TYo9SPF1rLBG3P0DJo6sOe">22%</td>
+      <td class="flags" data-page-node-id="xDSsmJ4GlwONi0OAsy0477"></td>
+    </tr>
+    
+    <tr data-page-node-id="ZDN34t0JRLTtxDDA3OZWU4">
+      <td data-page-node-id="vkgqJzKCpRltkp8UyBOlhM">600795</td><td data-page-node-id="Fz0CxrnHfHY9NjWENmgG6o">国电电力</td><td data-page-node-id="UaEi4nB6ENuYbniVQuzbIp">power</td>
+      <td class="num" data-page-node-id="M8icBZU4hhMd7KHanejxce">5.26</td>
+      <td class="num" data-page-node-id="iuEtj8rVHTksVEPrsue0Ab">0.34</td>
+      <td class="num" data-page-node-id="KFpQoDdshWl4GB7qEKegYa">0.90</td>
+      <td class="num" data-page-node-id="Gu9iHFGgVF0oseRnEhuemB">0.14</td>
+      <td class="num" data-page-node-id="ZNuujjiBc2erHHkEOczCvw">0.72</td>
+      <td class="num" data-page-node-id="bKKbDYL5CqHHeXv6VBpoJ8">1.02</td>
+      <td class="num" data-page-node-id="9IlfNOFBoNj333FKhGAIlK">7.49</td>
+      <td class="num" data-page-node-id="t0QeeSAueCGI9CBvVFjHSp">59</td>
+      <td data-page-node-id="ExfmqUYk6qsUVwO5ARdrxp">偏高</td>
+      <td data-page-node-id="4DFESOFkUAegwYDYPXnFbe"><span class="chip" style="background:#7bc47f" data-page-node-id="TRje0B9Carw6jQdfaWONaR">low_B</span></td>
+      <td class="num" data-page-node-id="fEd1q9fR8A5CyOH1rDHaAC">25%</td>
+      <td class="flags" data-page-node-id="4BVDAqPooyrUH5tEhGGKaH"></td>
+    </tr>
+    
+    <tr data-page-node-id="uCtYG4GCuLXG0oTI5JEUzJ">
+      <td data-page-node-id="2o6CQLUcZz6VE48U4S8q74">601298</td><td data-page-node-id="KXSpyabR9lAckk3BNpxVKr">青岛港</td><td data-page-node-id="gVFuPXr1bJDal7g6RE6VuQ">highway_port</td>
+      <td class="num" data-page-node-id="HEcPSnkAS9sMgjp14EFqJl">9.28</td>
+      <td class="num" data-page-node-id="lJrrnHzAEspbmEZQIg4zGw">0.30</td>
+      <td class="num" data-page-node-id="JvoknvwCx2Z1YaIOtEDCcJ">0.76</td>
+      <td class="num" data-page-node-id="IbHZEANXZR5rnMafxnbv7G">0.09</td>
+      <td class="num" data-page-node-id="8X5Q6YJh9vk1vhUWhl9tdN">0.86</td>
+      <td class="num" data-page-node-id="dFjjZGsydVWFv5qqOhEABC">1.00</td>
+      <td class="num" data-page-node-id="lNUmAvVhip067gTGSBOeaf">1.05</td>
+      <td class="num" data-page-node-id="QhS19kMV2Nd8KL9TTbjpjZ">57</td>
+      <td data-page-node-id="ztu89lrAcJanGCww6664X0">偏高</td>
+      <td data-page-node-id="KKxFsHTLjc6p7ephhCIbnm"><span class="chip" style="background:#7bc47f" data-page-node-id="9q8z8rW8GWWTjc5I9W7oF6">low_B</span></td>
+      <td class="num" data-page-node-id="4YfFjU8TF1V2m2A7cbCQh3">20%</td>
+      <td class="flags" data-page-node-id="5ZfeEkTv3ZCH2f6oC12Qpg"></td>
+    </tr>
+    
+    <tr data-page-node-id="8QI1OhCHTGzLNzBYrsCG3H">
+      <td data-page-node-id="SkbtE4izsGQ45chI2A4QSU">601939</td><td data-page-node-id="mEHiVYQU5UV0pY1fxzEQkE">建设银行</td><td data-page-node-id="3GxLTtiHeZOdPNri9OCfGI">bank</td>
+      <td class="num" data-page-node-id="HuVi2NcZRDjfCGaYGBbNDW">10.68</td>
+      <td class="num" data-page-node-id="OqUPb3pGdGILwAyrxhA7eO">0.14</td>
+      <td class="num" data-page-node-id="ASGF9Bsuvm3ZuLrQk9Hhqf">0.92</td>
+      <td class="num" data-page-node-id="tUh3AVFFGlp5GJczT03kUE">0.23</td>
+      <td class="num" data-page-node-id="jmEZCQItrzDS7Ik57w2BgD">0.89</td>
+      <td class="num" data-page-node-id="nTUfjU6EJUMumJncP07Mtu">1.03</td>
+      <td class="num" data-page-node-id="Jd9VgHWNgnp9CwUcvIqFGi">1.93</td>
+      <td class="num" data-page-node-id="if8deSPF3cBFXB5hkfhsLy">57</td>
+      <td data-page-node-id="BaJsHGoIOBPIdokgqvFz6r">偏高</td>
+      <td data-page-node-id="z9HZRQA14mASoaDjOUDvas"><span class="chip" style="background:#7bc47f" data-page-node-id="VhrlakGtW6WYCnHklZonJ2">low_B</span></td>
+      <td class="num" data-page-node-id="cIqcWejARYGA07F13GxH34">19%</td>
+      <td class="flags" data-page-node-id="DvEPBLdhopvv7GByAajxEH"></td>
+    </tr>
+    
+    <tr data-page-node-id="lMqdwoZm64e1gHj22vyJa9">
+      <td data-page-node-id="p5YaRP4PQmKPmicUe1xdwH">601988</td><td data-page-node-id="B7Nwto43GuP3X98SnKIYGA">中国银行</td><td data-page-node-id="Iq1Hr1WqGFsfgGr8RYfpoV">bank</td>
+      <td class="num" data-page-node-id="D0C003dhxxwwnET929kGbO">6.39</td>
+      <td class="num" data-page-node-id="IVB6nKFJ7ofVUW7jNtrFBD">0.18</td>
+      <td class="num" data-page-node-id="6yLwUnN2L196p2fPqdiACa">0.92</td>
+      <td class="num" data-page-node-id="00kf8laE7tvW31xUF5bGks">0.18</td>
+      <td class="num" data-page-node-id="8tg3lckOc6UBAn6FClKwpj">0.84</td>
+      <td class="num" data-page-node-id="LclfO3JxHuX8rdMCGZ0eSg">1.00</td>
+      <td class="num" data-page-node-id="kGVNR5hyl4KdCk8OkCwEL8">3.34</td>
+      <td class="num" data-page-node-id="dWOTkH8KRYp55hGnoqlHpA">56</td>
+      <td data-page-node-id="qIRGor7FxXsdpfaivrQbHM">偏高</td>
+      <td data-page-node-id="092fAdRxb8a9ZbYFGIQQJ7"><span class="chip" style="background:#7bc47f" data-page-node-id="SlWRpMpMjvD13XWWFPHM0N">low_B</span></td>
+      <td class="num" data-page-node-id="F7N3gXzfJaEhbrPjqhpedQ">21%</td>
+      <td class="flags" data-page-node-id="OOfUbyvYCUPUf6PryWlfDm"></td>
+    </tr>
+    
+    <tr data-page-node-id="eVhv6UNIyuU72GuwnqRCsF">
+      <td data-page-node-id="JTOhQZuOtmm6C5M2i47mEa">601398</td><td data-page-node-id="WWy5tF4LXpSAGa5DQoZFhX">工商银行</td><td data-page-node-id="BLU1g9FndnBYz3QHYSPfGk">bank</td>
+      <td class="num" data-page-node-id="xA9AIBCMYHrPhQz6BsypuS">7.94</td>
+      <td class="num" data-page-node-id="tAwW6hBQeeXWr1dAYSGQjZ">0.18</td>
+      <td class="num" data-page-node-id="BPUwqTLBxxjiVeZ7SfiemQ">0.92</td>
+      <td class="num" data-page-node-id="BTJVqfiWRbqbfwY3RrX4D7">0.05</td>
+      <td class="num" data-page-node-id="WefdvlrPGztL2yXwiMiQ2E">0.86</td>
+      <td class="num" data-page-node-id="fomPbame59hQwOjqwHySDy">1.01</td>
+      <td class="num" data-page-node-id="Ver97ITL19TSfJ2si0RpA7">3.89</td>
+      <td class="num" data-page-node-id="z1A4hGTRbn6F6Dvq6EYtA5">55</td>
+      <td data-page-node-id="LIqY9m0sWAQIPnAeJxAORZ">偏高</td>
+      <td data-page-node-id="e455aEqxWtEiGdsHFqtdtH"><span class="chip" style="background:#7bc47f" data-page-node-id="ISzIgYdekFqXgARtR8NuQz">low_B</span></td>
+      <td class="num" data-page-node-id="MgcvIZgVndF5kJ4N318odJ">18%</td>
+      <td class="flags" data-page-node-id="13sMLCCxKdKKX5qLSCDrf2"></td>
+    </tr>
+    
+    <tr data-page-node-id="4K9DZcCmB7lsv2anAs9u3N">
+      <td data-page-node-id="DZS7rNAKjm9k2Y0TnHsfKG">600919</td><td data-page-node-id="Rx9sEdj6V3RwFq9Rl7lcAE">江苏银行</td><td data-page-node-id="eK5TDdFBRNbS1iBMd2QZhU">bank</td>
+      <td class="num" data-page-node-id="Rfwy7T7gU2hkSY1R4gnctB">12.26</td>
+      <td class="num" data-page-node-id="dQDImjjYm6vpNt0rnXwXl2">0.14</td>
+      <td class="num" data-page-node-id="q6DASfqMNbnP5FO84rhHjZ">0.88</td>
+      <td class="num" data-page-node-id="pb87HDVs3fzdCVYctOtArK">0.05</td>
+      <td class="num" data-page-node-id="Y9CxFXNIYjFszhS1rQ7ESL">0.88</td>
+      <td class="num" data-page-node-id="W2XBJY1W3yemqHXoT4wAhB">1.00</td>
+      <td class="num" data-page-node-id="5kBNs4uPg57E3bT1B3025a">7.43</td>
+      <td class="num" data-page-node-id="uhyh8ljR3D1Xk3EhDY3fmZ">54</td>
+      <td data-page-node-id="zRLPk1NH8B4UyvctqyDF93">偏高</td>
+      <td data-page-node-id="ZrSUf4hNBiUGzCg63WGvGF"><span class="chip" style="background:#7bc47f" data-page-node-id="KelkskspdhJZ2B6SSaOqLO">low_B</span></td>
+      <td class="num" data-page-node-id="4R7DRwvoJPt9Gu1DFkSais">22%</td>
+      <td class="flags" data-page-node-id="Geey7HCAlf5jFlQzsbOZ3B"></td>
+    </tr>
+    
+    <tr data-page-node-id="jGJshqdP0QDFoW3b4FHS7E">
+      <td data-page-node-id="cqUclNhoUKVetbvsjHvF9e">600750</td><td data-page-node-id="ydVyo19tvJAquagQrg0wc5">江中药业</td><td data-page-node-id="3QmOeontvRRdDOKsR6evXm">pharma</td>
+      <td class="num" data-page-node-id="jCF9mKUtdKkA9jVeFrnWmm">23.27</td>
+      <td class="num" data-page-node-id="Otvu4AXztzIKXox2bIsDyu">0.35</td>
+      <td class="num" data-page-node-id="JGLrkpammWMfLRxis5eyBE">0.74</td>
+      <td class="num" data-page-node-id="aBJfSk36uh97C57SJpE3jQ">0.05</td>
+      <td class="num" data-page-node-id="ACM1ytNnrIiGVBHHAGG80A">0.87</td>
+      <td class="num" data-page-node-id="iN1luXqIvI3rP2pvp3Gpu6">1.00</td>
+      <td class="num" data-page-node-id="fMymuADabhlerVdkwfJbVg">1.07</td>
+      <td class="num" data-page-node-id="1z8C95Xu8mX31O6jHyAxVk">63</td>
+      <td data-page-node-id="ePdwY9gQ1Av3wbSJ9uHF7N">合理</td>
+      <td data-page-node-id="gyrNDsWuoAoGefByh5yDUu"><span class="chip" style="background:#7bc47f" data-page-node-id="vKoNzjtUl0PtMnZVvaODlu">low_B</span></td>
+      <td class="num" data-page-node-id="t8oi3I1UHIwG1cX0YZr83g">29%</td>
+      <td class="flags" data-page-node-id="v6aGusZX9VLYFlIDG1RCs1"></td>
+    </tr>
+    
+    <tr data-page-node-id="n8dSlvwCsim2gsIuz6Vjxi">
+      <td data-page-node-id="uxLz3pwYkIbC1z9qzX4lPk">600012</td><td data-page-node-id="pi85mLHLkhkQn3wZV069Gy">皖通高速</td><td data-page-node-id="cD70mnOCDi09Zm5J3Ur23g">highway_port</td>
+      <td class="num" data-page-node-id="CUVIHjcfSts9ybmNJnD44X">16.04</td>
+      <td class="num" data-page-node-id="bs5Ryrse30gtEnYEcSGxvM">0.29</td>
+      <td class="num" data-page-node-id="Dlpgi5DewSSK5sH7SC97TE">0.92</td>
+      <td class="num" data-page-node-id="dSHhS7eDQLgJ2GjlJCw4os">0.05</td>
+      <td class="num" data-page-node-id="WIb7uPoYlEE0wKnrEkzQ3m">0.92</td>
+      <td class="num" data-page-node-id="lulX9jr3vz1zjPsWolgmv7">1.14</td>
+      <td class="num" data-page-node-id="ayLOUA6MooDn3A1bKDTbZF">1.82</td>
+      <td class="num" data-page-node-id="qmQ0b4Vu2Xf1lxA1MYAejI">62</td>
+      <td data-page-node-id="DMGxcFTQnqSHQZbuD6vZHi">合理</td>
+      <td data-page-node-id="9usaPTWmgpj24qTqtkojWO"><span class="chip" style="background:#7bc47f" data-page-node-id="wV7yj2aAsqQLUI0ALvdH4q">low_B</span></td>
+      <td class="num" data-page-node-id="wJuhpoEjXIUrRqI6RFNAld">30%</td>
+      <td class="flags" data-page-node-id="i8pDh3xmLGyQDpnC9Lzyls"></td>
+    </tr>
+    
+    <tr data-page-node-id="BVU3Cw0MbuqesdjLLQeEGA">
+      <td data-page-node-id="AO0lcwgTxrHCurGUN9frUj">600863</td><td data-page-node-id="YUAYsdsG2x6ERbAHrJHmsA">内蒙华电</td><td data-page-node-id="u6ryMixE0In0zxzP9YefX7">power</td>
+      <td class="num" data-page-node-id="5zrANGAEsBzWjaCIHGVSR6">4.84</td>
+      <td class="num" data-page-node-id="aF5EOA9iLke153r7zkEGuF">0.35</td>
+      <td class="num" data-page-node-id="LoQDuezPXGaFQUVT9fNeCa">0.92</td>
+      <td class="num" data-page-node-id="NMJYF4FGJu2pAgWmdAHM6O">0.09</td>
+      <td class="num" data-page-node-id="gYZIaAKQtLLTBJSWgGNxCg">0.82</td>
+      <td class="num" data-page-node-id="oLiJ2CCtwFPzRNDv8RP3sQ">1.10</td>
+      <td class="num" data-page-node-id="TGkNAZHXzrRubY1yxrISyx">2.70</td>
+      <td class="num" data-page-node-id="9BpZZtF7dCG8MSPA0lkeQI">62</td>
+      <td data-page-node-id="ISqEZ0KMxB3uSQkX2YqoCH">合理</td>
+      <td data-page-node-id="TDyT7MDLMs2MZuUmqibxGv"><span class="chip" style="background:#7bc47f" data-page-node-id="7qk71lXBQTF6Whmn1QkldH">low_B</span></td>
+      <td class="num" data-page-node-id="0HuyJXwXPd4zlqlCvTZ8gP">55%</td>
+      <td class="flags" data-page-node-id="tGC8TdUtb9qIA4q45yizJV"></td>
+    </tr>
+    
+    <tr data-page-node-id="CQgG7ptLqQCvHWB6aQjv6O">
+      <td data-page-node-id="F7PfeNTHAI24HGk45XnHxK">600350</td><td data-page-node-id="AmABfT1fdauQpXSjAwmDCy">山东高速</td><td data-page-node-id="6NbNNBhipR7tGreGcMPdqv">highway_port</td>
+      <td class="num" data-page-node-id="ZpV0SdFrMEumh8H9Gdx7OT">10.02</td>
+      <td class="num" data-page-node-id="ujtksFhzKHhYtxN9baD3Gn">0.30</td>
+      <td class="num" data-page-node-id="xHQp9vFlIUF54YOaUKG2cV">0.87</td>
+      <td class="num" data-page-node-id="WE6dArdeBDcktUnrsQLLUe">0.68</td>
+      <td class="num" data-page-node-id="PCCJmx1YkGUOF65X2lKAOu">0.80</td>
+      <td class="num" data-page-node-id="Zl0rpVmXTxjIsy2QyGQkBV">1.03</td>
+      <td class="num" data-page-node-id="VcAsCAim45I56LESemXGJd">2.14</td>
+      <td class="num" data-page-node-id="PKu11CFrqEVkxHLXAbmBFa">61</td>
+      <td data-page-node-id="RiXovRupU40Tw1uBUkFGSk">合理</td>
+      <td data-page-node-id="8Rrw0vyHVjSGKgfF4J7i6X"><span class="chip" style="background:#7bc47f" data-page-node-id="BWVkF757IUzH5WEVUVFilw">low_B</span></td>
+      <td class="num" data-page-node-id="iUewO63985LYnic9qOQyh8">29%</td>
+      <td class="flags" data-page-node-id="f2QBH7hlL8qQOY1E5bT196"></td>
+    </tr>
+    
+    <tr data-page-node-id="UbxrHwpq37VGiIKuO19gAu">
+      <td data-page-node-id="VTeyiSuLOea67Kccfe6vGF">600985</td><td data-page-node-id="aQssYx3MDaPYjrBjHMywSb">淮北矿业</td><td data-page-node-id="Rjg99V7Bzh3i1QjCWHyOEA">coal</td>
+      <td class="num" data-page-node-id="2RgtOx8mwxmCUySj2Qgurg">16.79</td>
+      <td class="num" data-page-node-id="bZEHtWAmRd1zzEB4FSZuWI">0.39</td>
+      <td class="num" data-page-node-id="tL0xMUzY8omdJY4xjHzMs4">0.47</td>
+      <td class="num" data-page-node-id="YkCgO4s4MSZ2WnR0vH1xV9">0.68</td>
+      <td class="num" data-page-node-id="aRChbXpyl0KfHysy1nTsn9">0.82</td>
+      <td class="num" data-page-node-id="z3mfe9bAn4caOD8H4InXPP">0.98</td>
+      <td class="num" data-page-node-id="rCUiqLhuxqu5wuqXpEjwtK">2.09</td>
+      <td class="num" data-page-node-id="xQuZWBe4DEGMgEmJFoyRSV">58</td>
+      <td data-page-node-id="BzYO7BzJ1VtKXWbE0rswEV">偏高</td>
+      <td data-page-node-id="RGHmEGzkZLy6SiQeYHcBbD"><span class="chip" style="background:#7bc47f" data-page-node-id="X5bFEL2PT9zphk6Xwa9QKB">low_B</span></td>
+      <td class="num" data-page-node-id="iCWZ7g2PXEtQJbzOpKXbXK">33%</td>
+      <td class="flags" data-page-node-id="RJtuSOov4zWJ3kusxNFqud"></td>
+    </tr>
+    
+    <tr data-page-node-id="n4KKvLpkGqQ6yyjQOlKMaP">
+      <td data-page-node-id="Fn9CQ5Rd4fJqf3BlTyepQR">000543</td><td data-page-node-id="384iQ3nIIYBsCGElv6MHMa">皖能电力</td><td data-page-node-id="jQfgAGiP0uTGq39aytxh92">power</td>
+      <td class="num" data-page-node-id="y6hwwUIxk10SqRYQpGvbiB">7.43</td>
+      <td class="num" data-page-node-id="GKK50QbG3lxmdZ56Smv0Gi">0.38</td>
+      <td class="num" data-page-node-id="RWXeFdKinOp5o3rKn4St7o">0.90</td>
+      <td class="num" data-page-node-id="zhZB3u7deHHAmMTfGCgNQJ">0.05</td>
+      <td class="num" data-page-node-id="VB5aKZYB7P3GjUk8H5Enso">0.62</td>
+      <td class="num" data-page-node-id="Eeyg3S7NQEZZMIhgA7LmBU">0.96</td>
+      <td class="num" data-page-node-id="Nob84oIE76w2G7uboA3L4X">1.82</td>
+      <td class="num" data-page-node-id="Z95yEUozFyTQhUaLFwhNRm">57</td>
+      <td data-page-node-id="R9SHUe5628bUlA06qmD7u0">偏高</td>
+      <td data-page-node-id="g2SgIuipRGDyfAigeUTgm8"><span class="chip" style="background:#7bc47f" data-page-node-id="r5YAq4Ui9Zj2aKYVXWP0AB">low_B</span></td>
+      <td class="num" data-page-node-id="5JVwcGc2HTRVGANeEAKnxw">29%</td>
+      <td class="flags" data-page-node-id="ElCdLcRv6HzNiLUSLoQYbS"></td>
+    </tr>
+    
+    <tr data-page-node-id="Hk5JxO57MPTQXuoqNwuTgM">
+      <td data-page-node-id="rxq6GtnBxMujQ0IZVSnNcP">601288</td><td data-page-node-id="EnRuQ8l1NddxfKl1ZxlJY2">农业银行</td><td data-page-node-id="fcQSAqM1m4rUXn6NA3TQPK">bank</td>
+      <td class="num" data-page-node-id="08RPOwRF6kd6YYD4lRWHdJ">6.76</td>
+      <td class="num" data-page-node-id="ZeCeZ0aI06A7nA5hpkFzjz">0.20</td>
+      <td class="num" data-page-node-id="HOfMhqmuIUSwvxcV9GcHEH">0.92</td>
+      <td class="num" data-page-node-id="m4GvMGbjFnWDwmEYyB6WN7">0.05</td>
+      <td class="num" data-page-node-id="QuBpGSXUCr6TsODoEzFrRt">0.88</td>
+      <td class="num" data-page-node-id="b6Qt7MnPqvVPtb31utftRN">1.03</td>
+      <td class="num" data-page-node-id="TJj8uyrw3a5g86BsQpl2W7">6.78</td>
+      <td class="num" data-page-node-id="YpP9PBqRAWv1bcOoJ2LGAz">57</td>
+      <td data-page-node-id="fj2Eb4fFtfS2hzRIBByCdF">偏高</td>
+      <td data-page-node-id="4NcWGTiPnL761mxVUmzhr5"><span class="chip" style="background:#7bc47f" data-page-node-id="Vg72MaRHMAaOjpt4tFfFe5">low_B</span></td>
+      <td class="num" data-page-node-id="npq9MCHY35mfb7fwkmC2pm">27%</td>
+      <td class="flags" data-page-node-id="3Et9ImKDKHgIdXJXLIjSRA"></td>
+    </tr>
+    
+    <tr data-page-node-id="4FxgFLtrM86SpPJTNm3owU">
+      <td data-page-node-id="iCmGfCz1qc8h4eUVnWnucz">600938</td><td data-page-node-id="nAkHPOxf7zhVtrHDQw0d3Y">中国海油</td><td data-page-node-id="08XLu77sQdugm6wGsuVzZ8">oil_chem</td>
+      <td class="num" data-page-node-id="scvGQcU3rU1W399o5hCN2X">34.39</td>
+      <td class="num" data-page-node-id="B5y2BZpuO7cCH2cUVHDFdb">0.26</td>
+      <td class="num" data-page-node-id="7vVJAUZZFvMlGYvejO3oyF">0.79</td>
+      <td class="num" data-page-node-id="2X2uoBOT2ZmA8ZvxxPJ9IH">0.44</td>
+      <td class="num" data-page-node-id="X1fhnzn1FbssWsGA2tVoQu">0.76</td>
+      <td class="num" data-page-node-id="Jjr7037AJCJ4xMAh9O0VK4">1.03</td>
+      <td class="num" data-page-node-id="Jgp0b5mCt6lYTvv7jeQ1jG">1.69</td>
+      <td class="num" data-page-node-id="mAf6M8fOrjnBH1vGVzmySL">52</td>
+      <td data-page-node-id="kt57vpTnAmObByeLGzA2kL">偏高</td>
+      <td data-page-node-id="0NKB6csEjMc4ANjtYDYLlO"><span class="chip" style="background:#7bc47f" data-page-node-id="wC2hIvr1q2rLYtVMWALMKE">low_B</span></td>
+      <td class="num" data-page-node-id="JfFW2Au8jv5dzcujumpiFO">37%</td>
+      <td class="flags" data-page-node-id="NwTXioZPsIAsGzY8XH7s0f"></td>
+    </tr>
+    
+    <tr data-page-node-id="UBBo9jIwljKNJ4dxWfK3Tg">
+      <td data-page-node-id="Y7GMjNDGyllmX1J6ZzrPHn">601336</td><td data-page-node-id="rqB55v1aVrJS0ljAwd8JfR">新华保险</td><td data-page-node-id="fVEgDAgWWAVF459efKLkVO">insurance</td>
+      <td class="num" data-page-node-id="JZ5teTU9axt0svY1B7IHXG">60.06</td>
+      <td class="num" data-page-node-id="akIWQEDI6Y60LdQDIOrIWl">0.33</td>
+      <td class="num" data-page-node-id="DpVqeNXwZVD4r7EkNUnexE">0.81</td>
+      <td class="num" data-page-node-id="E0VqEWgt48k09NjRsNrwmv">0.05</td>
+      <td class="num" data-page-node-id="T01aNVuvMX70oYXvKmSE7e">0.72</td>
+      <td class="num" data-page-node-id="HTg42iBw5pEtv49MhASTe1">1.00</td>
+      <td class="num" data-page-node-id="rS928k6ToCH6LKeHcaFxBm">3.67</td>
+      <td class="num" data-page-node-id="W8kTPlgUnAkHAoUdD2bwGD">52</td>
+      <td data-page-node-id="PHKGkvj1XYKi71DqBvrk3i">偏高</td>
+      <td data-page-node-id="2dNepca1EGLmvn22jAR1c6"><span class="chip" style="background:#7bc47f" data-page-node-id="4dKoB5LraZGuwVD5hhkOKl">low_B</span></td>
+      <td class="num" data-page-node-id="y1YLAZUjVBnuArOn54mVmf">33%</td>
+      <td class="flags" data-page-node-id="I9xjTvqpZ4BychbdRyjHrK"></td>
+    </tr>
+    
+    <tr data-page-node-id="7Yku8QkHewwW6cbj120CDL">
+      <td data-page-node-id="jvnlWED6sYJwddcAH7j6hW">601088</td><td data-page-node-id="IqYBJ7aUimEZuxYYC0ZJLr">中国神华</td><td data-page-node-id="igtEGNP6Ql4q8RngHGdRIU">coal</td>
+      <td class="num" data-page-node-id="GgVZjFpEexzup0BxEQAX69">46.32</td>
+      <td class="num" data-page-node-id="6cTGODeqcTyzo3DKWO0Ett">0.27</td>
+      <td class="num" data-page-node-id="QVJLL2ruhkWDlFOycewezs">0.55</td>
+      <td class="num" data-page-node-id="HYqwd2RGEIAZzuZwf3dui3">0.32</td>
+      <td class="num" data-page-node-id="9rDULeeiONet028ocblgrl">0.89</td>
+      <td class="num" data-page-node-id="OJkOdZGiUuP6lAk5TdO2hi">1.10</td>
+      <td class="num" data-page-node-id="p9I6VG9Io2Ofo9HwXcb9Av">1.50</td>
+      <td class="num" data-page-node-id="PxF2UYrir4uopROe5OrfdB">47</td>
+      <td data-page-node-id="1uQCYHirrUa6bBqvwArf3k">偏高</td>
+      <td data-page-node-id="0dGDlBSs0CEzHR1JjoXh9d"><span class="chip" style="background:#7bc47f" data-page-node-id="KiGahdiNeyVQ4wEYVjAksP">low_B</span></td>
+      <td class="num" data-page-node-id="l52fP8FGye92RKHNo5iT17">29%</td>
+      <td class="flags" data-page-node-id="WDJuQdSG8ZYG6ykPbEq4dA"></td>
+    </tr>
+    
+    <tr data-page-node-id="oz1O8cZ4HbxdmGSYWtZJNy">
+      <td data-page-node-id="EwwD5QB4c4qxIMPinOfhQf">601918</td><td data-page-node-id="iovBjprTmwI6lnSIE4OQOO">新集能源</td><td data-page-node-id="8lgOkzekq8SXkSZk73Uj3l">coal</td>
+      <td class="num" data-page-node-id="evIhmk5TjbJdVu2CPOpP5j">10.25</td>
+      <td class="num" data-page-node-id="QnWW4lAeBniK7ERZDd1l4S">0.28</td>
+      <td class="num" data-page-node-id="szS42Heird2Jd52pO3kHOx">0.66</td>
+      <td class="num" data-page-node-id="LXlpscZpMqHMKkJPABEGBd">0.23</td>
+      <td class="num" data-page-node-id="Q1GFOGXU9Ch3iCOeGnsgBU">0.76</td>
+      <td class="num" data-page-node-id="DZIvsIX3dlgy5nXyvDRykY">1.08</td>
+      <td class="num" data-page-node-id="Ozu8paYDiGD2KVaFHlkpY9">1.45</td>
+      <td class="num" data-page-node-id="QTXjzfSDsEPLVhyA2ztqJ0">44</td>
+      <td data-page-node-id="fkTPHn6HyyknM72xSaXIfN">偏高</td>
+      <td data-page-node-id="DyW5RrHjIvQVdcKgM6BqwY"><span class="chip" style="background:#7bc47f" data-page-node-id="gfCn7mkFrm2PElEzwus1Tv">low_B</span></td>
+      <td class="num" data-page-node-id="03nWb2oakWreFPiRLJpojW">40%</td>
+      <td class="flags" data-page-node-id="1RMIR11jtPYw26eURatzmG"></td>
+    </tr>
+    
+    <tr data-page-node-id="Y2C25TbxJXNok6SntLfiDX">
+      <td data-page-node-id="hrHWe9ArQwjR7qLIAMQnGe">600989</td><td data-page-node-id="S942yh83WvEID3HqhGOe0s">宝丰能源</td><td data-page-node-id="lCaz2aFrbwtf1elUCsT7Ae">oil_chem</td>
+      <td class="num" data-page-node-id="Isjiv8ABLo7uQksIoGt9rt">24.39</td>
+      <td class="num" data-page-node-id="7cVhNly4stPGbXDziapqWX">0.22</td>
+      <td class="num" data-page-node-id="8U0cYOtzTe4It88es3fkpU">0.84</td>
+      <td class="num" data-page-node-id="6atDfVzK7GCSj2PPiFZyST">0.05</td>
+      <td class="num" data-page-node-id="idBHGcq0SqOtCeRpdkU7kZ">0.80</td>
+      <td class="num" data-page-node-id="lgpjfkhQjSwBIhJUFsRoZG">1.09</td>
+      <td class="num" data-page-node-id="P1C77k5jxTDRsRliEC3XiZ">1.48</td>
+      <td class="num" data-page-node-id="Pi57Kcuggp7eRqUjUU1LhQ">41</td>
+      <td data-page-node-id="4zdVGRUFhkU5qOrBTl26Gw">偏高</td>
+      <td data-page-node-id="mnOHbViQgphwMG6cYNPR5d"><span class="chip" style="background:#7bc47f" data-page-node-id="KcEIkELz7MTBN2IAO7rPF0">low_B</span></td>
+      <td class="num" data-page-node-id="2mptUk0gBLLvgqR1KxmLt5">43%</td>
+      <td class="flags" data-page-node-id="9tAv3gVNMRD3bHSY1GqL7Y"></td>
+    </tr>
+    
+    <tr data-page-node-id="RESlVuhJoRaK54uSdbq4sR">
+      <td data-page-node-id="FpCvht4H5CeMs79yTIFg89">000999</td><td data-page-node-id="1gF3QLI9UMPzqmUXhyZ9JF">华润三九</td><td data-page-node-id="OpXt7DgEdGpwIm4QcNCvG8">pharma</td>
+      <td class="num" data-page-node-id="n2yb1O8B5VSmyxWKq6lDpN">24.84</td>
+      <td class="num" data-page-node-id="KrEIZHOBVtLJAuU22Nlk7U">0.88</td>
+      <td class="num" data-page-node-id="IpkOKj8OFPX63005OVlNDs">0.92</td>
+      <td class="num" data-page-node-id="e4RnRBnFhcvj9mO11cDR4Y">0.50</td>
+      <td class="num" data-page-node-id="At9aNSeFpuFj4RApNPRQXV">0.91</td>
+      <td class="num" data-page-node-id="Ef1cTMfAJlWzj2uNUBvE0B">1.14</td>
+      <td class="num" data-page-node-id="5dVpZ6XCx5vNU3DYLQyOCI">1.47</td>
+      <td class="num" data-page-node-id="o9YJHPWBQMlwtumYccgCia">88</td>
+      <td data-page-node-id="vNPGWo8u7BATg7jxmdVix5">低估</td>
+      <td data-page-node-id="BwQsaZ9EvFv2fQQZjvDrqI"><span class="chip" style="background:#d9534f" data-page-node-id="sHWeLz0CrL3udrUj8znQHT">high_B</span></td>
+      <td class="num" data-page-node-id="mNVUkfH6yBQ62I2Nu1e9z6">18%</td>
+      <td class="flags" data-page-node-id="1WGtcxD3oRWmFB5IU4xa9Z"></td>
+    </tr>
+    
+    <tr data-page-node-id="UEFHqqionJAFIGrL3NrAD0">
+      <td data-page-node-id="MpfTCX3i30HGkn4dzPEUI3">002508</td><td data-page-node-id="fVxYryTS8Cm0NeZunsTOgy">老板电器</td><td data-page-node-id="9GaaPSsOFoD68kXVYrNXmE">consumer</td>
+      <td class="num" data-page-node-id="R14SUknFzz19LdnbPB4iYQ">15.84</td>
+      <td class="num" data-page-node-id="hcwfjYJ4oKNIPFV4mun1d8">0.87</td>
+      <td class="num" data-page-node-id="z6DXX9m5whQvfUDsNH9h1U">0.84</td>
+      <td class="num" data-page-node-id="5NnDM6m9sTFAdwJgXBHQjN">0.95</td>
+      <td class="num" data-page-node-id="HQMUmbAhB2jUMN01VnHzff">0.89</td>
+      <td class="num" data-page-node-id="c3R3vxcxKaGYpSwaSRNmE1">1.02</td>
+      <td class="num" data-page-node-id="fKFXq8MtlQIPEhmMI60qDF">1.27</td>
+      <td class="num" data-page-node-id="u34rWbkuZQSnJMkKGRk1er">87</td>
+      <td data-page-node-id="vyd7yayzC1HAqXnrHl1dvl">偏低</td>
+      <td data-page-node-id="8EAlF3AXRcuGRNFSBt8GKE"><span class="chip" style="background:#d9534f" data-page-node-id="OVkKRSFLlSwwj8cOJiFIkF">high_B</span></td>
+      <td class="num" data-page-node-id="jQpLROkArNBa8Pfb1NuK2k">22%</td>
+      <td class="flags" data-page-node-id="J3dpVTbMgixfRPhiD1Qekc"></td>
+    </tr>
+    
+    <tr data-page-node-id="cUhc0Ccjd7jaC9URvgjB3e">
+      <td data-page-node-id="PyRRXBVX6KxsKiKPZueJH3">600548</td><td data-page-node-id="KqpmrrEvfwx2mo4cewEOep">深高速</td><td data-page-node-id="GvHHKGeV3prQYf30WGMfSI">highway_port</td>
+      <td class="num" data-page-node-id="lnwTsuoA7wsJ1GYfvkuzkU">8.17</td>
+      <td class="num" data-page-node-id="xMt3NbCN4BvyEKCa1MVWgv">0.91</td>
+      <td class="num" data-page-node-id="LhbDFiTYxPgHlB3aedU22t">0.92</td>
+      <td class="num" data-page-node-id="B6GdPLJgsnXzB8GZYRnfxg">0.95</td>
+      <td class="num" data-page-node-id="eFh9tGGNVI3Zpt9lWsgtZJ">0.76</td>
+      <td class="num" data-page-node-id="9K5mlvITqsqjkPWwlbA7JO">1.04</td>
+      <td class="num" data-page-node-id="Bdt2kg3Dww8wjUQw0xrgu0">3.25</td>
+      <td class="num" data-page-node-id="R7RUeYRzvLoSTe0uiWJCC4">87</td>
+      <td data-page-node-id="VZC28yhQ0nWg4dCmdiDXD4">偏低</td>
+      <td data-page-node-id="uPvh88W12u5CbqDZF7Fvy4"><span class="chip" style="background:#d9534f" data-page-node-id="QMLMaqvXiGwbyH0NouSq5r">high_B</span></td>
+      <td class="num" data-page-node-id="r9pJynWEX37NacCbmzXQSN">16%</td>
+      <td class="flags" data-page-node-id="tdgIqThXwMURB1ngJLVpLK"></td>
+    </tr>
+    
+    <tr data-page-node-id="1Un7LVqJDbUEen0NQXIz7m">
+      <td data-page-node-id="u2MAi29F4iozAjtxaa9D3V">600690</td><td data-page-node-id="UyXWz5iOlFKaDyNm06o438">海尔智家</td><td data-page-node-id="n3F3qhsqKOxtHxD24CnGk6">consumer</td>
+      <td class="num" data-page-node-id="B1OoU6G7aM4L7Fig6dq4eH">21.42</td>
+      <td class="num" data-page-node-id="cLlYlCCIcGysj2bl5jXpL4">0.87</td>
+      <td class="num" data-page-node-id="KQi2BGJFXyomdVE4Dzjb7I">0.91</td>
+      <td class="num" data-page-node-id="zL7uK1FFnANTuTezFKhmAl">0.05</td>
+      <td class="num" data-page-node-id="knZD6HGXoZWFhbcaawPMFM">0.93</td>
+      <td class="num" data-page-node-id="gNHGc0MF75S2jlG5pkRChx">1.08</td>
+      <td class="num" data-page-node-id="1Ocp61FCoT05gPepfGIr38">1.40</td>
+      <td class="num" data-page-node-id="tUqTyGMAbEb27xcZGLCOS2">86</td>
+      <td data-page-node-id="uI5SlgwOdRYiHVP7eA4H6j">偏低</td>
+      <td data-page-node-id="lJFOfPOOSV7cofWSFtjngm"><span class="chip" style="background:#d9534f" data-page-node-id="Sk9tLRdykpq5nNF6fcL3YS">high_B</span></td>
+      <td class="num" data-page-node-id="pH4S30J56A8qjq9UWyeqqG">22%</td>
+      <td class="flags" data-page-node-id="kTCp7DaCFk2eSa8xuZHmVz"></td>
+    </tr>
+    
+    <tr data-page-node-id="Ui57qoOO11nHggeGApLSQy">
+      <td data-page-node-id="EqEYp8eNk5jNUgPwp2G5Jz">601390</td><td data-page-node-id="kQ48QP40HQNHMHVZ0NnESM">中国中铁</td><td data-page-node-id="oBGPIfRUKYJgaTg4Xjqs0C">infra</td>
+      <td class="num" data-page-node-id="sEJrwHUmkyBTzuWi6wcxeC">4.42</td>
+      <td class="num" data-page-node-id="DWBLccIEFFoHulRr6UvNhy">0.92</td>
+      <td class="num" data-page-node-id="2ijhQHqY5AF9WBl56a3oDU">0.85</td>
+      <td class="num" data-page-node-id="HeTh2L8bXpGTYDELTEtJa8">0.59</td>
+      <td class="num" data-page-node-id="S6xmdKwKY1WhyLCL8S3npb">0.87</td>
+      <td class="num" data-page-node-id="LGu32LKRqPEFoCVg1llUzN">1.10</td>
+      <td class="num" data-page-node-id="KIUfBvn6jzeloWe1WIuLMN">1.15</td>
+      <td class="num" data-page-node-id="vMEPy423iX5cGonM4xG1WB">86</td>
+      <td data-page-node-id="tn0CkgAABHaqrPmhopGvzx">偏低</td>
+      <td data-page-node-id="ZnJtj7hxcFiPyHMB4jTkxC"><span class="chip" style="background:#d9534f" data-page-node-id="CYar3RnOIIp246acrjBH0q">high_B</span></td>
+      <td class="num" data-page-node-id="oWSmpdqmnAk06sKa0U9a04">23%</td>
+      <td class="flags" data-page-node-id="1hAmJ603Fj0qVoi0m27ERW"></td>
+    </tr>
+    
+    <tr data-page-node-id="oysiUJCKzlCvViTquQUQYo">
+      <td data-page-node-id="GzPloF5kT0XxxjL74HC23n">600085</td><td data-page-node-id="eGPKOmYkIm0zpfCsClzPx3">同仁堂</td><td data-page-node-id="mEO3LIVPPWQDdxte7xaIT8">pharma</td>
+      <td class="num" data-page-node-id="RbUIckijlUc7uUUmJmUqlF">24.35</td>
+      <td class="num" data-page-node-id="XTmno90ExEKxbRaZcd3JMp">0.89</td>
+      <td class="num" data-page-node-id="ZRLVYGZINULX3qnHW6j7tI">0.85</td>
+      <td class="num" data-page-node-id="dSsHbfbo7KhBCs40pUEP1A">0.41</td>
+      <td class="num" data-page-node-id="UFPncp5AOfWPgkZOFJZTdN">0.89</td>
+      <td class="num" data-page-node-id="hLJ4dQ3qLIapPIezUbwtSt">1.08</td>
+      <td class="num" data-page-node-id="ojvG0jaycbUih0puO0A9y4">1.12</td>
+      <td class="num" data-page-node-id="qADU61HmEi6yfSXdcZT6gt">86</td>
+      <td data-page-node-id="waaL1ak2g2wB8YtvDi3Cra">偏低</td>
+      <td data-page-node-id="UGMT96thXAqpFxcGQrCZAI"><span class="chip" style="background:#d9534f" data-page-node-id="rhQMvYMQ1jbKWtpspJfXGR">high_B</span></td>
+      <td class="num" data-page-node-id="rMwkavvJVYL4P4SiCQtbOE">19%</td>
+      <td class="flags" data-page-node-id="8d8kIVGwe65bfRnUnkuzJd"></td>
+    </tr>
+    
+    <tr data-page-node-id="T2kIQaWCd9jOeZCTWMN5YG">
+      <td data-page-node-id="KCtMAO2PuJsEU7UyEHOBfX">601006</td><td data-page-node-id="B8YjvosGti71BFKSBbuGXx">大秦铁路</td><td data-page-node-id="HPUfEl2uoxYvGxmQimXhDQ">highway_port</td>
+      <td class="num" data-page-node-id="IYTZl4O00ElyRFgyaVUhFH">4.79</td>
+      <td class="num" data-page-node-id="lDZTWFzzaDqddBxkpWWJvO">0.91</td>
+      <td class="num" data-page-node-id="Xvz5Wo2tBIPDFdMV9yc0N3">0.81</td>
+      <td class="num" data-page-node-id="LWbSPKR9Z5ZuDQWRIOAn5z">0.95</td>
+      <td class="num" data-page-node-id="Q9ZAxvy9Di7ndsqmv3OV4j">0.74</td>
+      <td class="num" data-page-node-id="PVGNDXqtAiCQSn9xsrBwP3">0.96</td>
+      <td class="num" data-page-node-id="Iqt438mut5q2ltNFKrXFyR">1.03</td>
+      <td class="num" data-page-node-id="bURFuJDrmECrQdHjKj3CKG">83</td>
+      <td data-page-node-id="e5ZuDsu5rqFrVBl4DZlkIS">偏低</td>
+      <td data-page-node-id="sjh8wqiJjLQ0o4OraTBw7w"><span class="chip" style="background:#d9534f" data-page-node-id="8U9jUgt4orBt1wXpzpkic1">high_B</span></td>
+      <td class="num" data-page-node-id="kemBt23M5o64fjFvbFwnvp">15%</td>
+      <td class="flags" data-page-node-id="Q1zVoaBFemGSCQnCGz7efn"></td>
+    </tr>
+    
+    <tr data-page-node-id="gewm3btdsESgNMHnSyAi4P">
+      <td data-page-node-id="j0K2EqwleoFAaxqlUlRnHb">600008</td><td data-page-node-id="OldYrjWT27pL7nrR1p0w5g">首创环保</td><td data-page-node-id="SRxpBajQH1VZyP3JhFGH2P">utility</td>
+      <td class="num" data-page-node-id="VsJANVTpzjENty7QS1pgxY">2.83</td>
+      <td class="num" data-page-node-id="8f0KzBKU3UvP4QCNQ4fJFV">0.85</td>
+      <td class="num" data-page-node-id="7qbtnJTX1B8PPX9P00gp68">0.92</td>
+      <td class="num" data-page-node-id="ANWvda7WuUD9rwHq5Nb9yJ">0.32</td>
+      <td class="num" data-page-node-id="nyyVDuA3ed9QwZFJyPWaQN">0.73</td>
+      <td class="num" data-page-node-id="TknRNHS2hmpIhWzvk154hF">0.94</td>
+      <td class="num" data-page-node-id="hjTBbB2UsS9zoReqcnJKqH">2.12</td>
+      <td class="num" data-page-node-id="c691imVlE8mRZoPeIHPtr8">80</td>
+      <td data-page-node-id="2WIBsFdAKTlK4G63Uhaj8P">偏低</td>
+      <td data-page-node-id="oailET6lEN7VrGTG4xX9WN"><span class="chip" style="background:#d9534f" data-page-node-id="GUUGgxRuly1rGIolZT0Qy3">high_B</span></td>
+      <td class="num" data-page-node-id="eMgvguFAMB1vabCUjmbmPm">19%</td>
+      <td class="flags" data-page-node-id="oleOz4MJjoHKp6x6AnpQjP"></td>
+    </tr>
+    
+    <tr data-page-node-id="TSAJAGWC9SHChk6sE6NJYs">
+      <td data-page-node-id="MlgiTs3IWyZJDtw4JuGZL0">000848</td><td data-page-node-id="bnO5U5CZHvfPvFbK2MGPFx">承德露露</td><td data-page-node-id="ytcufWRtsZmWPZ5JHJDYv7">consumer</td>
+      <td class="num" data-page-node-id="7Ak8OwOIGeGCWL6d7X3VRR">8.37</td>
+      <td class="num" data-page-node-id="TgglT4hxnMEybcc13yajGe">0.78</td>
+      <td class="num" data-page-node-id="3Mr3DwhfAWshHdRkjps17v">0.80</td>
+      <td class="num" data-page-node-id="7RSUNtWSK2d5iZSOLfCAEL">0.32</td>
+      <td class="num" data-page-node-id="H5XkZBm8sfTI0NUfDNYf85">0.88</td>
+      <td class="num" data-page-node-id="hHDDAnYHXVmLPeVtf93mxE">0.99</td>
+      <td class="num" data-page-node-id="tMf8QLvEO5nsND05CMr8aH">0.98</td>
+      <td class="num" data-page-node-id="kIXKHe64rEKPwvXaQqlUd5">80</td>
+      <td data-page-node-id="59YRPi4gITbugP3bDSoKpG">偏低</td>
+      <td data-page-node-id="rGYaPkn61dFNZmEB4S5IHq"><span class="chip" style="background:#d9534f" data-page-node-id="ZvWPsb4PqDh9qmE6CUsfaW">high_B</span></td>
+      <td class="num" data-page-node-id="6Y2kxpNdBUG0OHr7LXUQBs">23%</td>
+      <td class="flags" data-page-node-id="OzD6XrJUK1J4sxpxv8OAVq"></td>
+    </tr>
+    
+    <tr data-page-node-id="b9vaDUtEEcBVEFYdvym8in">
+      <td data-page-node-id="aqe93bl3DqhmugsGVFf5GJ">601985</td><td data-page-node-id="EPVXoSlVwSlDY7HgqNtAJt">中国核电</td><td data-page-node-id="psZK75cap9PBR4bdCF20K2">power</td>
+      <td class="num" data-page-node-id="sKYurpsi0AiRPaDFf2y5ph">8.93</td>
+      <td class="num" data-page-node-id="4Ia6TnOTLryUuZw3twtDDq">0.75</td>
+      <td class="num" data-page-node-id="MYfwuok7FuG69mzhq6PHgB">0.90</td>
+      <td class="num" data-page-node-id="CvdGbLViY6gnShu6Htdhzm">0.32</td>
+      <td class="num" data-page-node-id="BV3Rjqdjx8w4ZdLJYCjbZ3">0.85</td>
+      <td class="num" data-page-node-id="vwhQxyc7zbr6gNSISXV82X">1.10</td>
+      <td class="num" data-page-node-id="JJGmfobpRGj6u08r27Q6SN">4.06</td>
+      <td class="num" data-page-node-id="2005iNC5WWN2fuDJfXacBA">80</td>
+      <td data-page-node-id="OlXz3yx25vO0qdLkjCtHQl">偏低</td>
+      <td data-page-node-id="cX6t9DsyT4XaKiObwHKLjn"><span class="chip" style="background:#d9534f" data-page-node-id="CCZKNPsEbPY9DseXMieEP5">high_B</span></td>
+      <td class="num" data-page-node-id="44oeFTxUGRaFJscqI06nLc">17%</td>
+      <td class="flags" data-page-node-id="ZHchUkKesl3SYSaNoHdvk3"></td>
+    </tr>
+    
+    <tr data-page-node-id="MYN6K0dQvevD2bLzHwK7eP">
+      <td data-page-node-id="e8NEBwCQJm2wQD2SdshJcX">600062</td><td data-page-node-id="k7HpQuBNcj4sDEaDohUzDU">华润双鹤</td><td data-page-node-id="ojVBU5xwsi0An79jV2IFuy">pharma</td>
+      <td class="num" data-page-node-id="rg9eEQqAQel7xEu80mMIaO">16.20</td>
+      <td class="num" data-page-node-id="lcYTYEhGKXV05iGdZs9UAi">0.80</td>
+      <td class="num" data-page-node-id="fGA71Le5xWkbeQ7BPEV2eB">0.82</td>
+      <td class="num" data-page-node-id="fTMonpFxa8Dmvk8iYLh3ue">0.05</td>
+      <td class="num" data-page-node-id="FiWJOYJa871LTsRYNrWBcf">0.88</td>
+      <td class="num" data-page-node-id="Hx7zpP3STmXggVjaVT8v6X">1.05</td>
+      <td class="num" data-page-node-id="I6MNQlzLKhPyxk90vfAGVn">1.12</td>
+      <td class="num" data-page-node-id="0URNOCckJ1lYAHDI1ovbQc">80</td>
+      <td data-page-node-id="SWAXqdn6a4Xnd2gMgWdlJE">偏低</td>
+      <td data-page-node-id="78GGKFzt8RmFN9gKeBmdeo"><span class="chip" style="background:#d9534f" data-page-node-id="jkIEHEKoNwiSo9slLnuTc4">high_B</span></td>
+      <td class="num" data-page-node-id="dOpiqZj6u9hepcMMhaSI64">13%</td>
+      <td class="flags" data-page-node-id="K9WVxW3iJKYyEkg2t6cPI4"></td>
+    </tr>
+    
+    <tr data-page-node-id="V5WMI8EG3XgHWgVyZ8Vq2r">
+      <td data-page-node-id="SQySzsTLCVbZQ2tmPliigx">000651</td><td data-page-node-id="ZgkqVHm61KQreEXVhKoHxE">格力电器</td><td data-page-node-id="k2bwLlGSZNPr80VBG2rH06">consumer</td>
+      <td class="num" data-page-node-id="EsBMmsDrgnNmSE24f3CuMp">38.29</td>
+      <td class="num" data-page-node-id="9PZhKIDhC9VCg7wPqXhFJh">0.67</td>
+      <td class="num" data-page-node-id="hgsd0Vb81qCq3pbfIJWVow">0.90</td>
+      <td class="num" data-page-node-id="pZFa7ol9oeOKyWYSHvw3v2">0.23</td>
+      <td class="num" data-page-node-id="TEtQYHhDzmf0Ms8zIiMKj9">0.89</td>
+      <td class="num" data-page-node-id="JhMTbFrRoxpBMlzxTwhiLC">1.06</td>
+      <td class="num" data-page-node-id="YfZ0Wz1B2tqi1sbaUN0dzO">1.60</td>
+      <td class="num" data-page-node-id="qhCXpWXyj5L9VPQTUoTwEL">80</td>
+      <td data-page-node-id="TxLPJbFOkeEjbF5pRBQNvb">偏低</td>
+      <td data-page-node-id="lwMncAGbEWHlKJkKhCaSXb"><span class="chip" style="background:#d9534f" data-page-node-id="EVbDmNyRFYtlVvzrALpmlL">high_B</span></td>
+      <td class="num" data-page-node-id="7NyLUKhPpHzXF0ACfxZroI">21%</td>
+      <td class="flags" data-page-node-id="UPTRkaRy9lpctkJP7BsAMP"></td>
+    </tr>
+    
+    <tr data-page-node-id="10aW8Ur4GHMeEhEJEObP8A">
+      <td data-page-node-id="k0IUm587Fje69RnDyFSiQF">000895</td><td data-page-node-id="aDG6gfUdHZ5XzCOB9kUTnr">双汇发展</td><td data-page-node-id="o29NQ8KAyBEQ1hZxJQtvyV">consumer</td>
+      <td class="num" data-page-node-id="1KNkw0dkW9VOb2NwWM0iBH">23.94</td>
+      <td class="num" data-page-node-id="fvhIpM0splAyNM4mwlQOCP">0.78</td>
+      <td class="num" data-page-node-id="jiPWEqhy29ZJ20wUJufH6a">0.73</td>
+      <td class="num" data-page-node-id="DTc7C2XCC28f8mysIjRpcL">0.41</td>
+      <td class="num" data-page-node-id="3LAiJ4W6NQdtpTwiqfpaZR">0.92</td>
+      <td class="num" data-page-node-id="IFeoTDzrC70y44LDBIo7CB">0.97</td>
+      <td class="num" data-page-node-id="vZflbb3vanNVh8XSRGSlwS">1.44</td>
+      <td class="num" data-page-node-id="8Tt8UERTLIc2KW82QP8c07">79</td>
+      <td data-page-node-id="HgYkUkaKgcB7di9gAFPhsu">偏低</td>
+      <td data-page-node-id="QPwgrKi0G6IPfgfC5o0dGF"><span class="chip" style="background:#d9534f" data-page-node-id="bDBEv3dFgbPbCbaYwbTP3Z">high_B</span></td>
+      <td class="num" data-page-node-id="Clf2FvC8GzwpEFC8VHp1F2">18%</td>
+      <td class="flags" data-page-node-id="3TIbmxZ6WrHwXbQItt0Qq2"></td>
+    </tr>
+    
+    <tr data-page-node-id="tDuSAXnXXrJ3CF9CXT4UwW">
+      <td data-page-node-id="RYBrjNbEvYCyX78YjgfFma">600019</td><td data-page-node-id="h91cHJaCp7xtKsQLCEL8LI">宝钢股份</td><td data-page-node-id="GMAIwzBimSC5rHMHEFLJJq">steel</td>
+      <td class="num" data-page-node-id="gOO4y9th0xreYCVumnwc7R">5.83</td>
+      <td class="num" data-page-node-id="53GahM0evd1QunCjBfoKUt">0.85</td>
+      <td class="num" data-page-node-id="SwhrljGA1BKbALmE2I95D3">0.92</td>
+      <td class="num" data-page-node-id="IVfq0qsKUpoFan3ITjSUhG">0.77</td>
+      <td class="num" data-page-node-id="E5nxCoGgwe0HiDYsWzk4XC">0.56</td>
+      <td class="num" data-page-node-id="CNa0F7jGd21CqxAeAQmjfA">1.59</td>
+      <td class="num" data-page-node-id="6OIw6g7b8Y90s5mPTZZV9U">3.25</td>
+      <td class="num" data-page-node-id="4s8d2lG4dHXwOLxx8WJ9Bj">78</td>
+      <td data-page-node-id="PDK4d1eEpJMv6BHZ7ghJjB">偏低</td>
+      <td data-page-node-id="oeB5qyFt1Ir65DKTxuBeEJ"><span class="chip" style="background:#e89a3c" data-page-node-id="68NyBs6EjN3xsAudgykQv2">high_A</span></td>
+      <td class="num" data-page-node-id="zRjkasK8OMOHk4eOJLMSqa">22%</td>
+      <td class="flags" data-page-node-id="aT9vnbhjHpvJfZ9Gyprx4a"></td>
+    </tr>
+    
+    <tr data-page-node-id="PJmQXecVpAAPBfZJPPB41b">
+      <td data-page-node-id="48X2B941AKAXfkJRdG8CNG">600461</td><td data-page-node-id="yvJB0iJGMUyFG9hIWbXI0L">洪城环境</td><td data-page-node-id="EHeXpE0VwDlD7DZ9XsLueG">utility</td>
+      <td class="num" data-page-node-id="zFZHpiWn6sDWKYdjEfpoXB">8.93</td>
+      <td class="num" data-page-node-id="InbvYYy5hkbeSecvgCjpoQ">0.69</td>
+      <td class="num" data-page-node-id="WGTLfVfDRHNmrny2uT6dYj">0.90</td>
+      <td class="num" data-page-node-id="85ExCJgYg0szWLrADuPKdY">0.23</td>
+      <td class="num" data-page-node-id="UDxKIVSP5wOfrUaSFfSeVp">0.89</td>
+      <td class="num" data-page-node-id="N7lVVEpXLDrnOGcD16rp68">1.02</td>
+      <td class="num" data-page-node-id="x6VAbiZVH4INKcrLz9TkNO">1.60</td>
+      <td class="num" data-page-node-id="tivT5PZ0RsEf0TtZh2jU6l">78</td>
+      <td data-page-node-id="PQ40ziD3UJD9P6Onv3MPHh">偏低</td>
+      <td data-page-node-id="UIANVZG4GLJXVg62IUBwEY"><span class="chip" style="background:#d9534f" data-page-node-id="387HPihPolG00oSVy9EjQa">high_B</span></td>
+      <td class="num" data-page-node-id="mRQKGzlvZWS5IRdxy8gDye">15%</td>
+      <td class="flags" data-page-node-id="GkrGTcxtQ45JjC1Eoqxveh"></td>
+    </tr>
+    
+    <tr data-page-node-id="HscVCpKtTKXnLLwqzLgIBV">
+      <td data-page-node-id="7uxrEii9012rwOpNRmcUBd">600900</td><td data-page-node-id="fkVePhseGSWlAUBNg5H3wc">长江电力</td><td data-page-node-id="aViIGHhz7BU9UqOZhx0S8r">power</td>
+      <td class="num" data-page-node-id="nTRNrG2v87J0yh74x695D2">27.87</td>
+      <td class="num" data-page-node-id="PKwICb2Ke918fo2ADbsck9">0.68</td>
+      <td class="num" data-page-node-id="5AoadzQn78aO9FEoC11vVl">0.92</td>
+      <td class="num" data-page-node-id="Zzzfq8xxVTSOXHypdBLInv">0.05</td>
+      <td class="num" data-page-node-id="c0CZAj6OsPw2JWLKRYSUc4">0.90</td>
+      <td class="num" data-page-node-id="ASZUynEOk7ck397xqcSkFa">1.15</td>
+      <td class="num" data-page-node-id="AUteHIMPKNX0EsEj24ALzS">1.84</td>
+      <td class="num" data-page-node-id="47dxKftSHMgwhB5Dt4dAcP">78</td>
+      <td data-page-node-id="lIHh98WdogGvM9xtPDSrYm">偏低</td>
+      <td data-page-node-id="cCYdadOKQw8nDbj32Jcg37"><span class="chip" style="background:#d9534f" data-page-node-id="bpjvdCObeqeBEJ8tmlbj7t">high_B</span></td>
+      <td class="num" data-page-node-id="6koW7NQrsjI2n0vVamqmnk">11%</td>
+      <td class="flags" data-page-node-id="3qyTgHbSOWJ7uYT8H0yWKA"></td>
+    </tr>
+    
+    <tr data-page-node-id="jCg59LinKq7uEH4ZiHA7FH">
+      <td data-page-node-id="jhi0N5DhGHU6Dy6dqFOo0I">601166</td><td data-page-node-id="qQZbWyKQCYMnXM4sP1R0nH">兴业银行</td><td data-page-node-id="tFLpYWXzodFlFAIuAbCLFO">bank</td>
+      <td class="num" data-page-node-id="rK5UiSCEJaGGOWUQ6zsQ8O">18.17</td>
+      <td class="num" data-page-node-id="kL5zd7BI0FA8K6lyuQjDrT">0.74</td>
+      <td class="num" data-page-node-id="axBht2WQ2btRbRBHkvdAaE">0.92</td>
+      <td class="num" data-page-node-id="oK61aEXWKEgdcYVvNsg3dS">0.41</td>
+      <td class="num" data-page-node-id="WdjhARCG1Sr80kElcNh0y5">0.83</td>
+      <td class="num" data-page-node-id="hgUgEkV5vSrwHIWLa2ZsbJ">1.00</td>
+      <td class="num" data-page-node-id="zz9YbbaEpZU2L7s7DG4hkh">5.62</td>
+      <td class="num" data-page-node-id="GeZTsmuxzcTLqiaa32UHRq">77</td>
+      <td data-page-node-id="JR3q5wfBhSNsdgFg8Ehjol">偏低</td>
+      <td data-page-node-id="ClOjFFcpanWVTrZSf10alz"><span class="chip" style="background:#d9534f" data-page-node-id="HcUSeWFIS2BcrSaGTgyeWQ">high_B</span></td>
+      <td class="num" data-page-node-id="Zh9rFoYTJrqyMyWga2ljPy">18%</td>
+      <td class="flags" data-page-node-id="kDmPcLbLKokcnFrMRmcGh6"></td>
+    </tr>
+    
+    <tr data-page-node-id="Snp1HOj1l1ZpZd33kA2SOc">
+      <td data-page-node-id="CydeBccLHoZADpuOyCeNzS">000598</td><td data-page-node-id="IZsxMHCWXgd0FAc62C4dEC">兴蓉环境</td><td data-page-node-id="x10IDwKwGYXOsm5L0E4Hmz">utility</td>
+      <td class="num" data-page-node-id="ElKPOKX5D1RVSbPttk34xG">7.17</td>
+      <td class="num" data-page-node-id="AMEv5iSdM7F2wRKYTirEk1">0.69</td>
+      <td class="num" data-page-node-id="ABFNMDG5LWQJRMROs9ExR2">0.89</td>
+      <td class="num" data-page-node-id="XEKTrjlo3NOjeikEN2zeIE">0.05</td>
+      <td class="num" data-page-node-id="HLgmTmrtVKRnlFT1g4UQrL">0.90</td>
+      <td class="num" data-page-node-id="vt8SCKgz0F3WAATHZrLMjk">1.02</td>
+      <td class="num" data-page-node-id="aCtHIVbMsGbAUBbZJSYmvl">1.84</td>
+      <td class="num" data-page-node-id="EWSvgePCC8zxSqyEio1fHz">77</td>
+      <td data-page-node-id="6lHUMHKZItqb9KoWbW2aIc">偏低</td>
+      <td data-page-node-id="h2jOGQpxoDJJ8RM3G5XPoM"><span class="chip" style="background:#d9534f" data-page-node-id="exlfFC9enwa7bA1SR7jKHE">high_B</span></td>
+      <td class="num" data-page-node-id="9SqmQo3mTcQwSxLJYyMB3e">19%</td>
+      <td class="flags" data-page-node-id="eLk9Hc29BICf8C9C9i6qEE"></td>
+    </tr>
+    
+    <tr data-page-node-id="2jSzCHHx1Hc2ShRK2LdCFJ">
+      <td data-page-node-id="I2aLmbM2K9tXWYu1qFbJnd">600018</td><td data-page-node-id="F0S3FTkWwPrrqtwGL0RdR9">上港集团</td><td data-page-node-id="nIQCwplDZIrhXjpQnyVCTb">highway_port</td>
+      <td class="num" data-page-node-id="m5fIqBUpguUJmnOohFx9ds">5.44</td>
+      <td class="num" data-page-node-id="6MRnIvKgFLJU44PCbzjld5">0.81</td>
+      <td class="num" data-page-node-id="etc1ATcFEIOlPad8TeDNyT">0.72</td>
+      <td class="num" data-page-node-id="6B4v7eV0PMLfAQfxzVQxcs">0.32</td>
+      <td class="num" data-page-node-id="PHg4vcrcW0bbADzh08h5SD">0.84</td>
+      <td class="num" data-page-node-id="vqjZISWId8bco1CrCPRB0l">0.96</td>
+      <td class="num" data-page-node-id="xDC5F8vtjfLhTeAvE36EGv">0.87</td>
+      <td class="num" data-page-node-id="pUyp8tgqoDay9y0BNdlpWT">77</td>
+      <td data-page-node-id="8QFJuI4RsZxMu6uOQAIoRO">偏低</td>
+      <td data-page-node-id="JpWlauasneUB3PRDwI03tE"><span class="chip" style="background:#d9534f" data-page-node-id="rwLmjiCqkDyOZs99cyXD4x">high_B</span></td>
+      <td class="num" data-page-node-id="nbtb0ZRboDC9wxKzVs2oX3">17%</td>
+      <td class="flags" data-page-node-id="9TUxhmLsWKCqCgUX5QKCmO"></td>
+    </tr>
+    
+    <tr data-page-node-id="Eue0gaw5FSHFl3NpQDpnQ3">
+      <td data-page-node-id="Od4EsLtC3Lsbo2AXQrsAmO">600887</td><td data-page-node-id="6sa32iFerfwWTauODrN9Hb">伊利股份</td><td data-page-node-id="YTMrD8Xwr6DVWxOUr7Cr7E">consumer</td>
+      <td class="num" data-page-node-id="3vPjTD8ak1jp4wewjbwiSx">26.53</td>
+      <td class="num" data-page-node-id="aSaGFHfg4nn7vDMDTiNogG">0.77</td>
+      <td class="num" data-page-node-id="9FxUC4oIgY3Dr33HKdapzZ">0.76</td>
+      <td class="num" data-page-node-id="xt7hTvHFNU4Dw5yHPfO8eg">0.05</td>
+      <td class="num" data-page-node-id="WuRuZtxfRpQmNSBqpiV5sL">0.89</td>
+      <td class="num" data-page-node-id="elH0AP1QCKVJDRtF51emBb">0.97</td>
+      <td class="num" data-page-node-id="mXKyHLejXZ9gQI0Ul8pUZc">1.75</td>
+      <td class="num" data-page-node-id="Kixno3GD2nXvB5AFfNiOpW">77</td>
+      <td data-page-node-id="0AvMiKuCThtTdQd4kNSuLU">偏低</td>
+      <td data-page-node-id="zyOkk9sT2AVBQqNeYjwDJa"><span class="chip" style="background:#d9534f" data-page-node-id="EWpYMumuwZU6EcCApXBCqW">high_B</span></td>
+      <td class="num" data-page-node-id="XR4Hv3i9ByOsS63JBjfPgK">20%</td>
+      <td class="flags" data-page-node-id="GeyVqF0bofGkqxShgIMJyU"></td>
+    </tr>
+    
+    <tr data-page-node-id="QnBCVnmVxoM9r0noIDjDYb">
+      <td data-page-node-id="gBdWH9ctV3YdrpVe83dc4l">002032</td><td data-page-node-id="OcyfxWvMfUzeCnCpR3tWUG">苏泊尔</td><td data-page-node-id="dQDaWWihOq6a0crEc9aSDS">consumer</td>
+      <td class="num" data-page-node-id="0jGx5YtA7cMKFMwRpmw4of">39.42</td>
+      <td class="num" data-page-node-id="AxagmrBncZ6nmg8pOGwpk0">0.89</td>
+      <td class="num" data-page-node-id="T790zjwSxSvxEF15ApywpW">0.59</td>
+      <td class="num" data-page-node-id="UkvVkHU1S8h5ngbseYBI6q">0.23</td>
+      <td class="num" data-page-node-id="aeXk6sfNN1mLUu3rOOEWUh">0.90</td>
+      <td class="num" data-page-node-id="ZEAkx9SylJ5YgRusUpAY0K">0.88</td>
+      <td class="num" data-page-node-id="iwJ96u8sD7YmThYddjJttk">1.15</td>
+      <td class="num" data-page-node-id="kF58iUAbrI1ZWyNtQcnoTZ">77</td>
+      <td data-page-node-id="LC8kpb1w9oh20XDvkSonXq">偏低</td>
+      <td data-page-node-id="eip3Em5vhAuDF3xL3lCEa5"><span class="chip" style="background:#d9534f" data-page-node-id="iiVZihgeTc3RHGCBMxVehT">high_B</span></td>
+      <td class="num" data-page-node-id="3QVY87endCl6Y53JC6eTYh">21%</td>
+      <td class="flags" data-page-node-id="GZZeZSPh6rzGbFzbhRBHZ2"></td>
+    </tr>
+    
+    <tr data-page-node-id="H3ABLVlCrfEq2RQAGt58P3">
+      <td data-page-node-id="drCG7NhKVNJDkvgmUSfSGg">000883</td><td data-page-node-id="HtPsVviUDDIEpDCrTOpCRG">湖北能源</td><td data-page-node-id="GtHgDMJ5wYmo4NbAQ0LFWf">power</td>
+      <td class="num" data-page-node-id="15tgmFKaaxPUSudoXagzcD">4.53</td>
+      <td class="num" data-page-node-id="VpMZCcFuNb6uSAjvjzWM1U">0.83</td>
+      <td class="num" data-page-node-id="UzmsUY3hIGOpvkCr9yN7TD">0.92</td>
+      <td class="num" data-page-node-id="pjihyd2rOYw5lLRoEwskF9">0.45</td>
+      <td class="num" data-page-node-id="4EPgSii3db1OelLCnwlwuO">0.62</td>
+      <td class="num" data-page-node-id="CfhY3cEPA4Quih5rrq9MX4">0.97</td>
+      <td class="num" data-page-node-id="sVGDqJfMBuqjAgAaL5yatw">3.31</td>
+      <td class="num" data-page-node-id="4SK9UxC8ei2vgXlNJFE8Hk">77</td>
+      <td data-page-node-id="KENyh55Fe8gSpA8GmzNVwb">偏低</td>
+      <td data-page-node-id="WyXGkhmFz15K1MAdir1xyn"><span class="chip" style="background:#d9534f" data-page-node-id="PBbOpUlutlx25qlntWO0KV">high_B</span></td>
+      <td class="num" data-page-node-id="ubbfn9dktGSwmmlClAa8MW">23%</td>
+      <td class="flags" data-page-node-id="1YABEHCkIrOvoPf8bJQE5g"></td>
+    </tr>
+    
+    <tr data-page-node-id="TkW37jtwF4KUxWMkQDSZsr">
+      <td data-page-node-id="HiDf4O3w4WSrkzeEGkSj4D">000538</td><td data-page-node-id="4Vu9I51DG7Wp6KCDiAF02K">云南白药</td><td data-page-node-id="Fivs1XDqmbHvH4UCHjFgQ3">pharma</td>
+      <td class="num" data-page-node-id="pwO2wOesgsD5bP6RDEGwgL">50.87</td>
+      <td class="num" data-page-node-id="AS609BoOvtSsJOFEstkl9E">0.77</td>
+      <td class="num" data-page-node-id="PuK3uN258zol8eNeh4XBHh">0.76</td>
+      <td class="num" data-page-node-id="NEJN1LFlpyZH8LMDV4pSeH">0.41</td>
+      <td class="num" data-page-node-id="yufmYFfs1Min5FwhYzgQL4">0.82</td>
+      <td class="num" data-page-node-id="um8i0t6nljTyBsCnofFpEt">0.98</td>
+      <td class="num" data-page-node-id="LkUTbcxORrmBhk84ofjyvv">0.89</td>
+      <td class="num" data-page-node-id="WCarro8zGSDuNASZPLmR2i">76</td>
+      <td data-page-node-id="4duOkku6DTSoqzJGaI4VnM">偏低</td>
+      <td data-page-node-id="dD6ZJr5njgkaLRDVc33Rdr"><span class="chip" style="background:#d9534f" data-page-node-id="SKqpepUB6D53K9ZgtM1zSf">high_B</span></td>
+      <td class="num" data-page-node-id="P7WY09aKK0HL5hSQYDnchr">13%</td>
+      <td class="flags" data-page-node-id="343DXUVVye04LAeqEnHr5n"></td>
+    </tr>
+    
+    <tr data-page-node-id="wCUA3sXpdWnmtsDmWAQ0Hd">
+      <td data-page-node-id="oKhhnIY8t8twDRIMimrTP6">600017</td><td data-page-node-id="GngT0SwvTe4D3wMqAhNzCh">日照港</td><td data-page-node-id="iu0yHKPNERVIfFJOcuH6yz">highway_port</td>
+      <td class="num" data-page-node-id="zBAUYb1XzkvPXVSoJVOuQ6">2.88</td>
+      <td class="num" data-page-node-id="gsznBUHLTxs7XQHVwJTpsA">0.84</td>
+      <td class="num" data-page-node-id="zoplOfKsLngIqGh9HKEjWc">0.87</td>
+      <td class="num" data-page-node-id="lJTyiSihDTadRzC4eYUQde">0.68</td>
+      <td class="num" data-page-node-id="wciYGJTh7y1fuvfzDYhNyV">0.59</td>
+      <td class="num" data-page-node-id="GgdmDycCGOMF7MUpYpK1Ez">0.91</td>
+      <td class="num" data-page-node-id="xJN41ISTyS7Fbwaob3mcph">4.28</td>
+      <td class="num" data-page-node-id="fDXmAnnCGBnWjCSA2cnfqb">76</td>
+      <td data-page-node-id="5ldWt5btDcizPID0pxmB7l">偏低</td>
+      <td data-page-node-id="XkwOeYkP7IksmnY99U4qty"><span class="chip" style="background:#d9534f" data-page-node-id="mwUvmDXvrDcHlAdmvtphDp">high_B</span></td>
+      <td class="num" data-page-node-id="058Ktuq5vVYuA7c7WS4HAG">19%</td>
+      <td class="flags" data-page-node-id="1G9Bi0DjKCw1oC5n9yuHWH"></td>
+    </tr>
+    
+    <tr data-page-node-id="KWrBJAdcAnGSenku0DfXai">
+      <td data-page-node-id="9GmD7We7PkZJvVAbXMGkTS">600050</td><td data-page-node-id="AmwXnpBKUodeabx5wPHC1r">中国联通</td><td data-page-node-id="Lfc7ZZDbADVOi6ilrWnFEo">telecom</td>
+      <td class="num" data-page-node-id="oHv8ru1u7bn6iSEcFGTtSP">4.24</td>
+      <td class="num" data-page-node-id="7Cy7yDRbX2PVZyqjGJNEFy">0.85</td>
+      <td class="num" data-page-node-id="ggE6D6UsS8XRnuSN4WCJZn">0.90</td>
+      <td class="num" data-page-node-id="bafFsnaZW08B3j96TL1fPS">0.09</td>
+      <td class="num" data-page-node-id="z97ePIodjtqR41AsrMRT02">0.63</td>
+      <td class="num" data-page-node-id="6HrvdFrcvcVlPDZ0mW8py6">1.03</td>
+      <td class="num" data-page-node-id="jhzrHBXMT1ub8GhKVo17KR">10.11</td>
+      <td class="num" data-page-node-id="fG4uYWH1FUkSMZp5MoBlLN">76</td>
+      <td data-page-node-id="KUwPjecQnWBfJlLM2kjnHK">偏低</td>
+      <td data-page-node-id="RSO4r8kYhG0ABxgd8Ez5QB"><span class="chip" style="background:#d9534f" data-page-node-id="EOc6vfEJoIW6mlxOJiczlz">high_B</span></td>
+      <td class="num" data-page-node-id="wkfvsxeoe6g9GZQG3yCpBR">23%</td>
+      <td class="flags" data-page-node-id="k3LarhbSggIjuFNpxOOwAA"></td>
+    </tr>
+    
+    <tr data-page-node-id="zQab8oHYuLEL34sSBC9zjU">
+      <td data-page-node-id="9VAwb6OlcPXoRHHny23S79">601669</td><td data-page-node-id="HNywA2mmONpKVyKfcAVznH">中国电建</td><td data-page-node-id="CtJDECutOf0Y5VnIqQ9fQk">infra</td>
+      <td class="num" data-page-node-id="I3HlHE3kyfPa7M3inhyBom">4.66</td>
+      <td class="num" data-page-node-id="gAFGVlGvn80bhedIZerTUu">0.83</td>
+      <td class="num" data-page-node-id="SxotobCGBL80jVwj7SHBjI">0.82</td>
+      <td class="num" data-page-node-id="b85rFfO1cI2iPE1LIWc2l2">0.32</td>
+      <td class="num" data-page-node-id="CVyxUGojxo3p4u50wP4R2E">0.74</td>
+      <td class="num" data-page-node-id="fBAUL1zAsnW8fIjwRWJfDm">1.00</td>
+      <td class="num" data-page-node-id="Com05EdigxrXg4pzIqqTbH">2.04</td>
+      <td class="num" data-page-node-id="X6EAPbdvUD662SEEGC20Cj">76</td>
+      <td data-page-node-id="3KHerTFlCXuybsLU5CqCiB">偏低</td>
+      <td data-page-node-id="aq1iF80VhfsgywFEm8gWAS"><span class="chip" style="background:#d9534f" data-page-node-id="fbhL6bFvYqrXDzqn8J4FhR">high_B</span></td>
+      <td class="num" data-page-node-id="TWrEOngPPoAGwxMJQyvESC">23%</td>
+      <td class="flags" data-page-node-id="gyba77XW3zp2iH9HGqP1kW"></td>
+    </tr>
+    
+    <tr data-page-node-id="kxucJqbxfSD4vigu4mf1dA">
+      <td data-page-node-id="pZIWhYJVh26l2891pKnpsk">601169</td><td data-page-node-id="fxGGYDwAPBuaqC2hL3SvrB">北京银行</td><td data-page-node-id="epLvF5YMa4z6h9LlTH9HH5">bank</td>
+      <td class="num" data-page-node-id="XLVXduqiImxbWFVxXjlnVt">5.54</td>
+      <td class="num" data-page-node-id="9Y9HpCN5V1ufS6veGtOkUD">0.53</td>
+      <td class="num" data-page-node-id="R3CojXbEQ5P30T7kkl29PB">0.92</td>
+      <td class="num" data-page-node-id="nhoAtr3kVZCYNZXKqDCauz">0.95</td>
+      <td class="num" data-page-node-id="XDpaIZVlCh4YeGJZzQlf2i">0.79</td>
+      <td class="num" data-page-node-id="l3RRz42q1Ggmh5eKIsBirH">0.97</td>
+      <td class="num" data-page-node-id="4iJf3Ej13wQl9GiJfHn6On">5.02</td>
+      <td class="num" data-page-node-id="7O9pbuGMKIGNBvoBYahUQe">74</td>
+      <td data-page-node-id="cop4FwQYkBSJ3DEGf0BPq5">合理</td>
+      <td data-page-node-id="N9O2IUyUMRfTmEoAKszAKE"><span class="chip" style="background:#f0c93c" data-page-node-id="lIH2wvQu3A7mwvksJRY6gW">mid_B</span></td>
+      <td class="num" data-page-node-id="CHoaEBS6NsGHqhjBLY6Gpl">17%</td>
+      <td class="flags" data-page-node-id="IKNL4PaAdgMBwOcEs4rGEZ"></td>
+    </tr>
+    
+    <tr data-page-node-id="1goIqYDJxcEVmPVnTa81Hv">
+      <td data-page-node-id="a4fM0gj50D3FGwCmiFWl3r">600535</td><td data-page-node-id="rPTe5BjyDC1ODVf0bC8FM9">天士力</td><td data-page-node-id="NFjJWETM7N9bHZD2LCaOJt">pharma</td>
+      <td class="num" data-page-node-id="K3IqN7KKp9xMUqhR3lbhrW">14.55</td>
+      <td class="num" data-page-node-id="BszKW6gsxZWeJM1t2zumWm">0.76</td>
+      <td class="num" data-page-node-id="6pBC1r3iKr8zeir1b0uka7">0.92</td>
+      <td class="num" data-page-node-id="0EpcD6Uvqf2VryC2FEnzQo">0.59</td>
+      <td class="num" data-page-node-id="CD3yArLgcKFZvhBBfA67aW">0.59</td>
+      <td class="num" data-page-node-id="TxoqnJCSKNbAAweoLhrWJ2">0.94</td>
+      <td class="num" data-page-node-id="dBBA59l7vErl38rRu4iCV7">2.11</td>
+      <td class="num" data-page-node-id="62vG5O9Re23S7YyUIQfgBo">74</td>
+      <td data-page-node-id="Hmcha6xSRn9EryM6mx1a81">合理</td>
+      <td data-page-node-id="MFFth5S91wUDoV6LEKi6Wd"><span class="chip" style="background:#d9534f" data-page-node-id="EYoeOOWgulMFzmumRecGd0">high_B</span></td>
+      <td class="num" data-page-node-id="j3cvtfKQqLG7LgxF9uJ32g">23%</td>
+      <td class="flags" data-page-node-id="c8bc7WBiak1KeamD99EJM6"></td>
+    </tr>
+    
+    <tr data-page-node-id="YzTGmD9A2b48ScMlEY2W1v">
+      <td data-page-node-id="f5qmFa0gd3GxUW7jUSJIAw">601158</td><td data-page-node-id="vH1lwhjkjDXa4tR4usbJ98">重庆水务</td><td data-page-node-id="6KOBSZrtSXuG8Cx6mVbVJV">utility</td>
+      <td class="num" data-page-node-id="KPw1opS69nY8JKMsYn3w1A">4.13</td>
+      <td class="num" data-page-node-id="9OmJ2M2q1bVSmVQNbseZ3T">0.86</td>
+      <td class="num" data-page-node-id="BDC2Kx1p9Lt9ygVMkJ1Osd">0.76</td>
+      <td class="num" data-page-node-id="jXtDOEQJGLfzLz4M9ZhLu6">0.86</td>
+      <td class="num" data-page-node-id="5STsmRBByQwheZiFujQpBP">0.54</td>
+      <td class="num" data-page-node-id="T0I4zZlkjvP88QK8W1OqHE">0.74</td>
+      <td class="num" data-page-node-id="g2Oiq14OvTezqCux5PeC4U">2.30</td>
+      <td class="num" data-page-node-id="PGnZSCGJayLRniZvtVGSQz">74</td>
+      <td data-page-node-id="Fjv5ouw1fcYIif2Y6GrTfC">合理</td>
+      <td data-page-node-id="E1Bz5hGF8VRCuTesZ2ja0M"><span class="chip" style="background:#a02622" data-page-node-id="OLKU0Og4x2ZxgpotyaJRd3">high_C</span></td>
+      <td class="num" data-page-node-id="g7N0PCHDFjI6dHC65etSK5">13%</td>
+      <td class="flags" data-page-node-id="EV3tmJNt3Ivbj4rd2Vr0S0"></td>
+    </tr>
+    
+    <tr data-page-node-id="D39BPOsSBaYsGGTjkImIRA">
+      <td data-page-node-id="UDMgqqEn9kIF2CgMlVnxHO">600886</td><td data-page-node-id="LkEDlIdZ0cHCWeREe7cocV">国投电力</td><td data-page-node-id="DX1L2KEc0EE1az1y7wfnZv">power</td>
+      <td class="num" data-page-node-id="N5hzFCa61TqaUssLzVFFmH">14.13</td>
+      <td class="num" data-page-node-id="PDDBvb6ofwHl4QQcPEQE6O">0.60</td>
+      <td class="num" data-page-node-id="65TeWVs22k5ktAYCgI5lVA">0.92</td>
+      <td class="num" data-page-node-id="rxllH9OWZoF7qOApJvGJD4">0.05</td>
+      <td class="num" data-page-node-id="0ckDiUv37ocYDmK1sJ7me9">0.84</td>
+      <td class="num" data-page-node-id="r5BjqSptLLBNXCKhVQHnUg">1.11</td>
+      <td class="num" data-page-node-id="bqZalFSGFwFB73Cm09UJBK">3.71</td>
+      <td class="num" data-page-node-id="YRSoolISGPXJRZ0XY5GG9i">72</td>
+      <td data-page-node-id="vDaEGS8KNmSLHFZP2Qp3HS">合理</td>
+      <td data-page-node-id="tesSDRpTzFy9K8pOg8WHxC"><span class="chip" style="background:#f0c93c" data-page-node-id="UnAyBWDM9cSPAevb7Ry5HF">mid_B</span></td>
+      <td class="num" data-page-node-id="moAHQNNhH2V3Yq9BCRxlKH">21%</td>
+      <td class="flags" data-page-node-id="s4FhKg1pSQxJ51LI1Y6g4Z"></td>
+    </tr>
+    
+    <tr data-page-node-id="EaMv7BZlHGaEfSLgfl9rh6">
+      <td data-page-node-id="KNueUttGtuMuhQSK1m3oNm">601326</td><td data-page-node-id="ivNneVGN18IKjvFDQ03szo">秦港股份</td><td data-page-node-id="FEB0OmmBLOPJ7hqBDFmC6g">highway_port</td>
+      <td class="num" data-page-node-id="kB5CrNwVaa0O69mJHBQTXR">3.58</td>
+      <td class="num" data-page-node-id="zEfIggNEZzlVk3oI1HHlJk">0.73</td>
+      <td class="num" data-page-node-id="3mJpAZSLC9dR5L2ElqEjOD">0.86</td>
+      <td class="num" data-page-node-id="eZ9WnDewvFS75nFKtL6jOf">0.05</td>
+      <td class="num" data-page-node-id="SxlT4mZ5OwzcabAyejj4nz">0.71</td>
+      <td class="num" data-page-node-id="Q2HD8y6oOhEX0mowaziiWP">0.97</td>
+      <td class="num" data-page-node-id="HVfxCraxPLtCV8iRQleZEB">1.54</td>
+      <td class="num" data-page-node-id="4sZzvsENwhU4bCawNl0oUj">72</td>
+      <td data-page-node-id="jaJpsK8zMp7dXgWqjdEXW5">合理</td>
+      <td data-page-node-id="uetKbCfTFNil0LlraRBzbW"><span class="chip" style="background:#d9534f" data-page-node-id="hTnoCgZgUUqbHE0vkjmhDJ">high_B</span></td>
+      <td class="num" data-page-node-id="sXCZ1FPhm4tAJMROFhwZLy">23%</td>
+      <td class="flags" data-page-node-id="dQiDplrCNQvZ9cFmWLYDF3"></td>
+    </tr>
+    
+    <tr data-page-node-id="rLo9UnUBhRH9AXs3VFAfGo">
+      <td data-page-node-id="P38UCcJEHwDQJNRxIFhHX6">600036</td><td data-page-node-id="5LQ8zbXvHdkNwAfMwYmRtR">招商银行</td><td data-page-node-id="DXGoLdKhehUfhEzMn8S2DS">bank</td>
+      <td class="num" data-page-node-id="5xp2qnEzve53DgBEO53lSe">40.90</td>
+      <td class="num" data-page-node-id="OUWOip8a2Sh37EcHoFAtGV">0.61</td>
+      <td class="num" data-page-node-id="7INIOKMDVXHUMf76LvzQcH">0.92</td>
+      <td class="num" data-page-node-id="evNQMC1MWcXvHXbY1o6c1v">0.05</td>
+      <td class="num" data-page-node-id="Qkek3uov4UHEEiPUHGcUWe">0.91</td>
+      <td class="num" data-page-node-id="yd4aC6qXbAQPtHlQA4thJr">1.04</td>
+      <td class="num" data-page-node-id="vX30nFXAkrtdvFad4W1mPW">3.01</td>
+      <td class="num" data-page-node-id="E3GPXMWPtw8lJHHeoStBAQ">72</td>
+      <td data-page-node-id="cDPQGgawRdAyZHLwCbGFKS">合理</td>
+      <td data-page-node-id="1klzFYjdV9iyp13jG8kTCg"><span class="chip" style="background:#f0c93c" data-page-node-id="BRyQAixwMlrzC2osl4rwK7">mid_B</span></td>
+      <td class="num" data-page-node-id="2jLDSLdxjB0MoAUjjVJ5zY">17%</td>
+      <td class="flags" data-page-node-id="0JjrZBgK2CzSVpGlfH6z31"></td>
+    </tr>
+    
+    <tr data-page-node-id="HpHEj1B8CzUXf8E57Yt4Ze">
+      <td data-page-node-id="7JucdbbPgviisWrbZHi1Jk">601607</td><td data-page-node-id="eg7gA1ReMrJCefSYf8nNPZ">上海医药</td><td data-page-node-id="Zh3qCnyuVTc3tcyFUeSzqY">pharma</td>
+      <td class="num" data-page-node-id="ct4drpU79sGJbCgpR90roW">16.57</td>
+      <td class="num" data-page-node-id="1WHXzGBAXazDlQB7DAvPwY">0.83</td>
+      <td class="num" data-page-node-id="f5R8DEZy3LyAxGzZPdcQZP">0.69</td>
+      <td class="num" data-page-node-id="BSYrT82y6Y0bE45B6GIx68">0.32</td>
+      <td class="num" data-page-node-id="lJg6LlySjNudcq0hBoaDRv">0.70</td>
+      <td class="num" data-page-node-id="u4BikmxD6Bd7nqUFeSV24P">0.87</td>
+      <td class="num" data-page-node-id="bM4cYbksgdC5WpABir7JIp">1.28</td>
+      <td class="num" data-page-node-id="IVDQmx8lgK8wAQ8v227Ci0">72</td>
+      <td data-page-node-id="8tgok5ot1czOW3enMCq2Ko">合理</td>
+      <td data-page-node-id="AFPsLzx3UICJYkBeBX9M2L"><span class="chip" style="background:#d9534f" data-page-node-id="NleCQBlngecRZWF3x5QZq1">high_B</span></td>
+      <td class="num" data-page-node-id="cbaHtHqbOirNTnp5awyhWi">14%</td>
+      <td class="flags" data-page-node-id="LRoUMqwPrUB5YNJc4TdtfZ"></td>
+    </tr>
+    
+    <tr data-page-node-id="9YbG1PvYdIdXf4WQtaHj1c">
+      <td data-page-node-id="kLdvlKZ27uB40oCngc3ajF">601658</td><td data-page-node-id="a5T1exUvafWX5sBFeH76pV">邮储银行</td><td data-page-node-id="LNQHcZdBuGjjQgWki6i7NE">bank</td>
+      <td class="num" data-page-node-id="VinL9mlm9peM1E3KpHvx8N">5.42</td>
+      <td class="num" data-page-node-id="BaC9w8fhKDQR6cTAtUpP8E">0.67</td>
+      <td class="num" data-page-node-id="58vDCbypFMC54E7HauhHPv">0.83</td>
+      <td class="num" data-page-node-id="z8cSz9iHefBblcFqfadXnU">0.41</td>
+      <td class="num" data-page-node-id="toLtefaFNF4MU2sQ11fO8G">0.77</td>
+      <td class="num" data-page-node-id="dSEdSmIXRIP0OJUY99duCq">0.91</td>
+      <td class="num" data-page-node-id="Cvy892SH8AIzQMBiHoQQMI">4.59</td>
+      <td class="num" data-page-node-id="G4FLkYEss5Wg17FanI1kJh">71</td>
+      <td data-page-node-id="agTUKeY1Tw8o4jlGA1sg1A">合理</td>
+      <td data-page-node-id="IPp85lnAwi8FQR8aGrw7eq"><span class="chip" style="background:#d9534f" data-page-node-id="u3PDMDVsfKRx47pK3efUqJ">high_B</span></td>
+      <td class="num" data-page-node-id="ruRMaCMJdDwap5C5yWFxCs">18%</td>
+      <td class="flags" data-page-node-id="Ya3hjIMWq04DQbfC5xF8kU"></td>
+    </tr>
+    
+    <tr data-page-node-id="glWCl59hYeley1FquKp5Ov">
+      <td data-page-node-id="ORMaRbcOx6FALzCWmZBCpW">600377</td><td data-page-node-id="UFOIDZQ2Shcxm01hbEexdx">宁沪高速</td><td data-page-node-id="NDdGGRQwQfPrZeoCRDTIGg">highway_port</td>
+      <td class="num" data-page-node-id="hEmIFcyP9l5Yvon70YDDo4">12.40</td>
+      <td class="num" data-page-node-id="QQSqzoxZpPCP7bvZDQ8SBw">0.49</td>
+      <td class="num" data-page-node-id="A4RUiOAnxV0wz0LUs0lxHV">0.92</td>
+      <td class="num" data-page-node-id="GC2zs9v5NAKJpPcvGLISTP">0.14</td>
+      <td class="num" data-page-node-id="nzMwLMTYabLdrwBtrPSssg">0.91</td>
+      <td class="num" data-page-node-id="OH81SnaFYGYQF3imHoLjcl">1.13</td>
+      <td class="num" data-page-node-id="A1X3kV6qMCuMElqzsoFfOm">1.47</td>
+      <td class="num" data-page-node-id="3mnbC3E1oBrPcuvjHjcNYA">70</td>
+      <td data-page-node-id="tAu01BnoWfeQhlYr4WL5af">合理</td>
+      <td data-page-node-id="pP8kK5BhMpWkETHbaG288g"><span class="chip" style="background:#f0c93c" data-page-node-id="EWd1bLsl5CJJKQKIHewYHd">mid_B</span></td>
+      <td class="num" data-page-node-id="C2G6P4yw0NOUqQ8oUAjzaW">18%</td>
+      <td class="flags" data-page-node-id="BSwFuoOjqdjto91TifxFyM"></td>
+    </tr>
+    
+    <tr data-page-node-id="16XaT9SOPbxujC8X3ADc0E">
+      <td data-page-node-id="5xWqAonjUNoTfuEo4PHyXG">002304</td><td data-page-node-id="hKXxAZlmAlwoXrEm6vGnua">洋河股份</td><td data-page-node-id="j42ugZz85Gl8g7gG1NOvaJ">consumer</td>
+      <td class="num" data-page-node-id="1CiCbk5x4c95piJQQwZE1k">39.68</td>
+      <td class="num" data-page-node-id="A9st04jOBDo2gwKELtr0YZ">0.92</td>
+      <td class="num" data-page-node-id="47usDGeI93hwTrw2f3A8l1">0.25</td>
+      <td class="num" data-page-node-id="4WbQWBKFuYkERPJQ4qGcjQ">0.95</td>
+      <td class="num" data-page-node-id="LWxUKam5GGLkr3iIvClQK7">0.83</td>
+      <td class="num" data-page-node-id="GptLPZnFqOoOSyYf2q9ln3">0.64</td>
+      <td class="num" data-page-node-id="x4rAHqjIzqEGzyxlnFEIRF">0.61</td>
+      <td class="num" data-page-node-id="Efw9VhiYZ1rzXCfgqq44sm">69</td>
+      <td data-page-node-id="iGaJhfUMsoOWvEyqtZwLbP">合理</td>
+      <td data-page-node-id="YTZAVQFEF2kMiixb4DdWW7"><span class="chip" style="background:#a02622" data-page-node-id="9VcyM9jUBuoVNPezSqCSXA">high_C</span></td>
+      <td class="num" data-page-node-id="wYxlVIMmRmNSDlTBE4wOap">23%</td>
+      <td class="flags" data-page-node-id="kM4BNYOoCPurVApYXiosZQ"></td>
+    </tr>
+    
+    <tr data-page-node-id="bqhQMotg2AUWb1vmFMUcOx">
+      <td data-page-node-id="bovsaXJrpY9yb56Hp1G2sZ">600025</td><td data-page-node-id="5jG2SdjnBnzbPQNRFzVEzz">华能水电</td><td data-page-node-id="qcCDTepjz9ScaFoCBpZTDG">power</td>
+      <td class="num" data-page-node-id="B9PRUeaYVCQtn8GgIhn02P">9.61</td>
+      <td class="num" data-page-node-id="UK6l9V2UJYxjONqGWRUi8g">0.57</td>
+      <td class="num" data-page-node-id="KBzQa9Hy8KlneruBcWPErv">0.87</td>
+      <td class="num" data-page-node-id="ScFUehUDH0RU3lDKsNfuHq">0.05</td>
+      <td class="num" data-page-node-id="8ikfBwOxANzAIRiFtXhcFC">0.79</td>
+      <td class="num" data-page-node-id="8uKwUGy0Jg8RsWDHeCvR8m">1.04</td>
+      <td class="num" data-page-node-id="MukRGHRwpx4aqT3K6ZWnS2">2.23</td>
+      <td class="num" data-page-node-id="clH7gx0cb8NrBLLXns3tcL">68</td>
+      <td data-page-node-id="l7DmxgDzcHPP3A1zN0u4mL">合理</td>
+      <td data-page-node-id="H66XCb2Ns7wCt5jtbaTZPJ"><span class="chip" style="background:#f0c93c" data-page-node-id="yk8EcOJPymY7NbaQzxbo1a">mid_B</span></td>
+      <td class="num" data-page-node-id="jdrxzVCcsavBO6gimtIxyt">20%</td>
+      <td class="flags" data-page-node-id="urAHoK2YU1JQFh3rw7lLG5"></td>
+    </tr>
+    
+    <tr data-page-node-id="xCFnJ3iAOPx3q8cgW7Ve4A">
+      <td data-page-node-id="BkCwxnkzvtsxMxvUpcNSQg">003816</td><td data-page-node-id="CSYp3xr3tcOQS3kQsrVxvq">中国广核</td><td data-page-node-id="KWQplgz0I5YLG2gn7hjKbU">power</td>
+      <td class="num" data-page-node-id="fq5s4qCykPPB2QX2qHwLkS">4.31</td>
+      <td class="num" data-page-node-id="MeWVY5a7MD6bu2JkvWcOpk">0.55</td>
+      <td class="num" data-page-node-id="tgHK3jeD2eetzBUbLgiwe2">0.83</td>
+      <td class="num" data-page-node-id="idrY9ZzU0x1KPpwXazncBA">0.55</td>
+      <td class="num" data-page-node-id="RaRpbjyxsG0MLj2eWQSaiz">0.76</td>
+      <td class="num" data-page-node-id="4Ti6FXj8bQGCFxy7VEIhT2">1.00</td>
+      <td class="num" data-page-node-id="mYxg1WB0nJoUL7gZMcHnZ4">3.09</td>
+      <td class="num" data-page-node-id="wNMy6eDq9QkBdlm2Ab4WPs">68</td>
+      <td data-page-node-id="Us14ThZqVVbHg45H5E7lW0">合理</td>
+      <td data-page-node-id="jCh0Fh7oPUGzZrvxd5ZnFQ"><span class="chip" style="background:#f0c93c" data-page-node-id="nw5VhryQEaCAFD9HgbIZRh">mid_B</span></td>
+      <td class="num" data-page-node-id="mz7m9X2CehDmjUDAqerLo6">25%</td>
+      <td class="flags" data-page-node-id="hzRodkL6qm0MlZRmaT0XML"></td>
+    </tr>
+    
+    <tr data-page-node-id="yV3PDHZm7u8LTqQDx1GBIn">
+      <td data-page-node-id="AwZpEuqtMaQn66veFeyRtC">002142</td><td data-page-node-id="yXIOpPiAAp7x6B1bCX1Xwi">宁波银行</td><td data-page-node-id="OgWivsxmpAQLYH5T2CDlGx">bank</td>
+      <td class="num" data-page-node-id="wVgYdgHwP3SSDEnAyB4IJD">34.66</td>
+      <td class="num" data-page-node-id="TSpjkClJHIiCoxxQQJuYKD">0.52</td>
+      <td class="num" data-page-node-id="6Ek0DLOCWUkO4uDnzKCc0A">0.89</td>
+      <td class="num" data-page-node-id="xs4e0ayMyUsH6tg3fc4ViV">0.05</td>
+      <td class="num" data-page-node-id="kBGXguPVXnSQxt1DWggR01">0.91</td>
+      <td class="num" data-page-node-id="zKvAQihDAUP75mwp2NKZ6x">1.02</td>
+      <td class="num" data-page-node-id="AICDR6GaFSbYZgxRnu3s9w">6.79</td>
+      <td class="num" data-page-node-id="bQpfXehoLNA98ezvpxDNCw">68</td>
+      <td data-page-node-id="jB8f7EK2PF2XLtGiTte2B5">合理</td>
+      <td data-page-node-id="KdRDxQ44W9XDSlTDmlyllu"><span class="chip" style="background:#f0c93c" data-page-node-id="7AppTreYBU49siXXzRYH2v">mid_B</span></td>
+      <td class="num" data-page-node-id="Nid6z5SlDCnAwZbSE3nDPx">21%</td>
+      <td class="flags" data-page-node-id="bxBDNuOD4CsfeMAUFpUqPI"></td>
+    </tr>
+    
+    <tr data-page-node-id="tGvis0XQpeU86NosK4kLat">
+      <td data-page-node-id="GvKdy7GuVSwhpQ51oEs7LQ">601009</td><td data-page-node-id="gL0xrJDGanQmIuUw5iPCEP">南京银行</td><td data-page-node-id="cZRxwNz4OF8JWBEMBiCCo1">bank</td>
+      <td class="num" data-page-node-id="MoJI3d0c0VT1gKmuoIBSSA">12.03</td>
+      <td class="num" data-page-node-id="oPVESE1L4QYEYP8vvkx599">0.40</td>
+      <td class="num" data-page-node-id="SGQWtsdc2tqxbStk0zcFMQ">0.90</td>
+      <td class="num" data-page-node-id="OOf0cxuqKVcM40wN1Pj3m2">0.27</td>
+      <td class="num" data-page-node-id="71GsivqR23ddD5FP6yl2Ws">0.91</td>
+      <td class="num" data-page-node-id="IBd8gZdYvntkqPv9Z0XRTi">1.03</td>
+      <td class="num" data-page-node-id="nTvW3QajixTcOU62dZL1Zx">2.00</td>
+      <td class="num" data-page-node-id="zO7ylRIeIz4AhxiJiKHN7i">67</td>
+      <td data-page-node-id="L9hK8AV2SxGBQ0RBXuNCvB">合理</td>
+      <td data-page-node-id="ME4v4PfTNAmykFWP9BvVTG"><span class="chip" style="background:#f0c93c" data-page-node-id="dI4JMthHTAkUE2dPPUsLGQ">mid_B</span></td>
+      <td class="num" data-page-node-id="y56mFwBLV21seBctwwbMFn">24%</td>
+      <td class="flags" data-page-node-id="5GzQ0nrr2c9ypoDlWsfPWS"></td>
+    </tr>
+    
+    <tr data-page-node-id="lkGznCmfX2HZbahcGVqBlI">
+      <td data-page-node-id="f1njw2XP7E3uxqFp6tmDAa">600941</td><td data-page-node-id="hIQ3OEmYwOp2Vs7rWORp8J">中国移动</td><td data-page-node-id="lYjIOtRHyzEZ4zVP9fi0Jr">telecom</td>
+      <td class="num" data-page-node-id="LsHXBGl43lnQdtZzJFrHRD">97.70</td>
+      <td class="num" data-page-node-id="DRDXP6Ih9h3uVta0NJi6O3">0.54</td>
+      <td class="num" data-page-node-id="GqGCHFoFViaaOqlyUdTyYe">0.75</td>
+      <td class="num" data-page-node-id="WDl1kDTrMpoCMhITuGjK82">0.19</td>
+      <td class="num" data-page-node-id="Nck0wEIINxYph1KaeOlMPL">0.74</td>
+      <td class="num" data-page-node-id="z6FDoeAglCJSvbtSWOrGeP">1.00</td>
+      <td class="num" data-page-node-id="D9yVwMqFUPLGMMhomUkjGp">2.28</td>
+      <td class="num" data-page-node-id="kJI0uu9fpXbDdYzYQUaU4k">63</td>
+      <td data-page-node-id="SoQVfjRQHolXsUEzVTYlGF">合理</td>
+      <td data-page-node-id="0PkRTBUjH1MxEeYGH6Xciw"><span class="chip" style="background:#f0c93c" data-page-node-id="YwN04rb4ECnu3iON4JzcMo">mid_B</span></td>
+      <td class="num" data-page-node-id="v15q7Di6CVyO5n70xs3B5n">15%</td>
+      <td class="flags" data-page-node-id="fAZst2Z0SqlFyuIfFn9ho3"></td>
+    </tr>
+    
+    <tr data-page-node-id="ov9WZomZ8TBod0VcbBpM39">
+      <td data-page-node-id="tNBMzSbQB8JzUdSGbb5QY7">600926</td><td data-page-node-id="A26lsxf4wGHOIRuUEtAY0z">杭州银行</td><td data-page-node-id="YfNJKB34dCih6odmPjEXyl">bank</td>
+      <td class="num" data-page-node-id="RwLmmyFcCtT0DUTZ4yX2Xa">17.20</td>
+      <td class="num" data-page-node-id="Hw06pENXstxLMXGCP4Fua3">0.43</td>
+      <td class="num" data-page-node-id="9HaNUcoRCYfqbIon6AMHiu">0.80</td>
+      <td class="num" data-page-node-id="4VsYIAkdA7E5NoLhxrbkBz">0.14</td>
+      <td class="num" data-page-node-id="o1fWlhULkAHIvkkZJ2bEFD">0.87</td>
+      <td class="num" data-page-node-id="FojVqKdQbPC0mIy8ZFVRwP">0.95</td>
+      <td class="num" data-page-node-id="AyGzU0vF22WzUnd17CNLCI">5.02</td>
+      <td class="num" data-page-node-id="GAOEEo2dfgmDti95pGDXgG">63</td>
+      <td data-page-node-id="2kzIz7WQVBHGkXqqlxZAOj">合理</td>
+      <td data-page-node-id="MRIYpDmndK8ka7Dc4go64I"><span class="chip" style="background:#f0c93c" data-page-node-id="2SDipt2Wzg2QMiQ5XnpAAE">mid_B</span></td>
+      <td class="num" data-page-node-id="67A2lOkGlQB1XacKxkZfsm">20%</td>
+      <td class="flags" data-page-node-id="TDBzFs990ojqAE4BFYjty7"></td>
+    </tr>
+    
+    <tr data-page-node-id="9XqwfBzxZYEImIh7chTK7C">
+      <td data-page-node-id="CTNDj6t6YAwVZrGA8keZHn">601333</td><td data-page-node-id="JjYqDW5B1QNbnTziL4Aa5k">广深铁路</td><td data-page-node-id="fcPrqWyHl6YlbgCgzom5pt">highway_port</td>
+      <td class="num" data-page-node-id="gzI2439ibJ90NSaV0IcGfB">3.14</td>
+      <td class="num" data-page-node-id="E4kNtYBtjCebD7wP7mTq3x">0.70</td>
+      <td class="num" data-page-node-id="DerzFYk1UMhfZeXZbyAqJ7">0.87</td>
+      <td class="num" data-page-node-id="WSv2XXmZDuQqlHVaWQCCHd">0.05</td>
+      <td class="num" data-page-node-id="3jxrjAfqbyzpaQgnwD7mUc">0.28</td>
+      <td class="num" data-page-node-id="xhHEmCoBFNuslCZ3ViyGzQ">0.71</td>
+      <td class="num" data-page-node-id="sE64md3h72pQrtstvGZBw0">2.43</td>
+      <td class="num" data-page-node-id="V5n891JTjqcBrDFu7UbZRI">58</td>
+      <td data-page-node-id="LyJWj7MJoBM6hjntAIM562">偏高</td>
+      <td data-page-node-id="fxhftp9PBh5n75OeE0wwDJ"><span class="chip" style="background:#a02622" data-page-node-id="4PC5odHEApFpBbp63il5UO">high_C</span></td>
+      <td class="num" data-page-node-id="wOeg7iFDVl7lR0apXNjVym">24%</td>
+      <td class="flags" data-page-node-id="lWWrne9nBzCTvD72UA4uiZ"></td>
+    </tr>
+    
+    <tr data-page-node-id="o0E7iTVxCFbK0gCBYETJru">
+      <td data-page-node-id="Rk6nr5zdfFVoEOfCMdTfO6">000963</td><td data-page-node-id="ysWz0R4ReJZ4Kl4V4ZCoNJ">华东医药</td><td data-page-node-id="xyVOKpW4zjlQWTuS8JUCrN">pharma</td>
+      <td class="num" data-page-node-id="Gw7H1Jg3bk0FJO4o8o7Gux">27.30</td>
+      <td class="num" data-page-node-id="k63uypQuhaISZMt4KyA3ZR">0.89</td>
+      <td class="num" data-page-node-id="pPSmu0yXpYB9hzucxL6eyZ">0.87</td>
+      <td class="num" data-page-node-id="EgdnizQfpSUyyHq1Ta7a2D">0.32</td>
+      <td class="num" data-page-node-id="9atUNLbIB4KTZuxBKqYpAY">0.92</td>
+      <td class="num" data-page-node-id="ULwo7jFGu8x9zrULhgAwaM">1.11</td>
+      <td class="num" data-page-node-id="yNz7CAyJKkwCBsgP3H3Mgy">1.24</td>
+      <td class="num" data-page-node-id="fsq1kBLCmujbHBSw9LkBqS">87</td>
+      <td data-page-node-id="NmMgs6q6PNvv9t1E5X74Ib">偏低</td>
+      <td data-page-node-id="1lHPtnuVh45gRTp98uVOxR"><span class="chip" style="background:#d9534f" data-page-node-id="OSnaVVrhyGyO4tv1IFO06R">high_B</span></td>
+      <td class="num" data-page-node-id="ajN7rU2iuM4CehXks6hAOA">26%</td>
+      <td class="flags" data-page-node-id="qWPyugQWETJQATQHgKH4f0"></td>
+    </tr>
+    
+    <tr data-page-node-id="VvBC7Xj472kitjVP4L1yAF">
+      <td data-page-node-id="7neiLdnB8ranTImmJlU5q2">601139</td><td data-page-node-id="epaxbKaG0RClGLByA6H2tB">深圳燃气</td><td data-page-node-id="BEjJ1Eu0ejSk6rXNQFeYHH">utility</td>
+      <td class="num" data-page-node-id="v8yyBoyYceJEwZhBSX9h41">6.52</td>
+      <td class="num" data-page-node-id="MccjFct57bb3yoEoRrquFB">0.81</td>
+      <td class="num" data-page-node-id="jqB8ZPPP4m31IsVr8u9VKj">0.92</td>
+      <td class="num" data-page-node-id="5ldQOT8m1biy8MDxfmc1IE">0.23</td>
+      <td class="num" data-page-node-id="lB4UwKPy9j0j1RnGZ5N7Xv">0.82</td>
+      <td class="num" data-page-node-id="GIAUkkqTOgUa9S1Tf1x0T4">0.99</td>
+      <td class="num" data-page-node-id="ih5SJXz28Oou3Z9UGCQFRC">2.54</td>
+      <td class="num" data-page-node-id="AAgOoytfQExYojad8OZRI5">81</td>
+      <td data-page-node-id="rZUVQim0bA90AoGv9aHxYr">偏低</td>
+      <td data-page-node-id="0rBwYk1Q3Z7aQGO48C9vop"><span class="chip" style="background:#d9534f" data-page-node-id="nX1AMbJdF5Mui9TWMtiqfs">high_B</span></td>
+      <td class="num" data-page-node-id="Qp7xOHkgVbofcZZmFnjo6O">27%</td>
+      <td class="flags" data-page-node-id="VEPD1JHmR0Gfu1sH4W9y4S"></td>
+    </tr>
+    
+    <tr data-page-node-id="9SSuTvaXCUMlXLDnVFUe7P">
+      <td data-page-node-id="Ty6JerjbdppXHOPhkEsBMU">000552</td><td data-page-node-id="3HijOLxkzdwhGkrDrW6azA">甘肃能化</td><td data-page-node-id="aNizUBIHUrUxJxnUtF0se7">coal</td>
+      <td class="num" data-page-node-id="3d4cDK9s6gFI1B9tCU1CBZ">2.65</td>
+      <td class="num" data-page-node-id="CYe1MJQABk4slZne93ra1T">0.78</td>
+      <td class="num" data-page-node-id="BzN7Mf673lhJcY53xB7myc">0.84</td>
+      <td class="num" data-page-node-id="Glsql86HpmN9xmYlU02LIR">0.95</td>
+      <td class="num" data-page-node-id="P8FmGTbIAIvMKnRcIf3igG">0.46</td>
+      <td class="num" data-page-node-id="Y1s7UqnAfV6VgJ8QEIFqUt">0.99</td>
+      <td class="num" data-page-node-id="4jpsLgc7tJudVC1tBYTEG7">1.06</td>
+      <td class="num" data-page-node-id="BAonGPexOJDdcLyzeXbSX8">78</td>
+      <td data-page-node-id="Gp9oS3v7K8Sx7wIxzboN3j">偏低</td>
+      <td data-page-node-id="LqFbY750DpkAOc8nFTBu48"><span class="chip" style="background:#d9534f" data-page-node-id="yMwJCPgqtpEOo94PhjmpIF">high_B</span></td>
+      <td class="num" data-page-node-id="6VzTOB4IGikAko3EFyYtwt">28%</td>
+      <td class="flags" data-page-node-id="WO1T9M5K6RishacEZszg8i"></td>
+    </tr>
+    
+    <tr data-page-node-id="56XKPv0i7J7Zv44vpH6ODr">
+      <td data-page-node-id="sRY85MDq45YnIpteuAaUEW">600028</td><td data-page-node-id="Ae1abyLdvafEhycOMFCF3M">中国石化</td><td data-page-node-id="V0VMK5FSCTN6j5kRs29HCS">oil_chem</td>
+      <td class="num" data-page-node-id="RXwLAbtRy6ahdsQenrGOT7">5.59</td>
+      <td class="num" data-page-node-id="gK0bIVxblI6of0Cg0q8U2G">0.64</td>
+      <td class="num" data-page-node-id="0hIM7t1wlbHs9ttzDTiuBU">0.80</td>
+      <td class="num" data-page-node-id="Uzk4oOkPhf2polL4CxClpJ">0.95</td>
+      <td class="num" data-page-node-id="jrGcmjRGmmtqgWelfejByp">0.69</td>
+      <td class="num" data-page-node-id="1g3Tv7eczVnD2WoVxJTRwP">0.99</td>
+      <td class="num" data-page-node-id="QNAF0H6RIW9LF8Kw1tc5P0">2.97</td>
+      <td class="num" data-page-node-id="VmhDOhHYPOxrm1cjIHWQUw">78</td>
+      <td data-page-node-id="yGUKoR1UFvDQ7eX72NTFAw">偏低</td>
+      <td data-page-node-id="a2xyuqA4z3shkMMlqddEEW"><span class="chip" style="background:#f0c93c" data-page-node-id="2axgjMVRowgDGQoVBSHthW">mid_B</span></td>
+      <td class="num" data-page-node-id="qWtDtmlbrubCbddACnKSMG">34%</td>
+      <td class="flags" data-page-node-id="5DfkRo740p4atxZlBvw4e1"></td>
+    </tr>
+    
+    <tr data-page-node-id="CCWEFvUWOvXNSrfSH9dDcy">
+      <td data-page-node-id="00fHpgu6AtRfJ9Fz1b81Qb">600803</td><td data-page-node-id="KDwVe3EgAm9dHf0VQvkj3V">新奥股份</td><td data-page-node-id="YvBg0W9E0L9ybHKsRrNqmV">utility</td>
+      <td class="num" data-page-node-id="OwgCimYY9paIVNKWioMJjx">18.96</td>
+      <td class="num" data-page-node-id="nmV2rRkKnB6CAyDTmpCXpL">0.68</td>
+      <td class="num" data-page-node-id="0sk796COQTClOBwfEsKvaN">0.92</td>
+      <td class="num" data-page-node-id="D8iYEqwat9uiUqjQb5wQ1A">0.23</td>
+      <td class="num" data-page-node-id="VKbgzahIHcddR0v1MZ5fX2">0.85</td>
+      <td class="num" data-page-node-id="m2P3b9h3piI3AawjBreunm">1.01</td>
+      <td class="num" data-page-node-id="Cf0dPpSQDGCaUHjCT98fKE">3.05</td>
+      <td class="num" data-page-node-id="7HrnmMWslvSbi5b7EyNMiq">77</td>
+      <td data-page-node-id="kygM3TCzT1b8ZSRKaGvTYL">偏低</td>
+      <td data-page-node-id="zuGaDcJdkCdEBgiDiT8eCe"><span class="chip" style="background:#d9534f" data-page-node-id="yCZu08vZEgIFInC2BPTgqW">high_B</span></td>
+      <td class="num" data-page-node-id="UyYysIQKI4swu9s89bYHfD">33%</td>
+      <td class="flags" data-page-node-id="J7XGZTZsq20ah4M7D7X6Ta"></td>
+    </tr>
+    
+    <tr data-page-node-id="8fKm7OjoRAbn8k9KrznrWA">
+      <td data-page-node-id="nYdj7KXo1fkevvNVoq0Sf6">600325</td><td data-page-node-id="d1VptKPEvfhwOPXval1bBK">华发股份</td><td data-page-node-id="Q5yeN86VX6hM3qmWQaFpaG">realestate</td>
+      <td class="num" data-page-node-id="vwtOWe0zbDjaXmy4jqdcme">2.64</td>
+      <td class="num" data-page-node-id="JrmbH9E9pfkGD0tECYaHYY">0.93</td>
+      <td class="num" data-page-node-id="IVApQzeYDzMPtaR6ACDHho">0.67</td>
+      <td class="num" data-page-node-id="DfQUd3HYPm9dmrtTdzl7tS">0.95</td>
+      <td class="num" data-page-node-id="GpxNvg4gVyQMNeBrJ39Rf0">0.55</td>
+      <td class="num" data-page-node-id="QhtY1AWPq3HWfIAGoU0HHU">1.21</td>
+      <td class="num" data-page-node-id="33YdItHDD9Y4ypnmmkyrRO">16.72</td>
+      <td class="num" data-page-node-id="GZQ0oiSkTZfSK0b6TobTpN">75</td>
+      <td data-page-node-id="2W6NoACLCWkyxAnCWq6cRH">偏低</td>
+      <td data-page-node-id="wjcxnflGwxOpFxA29sjcvI"><span class="chip" style="background:#e89a3c" data-page-node-id="Oemhn3WusvrSE7RiI048Vk">high_A</span></td>
+      <td class="num" data-page-node-id="mdO6B5QMrwObzvJfFRZYld">37%</td>
+      <td class="flags" data-page-node-id="03Dg8yZrAS54KzI1dcE6FF"></td>
+    </tr>
+    
+    <tr data-page-node-id="C9EmzuNWpUdMZ2kOR2gOPm">
+      <td data-page-node-id="O5qv5sZkt4BBRqFytl9Ysh">001965</td><td data-page-node-id="oAYpRUS0S0fXjHFqnR7PiA">招商公路</td><td data-page-node-id="ivzcUK3ulYIdzLvoJh5xY9">highway_port</td>
+      <td class="num" data-page-node-id="eH8AtOEmBwoeGwpmXRoJqB">9.62</td>
+      <td class="num" data-page-node-id="vClpQDVGnEIilt6PkVecw6">0.69</td>
+      <td class="num" data-page-node-id="M14iElT5ybl0ws37vJvyE2">0.84</td>
+      <td class="num" data-page-node-id="E2zdBe18uEFGlV73nE4AEK">0.61</td>
+      <td class="num" data-page-node-id="SKeLNnGpWN7WFdFgNBhk1f">0.70</td>
+      <td class="num" data-page-node-id="K5KBMKCtG0GOryEjA1xLOW">0.95</td>
+      <td class="num" data-page-node-id="8ML9lcxRtIy8p1aO87UB0M">1.34</td>
+      <td class="num" data-page-node-id="ABqKPvEFHTphWqEK4SGs0H">73</td>
+      <td data-page-node-id="wmhED2xiL6llW4QqPHO3QV">合理</td>
+      <td data-page-node-id="AdpeabOv0n1DS8kHN5uX5s"><span class="chip" style="background:#d9534f" data-page-node-id="C38w5VLka0YtCPNUz7mmcK">high_B</span></td>
+      <td class="num" data-page-node-id="0BH9fJ6yiDLcLX7A0pT7Xf">25%</td>
+      <td class="flags" data-page-node-id="SBrIZQcDTA9qDLZFIBpGIC"></td>
+    </tr>
+    
+    <tr data-page-node-id="ery8GhsowEpuhErBwL66Od">
+      <td data-page-node-id="FXwLJONMa5kPUMLHrMAugn">000983</td><td data-page-node-id="X9HUNYF0P5Fd2juJnmk0qE">山西焦煤</td><td data-page-node-id="yRp6ty1iw59t2mla7xLcwf">coal</td>
+      <td class="num" data-page-node-id="1MnZXqIYb3Hnlz6XBKhF0X">6.89</td>
+      <td class="num" data-page-node-id="ZlqCDAQjcSgMNIJkBLMOC1">0.76</td>
+      <td class="num" data-page-node-id="cbZnUwh5NSuSq5V59KyVJT">0.56</td>
+      <td class="num" data-page-node-id="4CT7xb1PmD4uB1dI2uOnN5">0.77</td>
+      <td class="num" data-page-node-id="fqNRG09638S0NPLPl0jN0H">0.75</td>
+      <td class="num" data-page-node-id="cm4rrGoGFr7RqoiVhJku6i">1.00</td>
+      <td class="num" data-page-node-id="WehdeX3PTxMeY16o3ODmqc">2.02</td>
+      <td class="num" data-page-node-id="IGyEcVmLlRiADOqhXXpD8W">72</td>
+      <td data-page-node-id="quWT5S15e7Lvi9oXwUvwxH">合理</td>
+      <td data-page-node-id="HkUIHUe3CN3kme19bnZg60"><span class="chip" style="background:#d9534f" data-page-node-id="mEfL91jf9gEsS4mgYzINdh">high_B</span></td>
+      <td class="num" data-page-node-id="A6C5oJWPcbqKkT6w5w7Prg">34%</td>
+      <td class="flags" data-page-node-id="zgmbzOsGM5UUCzrJFWSDMo"></td>
+    </tr>
+    
+    <tr data-page-node-id="rmoFgSGw3ByhoyehHPcMnn">
+      <td data-page-node-id="yPzzYFy1MtmUpLPRPMLbbJ">000830</td><td data-page-node-id="d5SiHHHTrFieyelEHlHc9S">鲁西化工</td><td data-page-node-id="JZOcWEDTB09CYIvdvi2CUL">oil_chem</td>
+      <td class="num" data-page-node-id="0rAj3yrbPv5Tn4DnkjSqha">12.91</td>
+      <td class="num" data-page-node-id="hqHlKq7DLF0bHRef7eiXLA">0.71</td>
+      <td class="num" data-page-node-id="l3XVIBhgrRKGSEGSpYwvTH">0.86</td>
+      <td class="num" data-page-node-id="cwlzuwQW4TsmD6WOQ3tZfi">0.68</td>
+      <td class="num" data-page-node-id="uSBNoUdW8g1MRxppzfw9UL">0.64</td>
+      <td class="num" data-page-node-id="erCWvtKwbtkohBihq38fGQ">1.00</td>
+      <td class="num" data-page-node-id="9lczxJsCZalTjQxnfJx3hT">4.70</td>
+      <td class="num" data-page-node-id="6O7X3DnqOgAcV8ViybgOZ2">72</td>
+      <td data-page-node-id="w1xHhkdcUbbjm1HtHeK61N">合理</td>
+      <td data-page-node-id="bWaFMreUwlrMobWLFPLsr8"><span class="chip" style="background:#d9534f" data-page-node-id="BemRlV0bGhj7GJFhGvEvbz">high_B</span></td>
+      <td class="num" data-page-node-id="Ucm4I9aWo863MYbdWE6EET">49%</td>
+      <td class="flags" data-page-node-id="2oWKAAD0cAAHnwTA8xgA9P"></td>
+    </tr>
+    
+    <tr data-page-node-id="eYzB6npw9ftmxa2QbBTIYO">
+      <td data-page-node-id="T7q0qlWsi0D0h8t1btsoeC">600426</td><td data-page-node-id="NYlXdJyn7dW6J99G3Wczgs">华鲁恒升</td><td data-page-node-id="L5hdRsiF8klVMsEbZ3m60F">oil_chem</td>
+      <td class="num" data-page-node-id="uSmV8hWqRSqAcmrnDVifLJ">21.14</td>
+      <td class="num" data-page-node-id="MGZrREbVlT6Ch5aUi5f1F5">0.85</td>
+      <td class="num" data-page-node-id="kNdSP7qxDLCxZ3B5FF1Nkd">0.88</td>
+      <td class="num" data-page-node-id="5BPs9tBfaTcZ8ew0KtHPc6">0.50</td>
+      <td class="num" data-page-node-id="TVpO5wjAiIIB4zf8BcZKoM">0.69</td>
+      <td class="num" data-page-node-id="OG5QAxRIZH66yirpFPp59X">1.04</td>
+      <td class="num" data-page-node-id="XVG1LdXuq3h8XA7fejjxae">1.27</td>
+      <td class="num" data-page-node-id="W4AtiQsaZFQjcUiBjiAGoe">72</td>
+      <td data-page-node-id="3cFEyaA34id80lOAqgCPr0">合理</td>
+      <td data-page-node-id="g5aXXqmnRx2VTGro513Wdc"><span class="chip" style="background:#d9534f" data-page-node-id="3KZSAlUlBOnyHwbxmWqp7p">high_B</span></td>
+      <td class="num" data-page-node-id="rjXUYoXtiYxWNHAhzQXJTV">54%</td>
+      <td class="flags" data-page-node-id="Xv3WcRjvx94EBnXomqoMOQ"></td>
+    </tr>
+    
+    <tr data-page-node-id="54tW96NtclHKwGROjSJgIZ">
+      <td data-page-node-id="ShoF6gHivJuvbvetRlAyUo">600000</td><td data-page-node-id="9BdDA7JCyDGi3PWGgPFvcA">浦发银行</td><td data-page-node-id="YpzE749BdIhZhXRkf70Dfy">bank</td>
+      <td class="num" data-page-node-id="kkkEHX3IPWmDOxbHLOFyOa">9.28</td>
+      <td class="num" data-page-node-id="tKWkp6rna4ohTWzK6N3ogQ">0.65</td>
+      <td class="num" data-page-node-id="g6Kd3P17l4ACoogrg4BtGZ">0.87</td>
+      <td class="num" data-page-node-id="WDTuT1a1Zalp13FDNbNlUa">0.77</td>
+      <td class="num" data-page-node-id="6UQs3UEblqsfEOvHVG3ZYi">0.68</td>
+      <td class="num" data-page-node-id="DKpuKPqpHAdo1y4sWkSTQu">0.89</td>
+      <td class="num" data-page-node-id="kVJ7gXV9jW7Ifzwmd88bpw">7.51</td>
+      <td class="num" data-page-node-id="P5nistIrY5rc5wzKjfJz2T">72</td>
+      <td data-page-node-id="HQj3tOUGApXkQHhBsqNV6m">合理</td>
+      <td data-page-node-id="2AahlZL1XP8AyzXyo91VWc"><span class="chip" style="background:#f0c93c" data-page-node-id="cHrOUzhd9MTCKKuyL6xxV4">mid_B</span></td>
+      <td class="num" data-page-node-id="ab88wVvzp0GT9yCJUGo3Iv">26%</td>
+      <td class="flags" data-page-node-id="zukmbRBuFRb7uoZZ9OP0v7"></td>
+    </tr>
+    
+    <tr data-page-node-id="QCs8NqA1sNzB2pOWaCjdCB">
+      <td data-page-node-id="4kDNsVIUB0UuEoMGdRtn2y">002422</td><td data-page-node-id="hA0TlcBwCFFP0a5Pr5YY1U">科伦药业</td><td data-page-node-id="wSfQq6y1E7IUUCmRiAtsct">pharma</td>
+      <td class="num" data-page-node-id="AwH0OwE1cItVrcNHsefdTY">40.76</td>
+      <td class="num" data-page-node-id="nMSoed2i6QMtfQQYYdhyVJ">0.42</td>
+      <td class="num" data-page-node-id="fWKkHCCNzyYt8GqZT2qpGh">0.92</td>
+      <td class="num" data-page-node-id="faFIHnfM4EwVLSRrhgoMX5">0.32</td>
+      <td class="num" data-page-node-id="OvidvJkoSvCRH7OwYXmfQ5">0.85</td>
+      <td class="num" data-page-node-id="RvZSY1LudWKaCTXtCcz2Ri">1.10</td>
+      <td class="num" data-page-node-id="h451Ca2YnoDFKIod3kJ8lx">1.55</td>
+      <td class="num" data-page-node-id="hQAh13qspoEDibpErMExQ2">72</td>
+      <td data-page-node-id="lz7Lqli7U0CDoQzVHN1FhF">合理</td>
+      <td data-page-node-id="u6ifDhj9upENuGtbYAoy2V"><span class="chip" style="background:#f0c93c" data-page-node-id="deGKmNAB4HLKp2WU5WEOtG">mid_B</span></td>
+      <td class="num" data-page-node-id="vc51ku9FllNdzRZbaSHfvc">41%</td>
+      <td class="flags" data-page-node-id="DaCkTKMrcCtUSBbeaZ72De"></td>
+    </tr>
+    
+    <tr data-page-node-id="dt8DiGypXC1oCQeXxmN2fb">
+      <td data-page-node-id="pwo96ZhaAd6AxEvZOoqfBf">600782</td><td data-page-node-id="FVAkyomGPOFuoxxAU8wBEY">新钢股份</td><td data-page-node-id="GFOs1XCD8HkC2MVDgK8dL9">steel</td>
+      <td class="num" data-page-node-id="4KW29dq2OS7Yr3vBIgyFR6">2.83</td>
+      <td class="num" data-page-node-id="AS1udsdO5phKWP2LWXBkqv">0.82</td>
+      <td class="num" data-page-node-id="Byt1xmRRPzWU3E6Y71tRIw">0.69</td>
+      <td class="num" data-page-node-id="4cGyWGsmwvtUpJJAEbjTUP">0.91</td>
+      <td class="num" data-page-node-id="fK0THD6LlnwjVrFrfi0Q7j">0.24</td>
+      <td class="num" data-page-node-id="1CMbjaimkkVS1mGSINrXGu">0.99</td>
+      <td class="num" data-page-node-id="Hd0Jgrd5jSyEClbQUtvOH3">5.56</td>
+      <td class="num" data-page-node-id="GwWwMhdXT75g0HIfa8yOb8">71</td>
+      <td data-page-node-id="RwURK6OBLqvSxqyCEeiSNY">合理</td>
+      <td data-page-node-id="aSQMHwFXf7XOy04AGWMut9"><span class="chip" style="background:#d9534f" data-page-node-id="4ta13pPOZTpp8GIiYGzK0N">high_B</span></td>
+      <td class="num" data-page-node-id="1ITHGgotqRs9oXu4rybeZw">32%</td>
+      <td class="flags" data-page-node-id="GLZlcAffHCck4mk20dBVRn"></td>
+    </tr>
+    
+    <tr data-page-node-id="6E7BcRoNr0LmS7bcx9R6C1">
+      <td data-page-node-id="IwUvIV756n8vijoPFjzsgR">600123</td><td data-page-node-id="1nB50kinohBKAgGv8iIX5q">兰花科创</td><td data-page-node-id="YchFYj7UA1NJdCb6oRVBYB">coal</td>
+      <td class="num" data-page-node-id="uB9Y0cf14pTc1n9Y2kHeBh">7.24</td>
+      <td class="num" data-page-node-id="BXmQvoTyTfvZAfMCDr8WQ9">0.77</td>
+      <td class="num" data-page-node-id="K9pEACcEk6fHag7h8blHqr">0.36</td>
+      <td class="num" data-page-node-id="Lu70kBbtALz6ZNUkFITc3z">0.86</td>
+      <td class="num" data-page-node-id="iDH0n21XsYW5pg42wQI1pP">0.70</td>
+      <td class="num" data-page-node-id="wU0htuMOJl90MwUruBbBwz">0.80</td>
+      <td class="num" data-page-node-id="deAUYHQgRvAGBtEijtbcCg">1.27</td>
+      <td class="num" data-page-node-id="NR6GHxv0l3AH1fEn0UAfrF">70</td>
+      <td data-page-node-id="9lH6km2a9E1ktAISK5QDWV">合理</td>
+      <td data-page-node-id="Da7tUHR93yEjjgvKUxqp4k"><span class="chip" style="background:#a02622" data-page-node-id="fhM5HEF5t9Eu75a9LfHqVm">high_C</span></td>
+      <td class="num" data-page-node-id="9SPtUIYUlKPmwjuJ4YK9MD">34%</td>
+      <td class="flags" data-page-node-id="UdJNcNgxziJXsfBVxGP5aY"></td>
+    </tr>
+    
+    <tr data-page-node-id="qJraMURGwUSJsu2NsYgr2Y">
+      <td data-page-node-id="z58cfsrmY6MMILBPRRDWlv">600660</td><td data-page-node-id="AAZtENWRZdOwZhXea4PbTi">福耀玻璃</td><td data-page-node-id="zouyhoToGyLHNd9zJlzbKq">consumer</td>
+      <td class="num" data-page-node-id="VrfHJycVBZfL3fU1OneuxI">54.17</td>
+      <td class="num" data-page-node-id="fR1g0BP08yvcvjDkd0SSPm">0.46</td>
+      <td class="num" data-page-node-id="kcmvczyklDlhjKHJhtuuMg">0.84</td>
+      <td class="num" data-page-node-id="aNMOIHrp355DS3U24K53sc">0.05</td>
+      <td class="num" data-page-node-id="g3mc2BGl8Wv1JRm72z4EIH">0.86</td>
+      <td class="num" data-page-node-id="vJvHUOtxXMmBC28WjB7sDE">1.01</td>
+      <td class="num" data-page-node-id="M395etXXnJzfFyJTPzoFu6">1.29</td>
+      <td class="num" data-page-node-id="IotABvdcdiUAr6Ik9AVDHX">70</td>
+      <td data-page-node-id="kP21JJSHwjm2M44WnJv2EX">合理</td>
+      <td data-page-node-id="IDERIQNkDQ8zgiom9Me52A"><span class="chip" style="background:#f0c93c" data-page-node-id="iCsP4GIcIcw1lUWs1p8dPd">mid_B</span></td>
+      <td class="num" data-page-node-id="C5h0yWQJAAfrXdotF8YkoG">26%</td>
+      <td class="flags" data-page-node-id="n3jtuWfohmsHapNPkWygJA"></td>
+    </tr>
+    
+    <tr data-page-node-id="2ogXHjGuqG6DBlAYJKjG3U">
+      <td data-page-node-id="sW1roo868UKmJUQrYQ19fO">000937</td><td data-page-node-id="mRByHNOloKWX5mSDotsM33">冀中能源</td><td data-page-node-id="x8pQIKPaVOhlJxZaY133xr">coal</td>
+      <td class="num" data-page-node-id="Q7sFT15KkozQroFmWsnYMO">4.82</td>
+      <td class="num" data-page-node-id="CMTFtTbyMPOffCCDaXhHgt">0.73</td>
+      <td class="num" data-page-node-id="yHHteVRvKvq71PbEspDVFj">0.42</td>
+      <td class="num" data-page-node-id="f0jk6WxHBMm8OPdUOsFDlF">0.77</td>
+      <td class="num" data-page-node-id="lFlAUXhAiD28u1lJB1ZxBV">0.76</td>
+      <td class="num" data-page-node-id="3uLG3TwUYYBtHQjNcVmrvL">0.90</td>
+      <td class="num" data-page-node-id="0z2fuCXbJ6HpfouMuNkpE0">2.06</td>
+      <td class="num" data-page-node-id="GnRMrRXK8WYQf804bBsRsk">69</td>
+      <td data-page-node-id="bEbDFiKDC4EC59iXRV7Zu8">合理</td>
+      <td data-page-node-id="7e8roDRSjRUgI3DP5a1qug"><span class="chip" style="background:#d9534f" data-page-node-id="5E4VnCG41kDvDBfYaMGkMA">high_B</span></td>
+      <td class="num" data-page-node-id="f1wI1Vc7KQeNkZXhnXfsPm">34%</td>
+      <td class="flags" data-page-node-id="XipeU1DFd2g6h7QrZePrw4"></td>
+    </tr>
+    
+    <tr data-page-node-id="c6JSyFOZmKbW7cth0lJ5yh">
+      <td data-page-node-id="6WpJZ8M1bSt4uNAm0RUsB4">600309</td><td data-page-node-id="voUOkCaW1C1m7MwUeQylJ3">万华化学</td><td data-page-node-id="3uX2Rq2XUSV5GvsdvfNpkG">oil_chem</td>
+      <td class="num" data-page-node-id="WkWR9yiAWHKcLKerkAs0F8">78.09</td>
+      <td class="num" data-page-node-id="xKoSZbgXwGu2RpY1jw43OE">0.77</td>
+      <td class="num" data-page-node-id="QpXFQbF6R1IBr95JDCERuU">0.73</td>
+      <td class="num" data-page-node-id="CZASC9vORY21hXeSGc5O88">0.50</td>
+      <td class="num" data-page-node-id="EsBf8NgMURajnkq7FGim9k">0.78</td>
+      <td class="num" data-page-node-id="beEFICyJ8Ir5R8w6ch3JYy">1.00</td>
+      <td class="num" data-page-node-id="k0MjokFtbdysuImtonUAz2">2.31</td>
+      <td class="num" data-page-node-id="nXhhmMm1n4KuAk00e1dgiV">68</td>
+      <td data-page-node-id="nGFAdAOtdVcB47aE2tocUk">合理</td>
+      <td data-page-node-id="wpu5SQNyO4D6GgOJwhExIS"><span class="chip" style="background:#d9534f" data-page-node-id="UKXPkiyQjdNBxnmc6X7Z8R">high_B</span></td>
+      <td class="num" data-page-node-id="ipujJsNAFAL4anp8dftuWI">35%</td>
+      <td class="flags" data-page-node-id="GIapUFT3gDJ6BtyN31BG7l"></td>
+    </tr>
+    
+    <tr data-page-node-id="CXiTOa2zIQ2wAworw5ERmh">
+      <td data-page-node-id="Yp7wbEmLiZe8hUn2iLnfeY">000932</td><td data-page-node-id="FTFEVfsUZIKiVgWKkcVZkq">华菱钢铁</td><td data-page-node-id="3GsAnP2fZpDfP4y8kILlZy">steel</td>
+      <td class="num" data-page-node-id="nhEeqSqx9pQUAyS7uLBpwG">3.65</td>
+      <td class="num" data-page-node-id="PaUUUDCSPL9HLTzC3zsBfK">0.89</td>
+      <td class="num" data-page-node-id="w35xrH6ba9vvHJn3YfzvRE">0.77</td>
+      <td class="num" data-page-node-id="HLm7lkB2HZirVu8yjIwwDK">0.68</td>
+      <td class="num" data-page-node-id="0FXd6BbMPC9oknexaHHsr9">0.28</td>
+      <td class="num" data-page-node-id="ioB26kHZAKNrOT5D7CzeLr">1.12</td>
+      <td class="num" data-page-node-id="k65DtEztOhNTIHHEQMBLpV">2.52</td>
+      <td class="num" data-page-node-id="9GKgLn65vHGvO2GPUcrJ2F">68</td>
+      <td data-page-node-id="5eHjo07pjHzJWIvsACvDLX">合理</td>
+      <td data-page-node-id="hc64fQfET3DTfBhOD4aYtT"><span class="chip" style="background:#d9534f" data-page-node-id="CuCnaaEG0pG6NBJWwFb8Uu">high_B</span></td>
+      <td class="num" data-page-node-id="pAsIEVHcO2p0eKPtDuHep7">35%</td>
+      <td class="flags" data-page-node-id="NqJnjjpf9ylTLqkwKmf8pz"></td>
+    </tr>
+    
+    <tr data-page-node-id="8WLAYzOt8NnnPkS0ZyQ4eL">
+      <td data-page-node-id="kBAzXxCX62FyK4ZUOs3msC">600027</td><td data-page-node-id="LQc5jfATuho0NE4NApiKHl">华电国际</td><td data-page-node-id="Loin4Vd6Kg25KlPRoyI2C9">power</td>
+      <td class="num" data-page-node-id="91p0y2yGkTUfVDvrBzoHlT">4.84</td>
+      <td class="num" data-page-node-id="rUUgCFQSc56WGFyloOzRuq">0.69</td>
+      <td class="num" data-page-node-id="bzUumNLu1Ifo6OT6d1S4nC">0.92</td>
+      <td class="num" data-page-node-id="CSCrceZC1sIX0kzN4l3JAa">0.14</td>
+      <td class="num" data-page-node-id="bb1G1RWOuvi5NPtdW0F9Ng">0.54</td>
+      <td class="num" data-page-node-id="n2pHCPp5lokGLxdDwTBbc5">0.92</td>
+      <td class="num" data-page-node-id="ChWvxFfj5GlXIrgxJxULBn">3.41</td>
+      <td class="num" data-page-node-id="K9BPG42Vj1Z6bPDxZMPXpk">68</td>
+      <td data-page-node-id="YIVhqD72R8PsyChH5uiLHR">合理</td>
+      <td data-page-node-id="0ib064OiKt18hhndX26nVO"><span class="chip" style="background:#d9534f" data-page-node-id="brH5jju1ECAPV5bZpbCrxg">high_B</span></td>
+      <td class="num" data-page-node-id="wgrG3gC9ba3vbhqlbaiiWN">30%</td>
+      <td class="flags" data-page-node-id="gSR9gV8HwHbsE54SucT6gJ"></td>
+    </tr>
+    
+    <tr data-page-node-id="sFXnMPGLcpM1eB1MT1NwOe">
+      <td data-page-node-id="74V5cCuPAFzd1pc6PmoVrF">600011</td><td data-page-node-id="nLrJAKk5IRt0WUIiSEpJ4s">华能国际</td><td data-page-node-id="7ltmXFL01tbBkAJv9umQOr">power</td>
+      <td class="num" data-page-node-id="s4hloBOGgJq6tjLfVSOUPb">6.90</td>
+      <td class="num" data-page-node-id="VuFrORQ4HQB8y4q3uCGouK">0.69</td>
+      <td class="num" data-page-node-id="5P05YYblDGFaWzsJQmszF7">0.89</td>
+      <td class="num" data-page-node-id="s9WOQEY8wPnzTflr79V1aN">0.14</td>
+      <td class="num" data-page-node-id="125jlBe5oucHXlKRytiNpG">0.57</td>
+      <td class="num" data-page-node-id="OGi5msrnUeab4mjQkGgnsD">0.92</td>
+      <td class="num" data-page-node-id="cifu1aiWlVTBTO3ght7oW3">4.99</td>
+      <td class="num" data-page-node-id="5GABuhqxtE8hrrbvfS0QJB">67</td>
+      <td data-page-node-id="dWrmMk8P0chrlkhjAsItwN">合理</td>
+      <td data-page-node-id="unlW8HLuj12HyKo9oVCE0q"><span class="chip" style="background:#d9534f" data-page-node-id="5L21xS5onsjT3FPQUjuo6L">high_B</span></td>
+      <td class="num" data-page-node-id="J2JFEaTQl1ejfZg7a2i1ey">40%</td>
+      <td class="flags" data-page-node-id="s6gReNEb0ah4tD2Cd5ZZf6"></td>
+    </tr>
+    
+    <tr data-page-node-id="3JWt2hfZxrLojpBMtAIaGL">
+      <td data-page-node-id="Qf1GFbdshEH70jsNJCLNP5">600566</td><td data-page-node-id="BWKIHdPhvbyZOQd5rKJByq">济川药业</td><td data-page-node-id="iJBKL77v1kGL3Wg8CpanGf">pharma</td>
+      <td class="num" data-page-node-id="bKnChDPDNAzo5zFC4GFcLl">25.86</td>
+      <td class="num" data-page-node-id="PpeWbfclAojXK1ETLIrCTr">0.58</td>
+      <td class="num" data-page-node-id="9sMGhCIjh2BsG3ShXf5nBC">0.53</td>
+      <td class="num" data-page-node-id="nOSbHqH4F86ZdXcCWqC8rC">0.59</td>
+      <td class="num" data-page-node-id="lDSWFq7VUwyr7NWgod6JcH">0.88</td>
+      <td class="num" data-page-node-id="5JoCjEJFpWJ6P1hlkMJP53">0.87</td>
+      <td class="num" data-page-node-id="jOaAKLdjB7A44vrdvxSabY">0.86</td>
+      <td class="num" data-page-node-id="KeuNR2tBgDJRlrpAkgYL8D">67</td>
+      <td data-page-node-id="nu3FEUcb3qYQKwHfFNZFS1">合理</td>
+      <td data-page-node-id="EBuzcQXseZuzcba1BbRvtd"><span class="chip" style="background:#f0c93c" data-page-node-id="1EOG4faf5DRTr8UEAcHioq">mid_B</span></td>
+      <td class="num" data-page-node-id="oggriKSEk2EezS3oZGp6PC">32%</td>
+      <td class="flags" data-page-node-id="nkmZNO7hhAVXqQeUypoR53"></td>
+    </tr>
+    
+    <tr data-page-node-id="Zlna7pRUGFDpGNwBdHPskH">
+      <td data-page-node-id="TPeUkiEwiVROX2c5dL8g2F">601699</td><td data-page-node-id="f1UEzecgagyBurA7jAl90y">潞安环能</td><td data-page-node-id="nSZn1CeOvuaSAIFEIiF7Sb">coal</td>
+      <td class="num" data-page-node-id="vK1USKmtBj3mfbyeGlf6F7">16.18</td>
+      <td class="num" data-page-node-id="Q1nAmZAOAFAs2iBbel6cww">0.53</td>
+      <td class="num" data-page-node-id="b4bZv3Gv6FqWJijgQybhra">0.61</td>
+      <td class="num" data-page-node-id="OgtYBXhf2TM9R8i8AEqtoC">0.77</td>
+      <td class="num" data-page-node-id="XRATEFBpiHPDJV794vdpVj">0.71</td>
+      <td class="num" data-page-node-id="LWdlOpdkUFDoYzsg2Vpdgt">1.00</td>
+      <td class="num" data-page-node-id="aS4LnrrxG0eneRk3hCoXBx">2.03</td>
+      <td class="num" data-page-node-id="FBKLyofukGSEvZRECaE8zN">66</td>
+      <td data-page-node-id="HqzUVAiUp1hGzogtec2Jb7">合理</td>
+      <td data-page-node-id="fXSix7wAzloECm65sJqEJg"><span class="chip" style="background:#f0c93c" data-page-node-id="cH47TRFRTYZSDWqWjdMeZd">mid_B</span></td>
+      <td class="num" data-page-node-id="y6O5FgM19h89o8a4bpRLWN">44%</td>
+      <td class="flags" data-page-node-id="uqLbWHrt6o1h2fbS2Rl4lg"></td>
+    </tr>
+    
+    <tr data-page-node-id="yutWmtF8c8qUyGF9RzQ8dY">
+      <td data-page-node-id="DqLUd4WvLWpxzz04fSQVSO">002493</td><td data-page-node-id="1EBv9Rt2a7gcRQblmZsRA8">荣盛石化</td><td data-page-node-id="CUHQi81FCp9rd5ncIDR9k0">oil_chem</td>
+      <td class="num" data-page-node-id="nez1444JbQ3RTj3m5XVndI">14.49</td>
+      <td class="num" data-page-node-id="LNawfxVWhzQzNo0FrAdZIg">0.71</td>
+      <td class="num" data-page-node-id="KCVDvkHIdzb3tYSNI6sMuG">0.63</td>
+      <td class="num" data-page-node-id="SeTLflUX3jE4yHdqzGmJKN">0.86</td>
+      <td class="num" data-page-node-id="Y8zzNukSyHUoAl6bm39m9n">0.28</td>
+      <td class="num" data-page-node-id="XpGV8FoLgW2JgEQgeZt4kh">0.60</td>
+      <td class="num" data-page-node-id="9nqPBCcPgMCBbACRBWQhlM">47.77</td>
+      <td class="num" data-page-node-id="B2eYehrp0MtlgBo9oBnZpt">65</td>
+      <td data-page-node-id="lCgB75VXx2u6eDsd7MkAuK">合理</td>
+      <td data-page-node-id="hRtDGMqF0gOgaTxefonFz0"><span class="chip" style="background:#a02622" data-page-node-id="SH8GlIrLJRToeuHFBmR2y5">high_C</span></td>
+      <td class="num" data-page-node-id="VIMwS4elYOmA0HoayHdbiI">42%</td>
+      <td class="flags" data-page-node-id="FXnDu7OQ5GwYcpCenfLrTy"></td>
+    </tr>
+    
+    <tr data-page-node-id="I8wl6BaXhlcSUw1Iv4uDS4">
+      <td data-page-node-id="mF28ihSBnm4dG3XOKc3Xnx">601628</td><td data-page-node-id="AefsidQabWTQXj9yAizlag">中国人寿</td><td data-page-node-id="z3X2ggEO4GEnyVdB04otfr">insurance</td>
+      <td class="num" data-page-node-id="C3QdPlYrYPSnvps4GDIuRc">38.06</td>
+      <td class="num" data-page-node-id="NFfA2DMxBpO9xR6eD5hHmj">0.76</td>
+      <td class="num" data-page-node-id="s566CgqZc6ezR2KZh1l3AB">0.63</td>
+      <td class="num" data-page-node-id="78mAJfTSB403kO1gZypgWx">0.05</td>
+      <td class="num" data-page-node-id="oEARoeueaSkoUFDTakUDoO">0.83</td>
+      <td class="num" data-page-node-id="EomvEEyETXlSoXQr61yWRf">0.96</td>
+      <td class="num" data-page-node-id="DGMqRJweQEXViStUWHqXGs">3.54</td>
+      <td class="num" data-page-node-id="I2137hIyGBSMxGMtZS4ULT">65</td>
+      <td data-page-node-id="WuDdKD523qeaSL99V7Fpwk">合理</td>
+      <td data-page-node-id="UAOt5meG2SW7xdJcGK0BmI"><span class="chip" style="background:#d9534f" data-page-node-id="nc76dIdjeUnRo8g6O4Tljw">high_B</span></td>
+      <td class="num" data-page-node-id="NL5HYFDUQsfVWQyCjgOLur">28%</td>
+      <td class="flags" data-page-node-id="GjN9ppGjFNjp9QTHcWVpbJ"></td>
+    </tr>
+    
+    <tr data-page-node-id="jvMNiUxFXxD9bFPbDFx1Up">
+      <td data-page-node-id="fPQMrAumEOKClET2JJVInK">600048</td><td data-page-node-id="mlaoqyhsar8PPq8er7Ut7R">保利发展</td><td data-page-node-id="PpIC7OFsIJTfTxHLdG0xh2">realestate</td>
+      <td class="num" data-page-node-id="0PhPIMPdFm3ix3YAUvZSmR">5.28</td>
+      <td class="num" data-page-node-id="bMQkANSXnqeiBkQU00R36j">0.88</td>
+      <td class="num" data-page-node-id="6hbdGi7R9jYCsLdf8FiBuU">0.38</td>
+      <td class="num" data-page-node-id="TLSkpQH0JccG5L4Ja0ODi8">0.95</td>
+      <td class="num" data-page-node-id="NYCP1Ur6Zgorl6byjsEiUP">0.47</td>
+      <td class="num" data-page-node-id="VZiH2BGw8XLtUFJqnSndEG">0.84</td>
+      <td class="num" data-page-node-id="RaPU2NDvysQSt6YX1NGAsi">1.25</td>
+      <td class="num" data-page-node-id="IHRO6Qgf7IPG7EzK0vD4PE">64</td>
+      <td data-page-node-id="eLCp1TFJf3pugHGlE67bjn">合理</td>
+      <td data-page-node-id="Gl5kzysnRSQSswqkexPFuj"><span class="chip" style="background:#a02622" data-page-node-id="XXGLXu6gegk94E8VCXSPZX">high_C</span></td>
+      <td class="num" data-page-node-id="z74LJKGCEYviMlxIey613c">29%</td>
+      <td class="flags" data-page-node-id="LfgdMSO5C0D5Ed4VYDaYT1"></td>
+    </tr>
+    
+    <tr data-page-node-id="E3EH6jE2d799NDHfHKjBno">
+      <td data-page-node-id="YPNrJfSNJ3yMWVhnCwc6G1">601601</td><td data-page-node-id="2WFOWuV3OtSDmeUq7B19Kv">中国太保</td><td data-page-node-id="OAY9n29gLgbAkG8zHctnuR">insurance</td>
+      <td class="num" data-page-node-id="jCB02HMO6fwNsvKbStbacX">33.56</td>
+      <td class="num" data-page-node-id="BV4lGcq4sZDvIzBGTu4DBs">0.59</td>
+      <td class="num" data-page-node-id="MbKzuT3YobsPuBLGPvsxLM">0.75</td>
+      <td class="num" data-page-node-id="F6oeFIlKOQYdwj4kVGbGjN">0.05</td>
+      <td class="num" data-page-node-id="a5yo5XhZLbuqLcPxwoYfod">0.88</td>
+      <td class="num" data-page-node-id="KQ2uHR2lzxaU0zj1MavyDV">1.06</td>
+      <td class="num" data-page-node-id="AL00NJBoLlDfXOWwV1EkmT">3.65</td>
+      <td class="num" data-page-node-id="tcdHbimdsjqxlJ1mDBoMEE">64</td>
+      <td data-page-node-id="UX58bobisQW91bFUa23yEv">合理</td>
+      <td data-page-node-id="g5CNF6eN9kciS8UhT4s4BC"><span class="chip" style="background:#f0c93c" data-page-node-id="UEVMtzeFMiWbwWMufLZqUy">mid_B</span></td>
+      <td class="num" data-page-node-id="HDg2aVzYwiAcvImIL7dSC0">33%</td>
+      <td class="flags" data-page-node-id="6xFpCT7olHmlZtmj6YQrQt"></td>
+    </tr>
+    
+    <tr data-page-node-id="327FKX5MJEtbYC18G0B3t8">
+      <td data-page-node-id="FDXKFHZpHpWSDCbB3lAgFJ">600507</td><td data-page-node-id="a5Pvth0Mj3RPJtzSvvaBeA">方大特钢</td><td data-page-node-id="QBE4YrZm1BjgIG6C2t6eMz">steel</td>
+      <td class="num" data-page-node-id="Bi03obgYD8wr0BuzNLGVvK">4.29</td>
+      <td class="num" data-page-node-id="9g9XLqNPxZ8uxAotg4vvkH">0.81</td>
+      <td class="num" data-page-node-id="qd39rlL83PZFw0XwyoPhZq">0.40</td>
+      <td class="num" data-page-node-id="Nhl8AhnQaZ2jMM3zBOFAsY">0.68</td>
+      <td class="num" data-page-node-id="tN44PMi9McVDtYZIriAkPY">0.55</td>
+      <td class="num" data-page-node-id="XzN6OOAKgdwQCWG6am4wl9">1.01</td>
+      <td class="num" data-page-node-id="J30S0jvkdVkc0hoXwRAQFC">0.86</td>
+      <td class="num" data-page-node-id="HqvsrEU9udakHIw4qxk8WT">64</td>
+      <td data-page-node-id="WTjJ1BW7uADgZWm5NW6foG">合理</td>
+      <td data-page-node-id="96H2c4ETfohddyHcSamXAL"><span class="chip" style="background:#d9534f" data-page-node-id="3ILDPm0n7qSsq4GveIup0Y">high_B</span></td>
+      <td class="num" data-page-node-id="XEqpxT2n7qihKUN4Rqq68n">38%</td>
+      <td class="flags" data-page-node-id="TTmMctJlmboKbGMF8Dp8UM"></td>
+    </tr>
+    
+    <tr data-page-node-id="WzSXhNVWb4AEqQ1yPm5MnL">
+      <td data-page-node-id="NyZ14IJzIzeFtQzcIUaoDv">601666</td><td data-page-node-id="591PkNIKYtpyC3QKvMgciO">平煤股份</td><td data-page-node-id="VNETPxfPzntxp9mWrrZA0X">coal</td>
+      <td class="num" data-page-node-id="ucoZVGH9s4Sb1PUx9iWQBb">9.40</td>
+      <td class="num" data-page-node-id="AXWEiuwg7W2GMKfVmsbqTd">0.55</td>
+      <td class="num" data-page-node-id="tNNjWbP4lHyKv0AtGUl4eM">0.35</td>
+      <td class="num" data-page-node-id="Zjo7aKGFzDNGBFMggiC5JH">0.86</td>
+      <td class="num" data-page-node-id="crFNBY4PK6VupmoGQXA2hu">0.65</td>
+      <td class="num" data-page-node-id="iqEKa7wIZsGgLNm5mf9qpz">0.76</td>
+      <td class="num" data-page-node-id="oEzFIcAZNqTohEFA4ALjMo">2.51</td>
+      <td class="num" data-page-node-id="OeCUSHE8YNwMAVT8skCVAG">62</td>
+      <td data-page-node-id="iauW5eqvsYdbCGlFuFaGYG">合理</td>
+      <td data-page-node-id="FGBLCh9mllIKfoX6voO6xV"><span class="chip" style="background:#9db8a0" data-page-node-id="bGn5nBtusGcR529chWJ6Rr">mid_C</span></td>
+      <td class="num" data-page-node-id="yd9kKJd2pZScb7HfRi3xoM">40%</td>
+      <td class="flags" data-page-node-id="QmYwY023Ms8D8rHULmtAMw"></td>
+    </tr>
+    
+    <tr data-page-node-id="djTIrs33B8gium7mT3DSub">
+      <td data-page-node-id="RJR52gXABDoCdwctncP1fJ">600023</td><td data-page-node-id="nZBQxuHCi9FbIA25m4MGEX">浙能电力</td><td data-page-node-id="T9hzAYh3PJqJ9XOYxADJMq">power</td>
+      <td class="num" data-page-node-id="qJBxBIIlQSwHZzyM2dp437">4.93</td>
+      <td class="num" data-page-node-id="4e2O3uYJWDEMnkpW8bB1JJ">0.49</td>
+      <td class="num" data-page-node-id="rjL9K9UxXrxRIuiLzPAdmK">0.89</td>
+      <td class="num" data-page-node-id="9kwgR2IDBzJyLmCD8gKBti">0.14</td>
+      <td class="num" data-page-node-id="D45xX48lOw5IaIKRlBva9m">0.64</td>
+      <td class="num" data-page-node-id="BEvAZCBkYtbunC1W7Oy1Is">0.96</td>
+      <td class="num" data-page-node-id="rbxbk8znYtQHuYeuKVbwbf">1.76</td>
+      <td class="num" data-page-node-id="FvxrUpkPEryQHy8c3vfCmS">62</td>
+      <td data-page-node-id="cw63Qhg08nlOkvQPRFnN8I">合理</td>
+      <td data-page-node-id="74zblELzYWqgmID6miD2tx"><span class="chip" style="background:#f0c93c" data-page-node-id="dN7SDndJFqBbHEJEJ9l8gE">mid_B</span></td>
+      <td class="num" data-page-node-id="yIGNfhUCZEHIQmlDHouhl5">27%</td>
+      <td class="flags" data-page-node-id="VYfvRV44i3YFRtOSGJ5ohE"></td>
+    </tr>
+    
+    <tr data-page-node-id="ELPLQxLKSlCLg8V1NsU5qw">
+      <td data-page-node-id="9fdtamUYPeyJfkXZ0GAZAi">600346</td><td data-page-node-id="9yQToWH34ue9LkzWmf4hAy">恒力石化</td><td data-page-node-id="8YwwdC91ot6wKwksoIjeRC">oil_chem</td>
+      <td class="num" data-page-node-id="1XKXmvIy7xENTjpzlKVDDK">18.79</td>
+      <td class="num" data-page-node-id="STSqk3uKxCfxGlNCiyBNf6">0.64</td>
+      <td class="num" data-page-node-id="Oj1BLvS9PhjQVkgW4LvsFi">0.87</td>
+      <td class="num" data-page-node-id="Cx1fSpICqy9mhipeINbA1k">0.32</td>
+      <td class="num" data-page-node-id="VzJ8AvhrySAvF8oCx8Xfot">0.64</td>
+      <td class="num" data-page-node-id="mDDG5alwjL55B0D8UTBrJU">1.00</td>
+      <td class="num" data-page-node-id="6WWQiGqgf7xpFxEU6PnEhL">3.41</td>
+      <td class="num" data-page-node-id="t3cCiEo0v9C5kSU3ZxNFDD">59</td>
+      <td data-page-node-id="6WoTAaq99F6JG6YWijwPSo">偏高</td>
+      <td data-page-node-id="XDUARSWSABKiJXEA6vxq7I"><span class="chip" style="background:#f0c93c" data-page-node-id="mdWDlaIW3PUap4QaeuLYMc">mid_B</span></td>
+      <td class="num" data-page-node-id="M8xiuEJB26GPxBoJYnihkc">42%</td>
+      <td class="flags" data-page-node-id="VMISOBv5JrUu544dffDCHU"></td>
+    </tr>
+    
+    <tr data-page-node-id="6bG19mOP5M3gS9LY0aFTQI">
+      <td data-page-node-id="CndIemMv2c67aWPCtli7xW">601728</td><td data-page-node-id="kF8pXOLl8c9UM1C2awIyKo">中国电信</td><td data-page-node-id="kH8ZnDMYMY3vJLqTlaKdvv">telecom</td>
+      <td class="num" data-page-node-id="RtaANZWg6rPm5JU0x0bQNG">6.31</td>
+      <td class="num" data-page-node-id="aWy6v3PlPc36jSRbZagRFJ">0.48</td>
+      <td class="num" data-page-node-id="ODRjD0svNemgIh2qEEMQWg">0.75</td>
+      <td class="num" data-page-node-id="z2lDvUqAkonmD34AtxkfGn">0.09</td>
+      <td class="num" data-page-node-id="KMIXKxpQn1Sjlq0oK0yif5">0.61</td>
+      <td class="num" data-page-node-id="bkQtO6fg0T7IAHm4QjgvLf">0.91</td>
+      <td class="num" data-page-node-id="MX3F8LFFwrPEGLy7IjH14J">4.40</td>
+      <td class="num" data-page-node-id="XzmXr23vGImWXLdfLDROxT">57</td>
+      <td data-page-node-id="tLv44PAcWgPZIxU77EEuYJ">偏高</td>
+      <td data-page-node-id="ajB0093ID8UPVc9HQkdm2z"><span class="chip" style="background:#f0c93c" data-page-node-id="JUkrLs24omlEGNeZuwWTmV">mid_B</span></td>
+      <td class="num" data-page-node-id="Gbgh6AeLX7UQGeub3JNGKZ">26%</td>
+      <td class="flags" data-page-node-id="CB3Vfbkpm6iTzX73m3UxA5"></td>
+    </tr>
+    
+    <tr data-page-node-id="UyDFq3SbqAAfv8ADod8elA">
+      <td data-page-node-id="6XewlVgaGlOgtwgz2dFOx8">601233</td><td data-page-node-id="4FZ7H8aOhmK0RylHVWAg6d">桐昆股份</td><td data-page-node-id="rg4f3GOsyhoKLcpnUvuLka">oil_chem</td>
+      <td class="num" data-page-node-id="LIXacHBAp7LhINPKcHFA3Z">25.07</td>
+      <td class="num" data-page-node-id="jwuOrG4sEUBl3y6FzpnwtL">0.70</td>
+      <td class="num" data-page-node-id="C8dHmGfaeUE16k1LTWwPSq">0.60</td>
+      <td class="num" data-page-node-id="vpP0Wzh6sJFBPcMbcjMjbQ">0.59</td>
+      <td class="num" data-page-node-id="bNIQlj80BnCr7w8pAOon2n">0.29</td>
+      <td class="num" data-page-node-id="Zg14yzuAHozSZHWbXqUYKZ">0.59</td>
+      <td class="num" data-page-node-id="66FqsHW5Nx2s5Wcg4lJnNs">3.92</td>
+      <td class="num" data-page-node-id="Ei7RF02ULGCH5HILWwK5W5">57</td>
+      <td data-page-node-id="48soSrM0rCmg5Y7p9LAotV">偏高</td>
+      <td data-page-node-id="G1V075UNDvBBWGSy66UTRe"><span class="chip" style="background:#a02622" data-page-node-id="fqOrnkeKSzevugsaOIAVhs">high_C</span></td>
+      <td class="num" data-page-node-id="w66DXOGe0BXxQMgbcQgpnM">49%</td>
+      <td class="flags" data-page-node-id="ISjwwBPQU6kc0nJZnFCTMU"></td>
+    </tr>
+    
+    <tr data-page-node-id="iZ4jl8pqh7bAMdDCJGzDzA">
+      <td data-page-node-id="6tTberksAsoQyWUyuiiDyd">601319</td><td data-page-node-id="kQwCpe7wdT7ZuYLXm6gKKG">中国人保</td><td data-page-node-id="U2QzBhmE0zEWqodl2rly2o">insurance</td>
+      <td class="num" data-page-node-id="ud0gIDC1RGW3S2nrArtERn">7.82</td>
+      <td class="num" data-page-node-id="t1oGAZFHR21jFtznKXIFgh">0.40</td>
+      <td class="num" data-page-node-id="xIhl0vrq0bCsBEMiRfH4jf">0.75</td>
+      <td class="num" data-page-node-id="1JOa8Iw22K0mIQDQtLygGt">0.05</td>
+      <td class="num" data-page-node-id="MUMqxkAjGmPReM4A0p4aCX">0.77</td>
+      <td class="num" data-page-node-id="Ot4Fl88y1GV0MRMH8oMFfH">1.00</td>
+      <td class="num" data-page-node-id="AHSkElcrtXLmoaXUH8RdD0">2.54</td>
+      <td class="num" data-page-node-id="nm2lCQscD5uLTjM5A2Oskq">55</td>
+      <td data-page-node-id="6MISzJ6mFeN42xGmsggcKC">偏高</td>
+      <td data-page-node-id="JzZVCz1sP0M4uCcjOS8zY1"><span class="chip" style="background:#f0c93c" data-page-node-id="pNDUOFIuQb83y3fbn1Hjf1">mid_B</span></td>
+      <td class="num" data-page-node-id="vy0ovfvCgFbUFLRHjgcJzh">29%</td>
+      <td class="flags" data-page-node-id="OoAIh5UZX9vMEgzE7tVBYJ"></td>
+    </tr>
+    
+    <tr data-page-node-id="GOZvMKjyRtL2ORc72x3Ntz">
+      <td data-page-node-id="aonX5FdcYoLrZ7EuzROrva">603156</td><td data-page-node-id="xzHnvIAJoWfKV4XAUQF4t5">养元饮品</td><td data-page-node-id="BKT9nOfwGfoCfQMXFQlfWy">consumer</td>
+      <td class="num" data-page-node-id="lFtWljxvyFJ1crIauyChOk">41.05</td>
+      <td class="num" data-page-node-id="6GXKrSiC5EyOFOtTosdHO4">0.17</td>
+      <td class="num" data-page-node-id="XfFBV3NBC6Pli8FGmNdcJK">0.37</td>
+      <td class="num" data-page-node-id="L9J342LFGcTKl2iEvaB3Oc">0.95</td>
+      <td class="num" data-page-node-id="BomvbaSHTlxDce5axAjahD">0.84</td>
+      <td class="num" data-page-node-id="zYM1T5RMYp3wHR7D2070tC">0.71</td>
+      <td class="num" data-page-node-id="KPbJiObrzUmltosyV1fuRV">1.55</td>
+      <td class="num" data-page-node-id="CXdmD7RDG8LRwgln9ci8x6">50</td>
+      <td data-page-node-id="xX4GvA2QnTidSdJ5ryTRlE">偏高</td>
+      <td data-page-node-id="szHX9Cu583rQcX8k5GiDBe"><span class="chip" style="background:#f0c93c" data-page-node-id="orXixv2aHF19QXHs34u3th">low_C</span></td>
+      <td class="num" data-page-node-id="8Hy8KwFzU66OSUvMZyt23L">68%</td>
+      <td class="flags" data-page-node-id="7aYq1487FbueyN84TxIs0q"></td>
+    </tr>
+    
+    <tr data-page-node-id="iPBIHSq3DkQH2E3CHsi2sZ">
+      <td data-page-node-id="eJrKf7D1Gj1VnBcm3I70i3">601991</td><td data-page-node-id="lNUiNvYWRxl8KDgntIG8hB">大唐发电</td><td data-page-node-id="eYfbyIzSIl8Pfq54QqnNXz">power</td>
+      <td class="num" data-page-node-id="CLoy4jy1wfXCpjnc0fNp6Y">5.63</td>
+      <td class="num" data-page-node-id="K0F6BZYuPdZFsvot1kLx3U">0.14</td>
+      <td class="num" data-page-node-id="woiEvmglCTCdJRBtfXblDj">0.89</td>
+      <td class="num" data-page-node-id="1lBYWBp9YxD1g6kmg6d6XR">0.05</td>
+      <td class="num" data-page-node-id="qozJSxfj5ZPBgh4KLzT5KU">0.15</td>
+      <td class="num" data-page-node-id="b7z3PTRGNlH9bzYTFALQDg">0.65</td>
+      <td class="num" data-page-node-id="E2EBSpx8hoBOYz7Fh6WQnD">5.80</td>
+      <td class="num" data-page-node-id="XGV07Jsctvr3PBlu3eJtmp">32</td>
+      <td data-page-node-id="HWZfLAD5L7U6ih2mYb1XKc">高估</td>
+      <td data-page-node-id="LsgWZgQ5kvAnEBhDJHQP1V"><span class="chip" style="background:#f0c93c" data-page-node-id="vmeFYc9XyxJ8KA1YJY6tsh">low_C</span></td>
+      <td class="num" data-page-node-id="ntxcEXjMgkTSnKSaFOAdLy">64%</td>
+      <td class="flags" data-page-node-id="ZQGsnd8Hc618CFIJhPwbDX"></td>
+    </tr>
+    
+    <tr data-page-node-id="yJOsdHnN1R0bcNew272peX">
+      <td data-page-node-id="WrU0vElrl2fEbrmw2J8LfU">601668</td><td data-page-node-id="oHbBTT2HJfFBZjvvR9hvTi">中国建筑</td><td data-page-node-id="Ay2XEeKYMd8aUtDEjHy0Ia">infra</td>
+      <td class="num" data-page-node-id="AwGJMpnDHFsRoEiJXVdbPY">4.37</td>
+      <td class="num" data-page-node-id="oeTTXyKAnvDS1BpXaioehb">0.93</td>
+      <td class="num" data-page-node-id="SvtGhC96VdvHBK1X0cY7oa">0.69</td>
+      <td class="num" data-page-node-id="9vzok61hcbpcm5Dc6XGbh1">0.77</td>
+      <td class="num" data-page-node-id="6wzqoh1arRGHS6YVXtxURw">0.87</td>
+      <td class="num" data-page-node-id="ufcQGymbxc8W4xzrhLjCCg">1.00</td>
+      <td class="num" data-page-node-id="xsBoD6i6SY6HAIIFBcqsCQ">0.34</td>
+      <td class="num" data-page-node-id="UuICzkYpgjuClEf1hpitBE">84</td>
+      <td data-page-node-id="Fzlzk5usSHaZpXK4ECFB2W">偏低</td>
+      <td data-page-node-id="DYhD56slmtRsK69bEkcCNS"><span class="chip" style="background:#d9534f" data-page-node-id="jVp9aFoXbaAy0Spy68nY1E">high_B</span></td>
+      <td class="num" data-page-node-id="eDGsoilCFLTrqZqZTedyyc">16%</td>
+      <td class="flags" data-page-node-id="tca8H43CPQpq7HGPzODyXq"></td>
+    </tr>
+    
+    <tr data-page-node-id="d7byHqtxhEehlko3AXnY1e">
+      <td data-page-node-id="Vet6GG42MpOZBsiQo2AhbC">601800</td><td data-page-node-id="7VL7yMMtvPrQetWCI4S3Gp">中国交建</td><td data-page-node-id="q43qiZ2530fPomAUDFetuW">infra</td>
+      <td class="num" data-page-node-id="nYuAmm4pBjWpObVALp60lB">6.00</td>
+      <td class="num" data-page-node-id="pkZxb8l6brXDQRC7OIpQZd">0.94</td>
+      <td class="num" data-page-node-id="61QQuCst2gDaPGlU37bOaB">0.74</td>
+      <td class="num" data-page-node-id="ub4puYQtvmumGX0KgKmtIb">0.95</td>
+      <td class="num" data-page-node-id="D92yUZkdawKXQUCQWRNFGz">0.71</td>
+      <td class="num" data-page-node-id="bMauffewwtByduC9hYQQA3">0.93</td>
+      <td class="num" data-page-node-id="wrnfe8HsrXaDjtiLml5Esg">0.53</td>
+      <td class="num" data-page-node-id="VFP7hD1gNG0nFAD2Rjr6xv">83</td>
+      <td data-page-node-id="gIZQ3qGSVPAkKWGumanKGP">偏低</td>
+      <td data-page-node-id="1ZSkrmyYHo7aS7agHMFB7D"><span class="chip" style="background:#d9534f" data-page-node-id="3p60FHVWR38JH7vIRtlXOC">high_B</span></td>
+      <td class="num" data-page-node-id="tmM5zXijOKsTCWymAgM7EF">19%</td>
+      <td class="flags" data-page-node-id="cHS4WJh17aJw6BVvGpQWCA"></td>
+    </tr>
+    
+    <tr data-page-node-id="WIzppMCdTSFh5ZC98GrNti">
+      <td data-page-node-id="UwTQliMGq7dIUMRaBvTVgA">601186</td><td data-page-node-id="n4OHm9J9yVmdEPraKLvtbK">中国铁建</td><td data-page-node-id="DIp3H04QpRe1QTyxABjyak">infra</td>
+      <td class="num" data-page-node-id="6b9BKHMMu9WfPjybU96KsJ">6.10</td>
+      <td class="num" data-page-node-id="KMgpAL99F4ce5zJVllCsi0">0.92</td>
+      <td class="num" data-page-node-id="ngsFYWmnYScMtW08zACR6y">0.63</td>
+      <td class="num" data-page-node-id="AtgGL1tibdCEf7w83Vvxqh">0.68</td>
+      <td class="num" data-page-node-id="quupLk5yuloWJnFVLqHc3q">0.79</td>
+      <td class="num" data-page-node-id="0TtvXAZXRj9KVaDouaK6AN">0.91</td>
+      <td class="num" data-page-node-id="LYcRQXJKr7zHCrMxQFsSnE">0.16</td>
+      <td class="num" data-page-node-id="ww4tgSrqTs0tgdaxi4b8h6">79</td>
+      <td data-page-node-id="gjNk5WOSip19NHH3jYacWd">偏低</td>
+      <td data-page-node-id="y34vxkviV1yohxRmDU86zY"><span class="chip" style="background:#d9534f" data-page-node-id="yCKswAe006KUJobe89TbZz">high_B</span></td>
+      <td class="num" data-page-node-id="TrBqSS5sBSX3EFFeaPecL1">15%</td>
+      <td class="flags" data-page-node-id="DpxzDN3SHEBUFVRl7KjrxG"></td>
+    </tr>
+    
+    <tr data-page-node-id="yc4J1rKV5cQCwlh6SqrTkI">
+      <td data-page-node-id="lpMb05QnZyf5qMVWA5pNFi">601818</td><td data-page-node-id="Gb6TSeGDJ1tVRhCuS8RqiI">光大银行</td><td data-page-node-id="0S3XCxbXDutcTabQXLifGI">bank</td>
+      <td class="num" data-page-node-id="E0Euj10QqmQGXd67gBAKNu">3.04</td>
+      <td class="num" data-page-node-id="XxiMQHNAMU23sgXtf5CDem">0.83</td>
+      <td class="num" data-page-node-id="zRcXfBM0eIlBchOsvWTYO4">0.71</td>
+      <td class="num" data-page-node-id="jysKVWN4OBtbrogKPHhiB8">0.95</td>
+      <td class="num" data-page-node-id="UpaOhsflw5R1GPgCkndCAe">0.75</td>
+      <td class="num" data-page-node-id="6o4TbHNsKiePSNgO7sTkeq">0.83</td>
+      <td class="num" data-page-node-id="R7h3LKJbU7qYWwrG9WsTpK">-0.09</td>
+      <td class="num" data-page-node-id="1JhRuHZEzvR002bKvEHda1">79</td>
+      <td data-page-node-id="mfVmheATbGCzNSOh1c9CXW">偏低</td>
+      <td data-page-node-id="yETmsAQQhPTYreeeZlSay8"><span class="chip" style="background:#a02622" data-page-node-id="mPOfuZWeLiDuSNCh1m3kgo">high_C</span></td>
+      <td class="num" data-page-node-id="8Zsg9T3uPKEiTDXmnXGKhN">17%</td>
+      <td class="flags" data-page-node-id="9OtFd0APFlD1AuIWDt82JD"></td>
+    </tr>
+    
+    <tr data-page-node-id="mhGwNSahRbbmGKBSWFKFZO">
+      <td data-page-node-id="fYxEphpknikE20nfXAbe42">600016</td><td data-page-node-id="XdApB00FeYONRUrThl6Cto">民生银行</td><td data-page-node-id="A4WtX8zF16oVSmykKyB2Md">bank</td>
+      <td class="num" data-page-node-id="JCrB2aNHyXsUO0P8iC1ztu">3.63</td>
+      <td class="num" data-page-node-id="ZhvLKkBR1nDaWcaIcLBCT6">0.80</td>
+      <td class="num" data-page-node-id="rKBEPpkii6MTbC0jCvZVLy">0.71</td>
+      <td class="num" data-page-node-id="C6jWDIDdzbWh1hyLCJQVfL">0.95</td>
+      <td class="num" data-page-node-id="u3OSNMSsaz1NWZyH9faBSp">0.68</td>
+      <td class="num" data-page-node-id="a2mwrF16TvtP6CdduW8GZJ">0.79</td>
+      <td class="num" data-page-node-id="2xImc6xYt3lgIoAAV4JZ0h">-5.15</td>
+      <td class="num" data-page-node-id="Vx3nYa50AcGflFOAgiiOYo">75</td>
+      <td data-page-node-id="ASMjm7nBq4J2oqBETGGXyY">偏低</td>
+      <td data-page-node-id="IcC4TMrp3VhtqQ8xARoIQE"><span class="chip" style="background:#a02622" data-page-node-id="z6Knf7Cf1cA69j5bmUsSJR">high_C</span></td>
+      <td class="num" data-page-node-id="np1M1G69g85POV5VetvKDp">19%</td>
+      <td class="flags" data-page-node-id="nKouQ3DL8bUku3gsdGUCct"></td>
+    </tr>
+    
+    <tr data-page-node-id="lOtwuGn3GIqNQZ2k9tkavk">
+      <td data-page-node-id="Mlnn7DvNCBo5TTYzUmWtmV">600674</td><td data-page-node-id="5mqDXHDaWhBVBCPZSqDan4">川投能源</td><td data-page-node-id="RZWiDMB8t8R34AKHxtrW1i">power</td>
+      <td class="num" data-page-node-id="gHaSoXWfUxbX8HbxKnlyS6">15.69</td>
+      <td class="num" data-page-node-id="C37zq9zBZtTWaIr5miNnSA">0.73</td>
+      <td class="num" data-page-node-id="GABIiSkmNaf4f0UIOm4Sfd">0.71</td>
+      <td class="num" data-page-node-id="HtONq2BsBwHRtIioukyOCk">0.14</td>
+      <td class="num" data-page-node-id="7L98u5ppEgStjCyqyjyUgW">0.88</td>
+      <td class="num" data-page-node-id="33f8IBNNxkWf15Wkhjq9bB">1.00</td>
+      <td class="num" data-page-node-id="NOJwg4QhXWV4ppxsEngZsn">0.16</td>
+      <td class="num" data-page-node-id="HbcrENU65LFQyz9cxfIO4C">74</td>
+      <td data-page-node-id="IomhRmjEmk4YKXGdgMAiqk">合理</td>
+      <td data-page-node-id="ujAxAOFssvlIUvpvza1KYz"><span class="chip" style="background:#d9534f" data-page-node-id="aTZZ6BqiqU6julP9hEETAG">high_B</span></td>
+      <td class="num" data-page-node-id="Frf3p07gq8qWKZEAIzjnPy">19%</td>
+      <td class="flags" data-page-node-id="HvP0mIfgoWJaG0bXuU7T9N"></td>
+    </tr>
+    
+    <tr data-page-node-id="94N8FB0AtWznyGGZEaEEsK">
+      <td data-page-node-id="rCAdfQHEzgvyH71FhM03it">000002</td><td data-page-node-id="GzFonZ75vIzVlqQKYbTpDJ">万科Ａ</td><td data-page-node-id="BrmqCrIP0GJPAgRFDntbIi">realestate</td>
+      <td class="num" data-page-node-id="oo52dD5wm3p9ordo5knpjS">3.27</td>
+      <td class="num" data-page-node-id="HJLDImUeBPxYwBfWDDd6Hj">0.92</td>
+      <td class="num" data-page-node-id="YLpgyv4qn4ZTtSE6X4JFFC">0.67</td>
+      <td class="num" data-page-node-id="Y6fFaWBfZTUrflL45BqXpQ">0.95</td>
+      <td class="num" data-page-node-id="qIergpjoeO84HpuGrH1Nig">0.33</td>
+      <td class="num" data-page-node-id="5EBYNB3ACdAjdo9BVbYFZF">1.00</td>
+      <td class="num" data-page-node-id="webAVqylPrBCFHFX4Dl2vm">0.01</td>
+      <td class="num" data-page-node-id="Y6y5OoPnSVClxq8fyIxrdM">69</td>
+      <td data-page-node-id="6cEZibKhU8Q3A9hP2etU67">合理</td>
+      <td data-page-node-id="u4lCWRo9dvXyR88tytdJ30"><span class="chip" style="background:#d9534f" data-page-node-id="WLcZCSkDjP3lbFN5yaFGMv">high_B</span></td>
+      <td class="num" data-page-node-id="58r7J7dOkA3bTCxp6kk65M">31%</td>
+      <td class="flags" data-page-node-id="ybeRA9CAhh1rlPbQgJFBCm"></td>
+    </tr>
+    
+    <tr data-page-node-id="IXB8Iii3ojeJxww0O5wUfF">
+      <td data-page-node-id="zJAP7ojj047P3c9kA3sYkr">000898</td><td data-page-node-id="MPoHfkTP3EJvmphFte61bH">鞍钢股份</td><td data-page-node-id="BVjUAQ6STklCkIfh4dwrGl">steel</td>
+      <td class="num" data-page-node-id="nzlydGlMXvtp9iwEHj6byB">2.10</td>
+      <td class="num" data-page-node-id="CM233IxqGCPkArBHl7xF6n">0.81</td>
+      <td class="num" data-page-node-id="WzSChP28iP98uWxguHTEGu">0.15</td>
+      <td class="num" data-page-node-id="OcI77MjHms01FyDBKbXF2F">0.77</td>
+      <td class="num" data-page-node-id="b3AtIlCXEu3MM69IziH21a">0.13</td>
+      <td class="num" data-page-node-id="basoZ34PUlqZiLkgXqFKeg">0.31</td>
+      <td class="num" data-page-node-id="Wb7EGHcUtIEQlrjRPQwdq2">-0.44</td>
+      <td class="num" data-page-node-id="Oxb26LaOG7ZsEJ4LBLRfGD">53</td>
+      <td data-page-node-id="y9IOsETnMz8IaOIlEyR9xa">偏高</td>
+      <td data-page-node-id="1CDaLBiJdHmqM9xP9kyAAZ"><span class="chip" style="background:#a02622" data-page-node-id="bviAO4gAfANLbMnOCIZ5PJ">high_C</span></td>
+      <td class="num" data-page-node-id="oqTkgSfsw3uadzj09GGJDy">28%</td>
+      <td class="flags" data-page-node-id="kwiq0KuO8oEBKU5eDVNCAa"></td>
+    </tr>
+    
+    <tr data-page-node-id="hHFKkCeCZCnsqFkiygDEBZ">
+      <td data-page-node-id="Fm1eKRHi1UhESG9UBZgr5u">002110</td><td data-page-node-id="OAZtj8KQjEvRPKU7EH44hF">三钢闽光</td><td data-page-node-id="L6p78AC7LOxM1WS5gGGUsa">steel</td>
+      <td class="num" data-page-node-id="E2iA2Zh4pBL036w4ZhDa9M">3.08</td>
+      <td class="num" data-page-node-id="YZJRYxctpITWFGVECQzJFn">0.83</td>
+      <td class="num" data-page-node-id="ZVCgx1H028fUc8DxaBHwoN">0.15</td>
+      <td class="num" data-page-node-id="DXdgaQkoUMmsyeuOslaKAD">0.68</td>
+      <td class="num" data-page-node-id="jJAb8JSvclECeQeXb1fILa">0.14</td>
+      <td class="num" data-page-node-id="Ipibd3XNr9CH5ojd46pZza">0.31</td>
+      <td class="num" data-page-node-id="qk10L2S7CtC2vCWUFIT5o6">-1.74</td>
+      <td class="num" data-page-node-id="MAYrv6EYpfB0RPxocyFkwn">51</td>
+      <td data-page-node-id="yJnADgHXA4NXDzhtCJ9Bjf">偏高</td>
+      <td data-page-node-id="yxLo5rcEXev11ZFK3sCD7R"><span class="chip" style="background:#a02622" data-page-node-id="Ys5ooDAwBIMzSpJ82PEim5">high_C</span></td>
+      <td class="num" data-page-node-id="j1RsHKU886gR9t6i05Cd8b">35%</td>
+      <td class="flags" data-page-node-id="AjiGj9FOzp5PrENGosSYUo"></td>
+    </tr>
+    
+    <tr data-page-node-id="WAlrk8nHssAjoxtesHLY0u">
+      <td data-page-node-id="HkvvFlu9j1TfDhjZY52zdT">000825</td><td data-page-node-id="JhG8yKdFz12X6JPbIBDO97">太钢不锈</td><td data-page-node-id="Lk9XJ1GkhzR6JAEUKLyBdS">steel</td>
+      <td class="num" data-page-node-id="ywMVnpraTH1HXR8KDjxmlt">3.58</td>
+      <td class="num" data-page-node-id="F4gDuYWqXF2XMl8kKBrJh4">0.81</td>
+      <td class="num" data-page-node-id="9S99K0xOQa6Y8jHtE2TVEC">0.13</td>
+      <td class="num" data-page-node-id="yz5LxZQKRhGGsDhzLpGpdR">0.68</td>
+      <td class="num" data-page-node-id="p6cbNARzjBh8lVetDSe6Pk">0.12</td>
+      <td class="num" data-page-node-id="UurPlNOpjS0j6aUgwc0tQU">0.27</td>
+      <td class="num" data-page-node-id="By3I2I5e2bWuT2kiE6blZq">-2.47</td>
+      <td class="num" data-page-node-id="8zmxUTbYBO0Wl4tElpG6vn">50</td>
+      <td data-page-node-id="nVy2P9DZQV31c8U180mgtQ">偏高</td>
+      <td data-page-node-id="85vUcO1a47hGN68lHJPLyJ"><span class="chip" style="background:#a02622" data-page-node-id="6RKLdS9XysB2fDDW5eN6a4">high_C</span></td>
+      <td class="num" data-page-node-id="bBDraiYcCvwAZCEYWjfIsw">37%</td>
+      <td class="flags" data-page-node-id="nknlUzGXAcMJHil1rEmjHG"></td>
+    </tr>
+    
+    <tr data-page-node-id="DHRInyDtYIoU2xGFltubAl">
+      <td data-page-node-id="AJBivEilXW87ZGhENpDfbi">002036</td><td data-page-node-id="2auetAlKJ9e2HezUg3A0Mk">华特达因</td><td data-page-node-id="nUUlrLHtII7HnXHVV3CEwM">pharma</td>
+      <td class="num" data-page-node-id="VtLcb3tHHlVjsLdZaEwFCJ">6.77</td>
+      <td class="num" data-page-node-id="oGrZ0L2eF6njL5IeTHIntc">0.81</td>
+      <td class="num" data-page-node-id="Zu6GE2Gil0v6KdbyUwqgLj">0.38</td>
+      <td class="num" data-page-node-id="5KA8YmuQlXsgHEUD2mIFMc">0.95</td>
+      <td class="num" data-page-node-id="zdj8BNwzVbqymQjEZjkmkj">0.15</td>
+      <td class="num" data-page-node-id="lH647ppf9xsFw0x1yw6Y4n">0.33</td>
+      <td class="num" data-page-node-id="Ro1oCVta9NZVnCtpIWMwSE">-0.35</td>
+      <td class="num" data-page-node-id="AQdSDhgY3Usgp8ymklTXW6">46</td>
+      <td data-page-node-id="ByZTlCVs1zdyZyWqf1DIod">偏高</td>
+      <td data-page-node-id="EecmQoSxFdIYvN27HdYsSX"><span class="chip" style="background:#a02622" data-page-node-id="ryS7WnNGBn2Ww7frT76TAO">high_C</span></td>
+      <td class="num" data-page-node-id="s7gJCj1CjgOl2OcCReqYzZ">50%</td>
+      <td class="flags" data-page-node-id="OqAhVBqqx3amimW0GHDHZM"></td>
+    </tr>
+    
+  </table>
+
+  <div class="note" data-page-node-id="p3LiuynixWC5XpaCvDyDP3">
+    <b data-page-node-id="bWImpqXm4CyWfsc435zrEp">免责声明与数据说明：</b>所有评分、颜色、价格锚均由固定算法计算（spec v2.3），
+    LLM 仅作解读不参与计算。缺失数据按协议显式标记（宁缺毋造），灰色卡片代表缺失因子≥2。
+    买卖参考价来自客观价格锚（A 股息率锚 / G 戈登锚 / B 区间锚 / C 收益率下限锚 / D 综合分反解锚），
+    其中 G 戈登锚依赖 ROE 数据——仅业绩快报覆盖的约 7 成标的可得（服务器资产负债表接口暂缺，
+    ROE 主源为业绩快报官方加权 ROE，无快报标的降级为 EPS 稳定性代理并已标记）。
+    现金流质量（OCF/NP，七维检验口径：≥1 合格、≥1.5 优秀、&lt;0.6 警示）数据源为东方财富
+    （akshare），覆盖全样本年报近 3 期取中位数；该维度按 15% 权重并入可持续性因子 s_sus。
+    不构成投资建议。星耀数据仅限授权使用，运行结束后已强制 logout。
+  </div>
+
+  <footer data-page-node-id="KLTuCy6ZSiNcbMtlGpWZNO">hongli_weekly v2.3 · run_id 20260909-4171de · 本页面由固定流水线生成</footer>
+</div></body></html>
