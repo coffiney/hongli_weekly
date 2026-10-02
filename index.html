@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>红利周报 2026-10-02 · 估值×质量双维矩阵</title>
+<style>
+  :root { --ink:#1c2430; --muted:#66707d; --line:#e3e7ec; --bg:#f6f8fa; }
+  * { box-sizing:border-box; }
+  body { font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+         color:var(--ink); background:var(--bg); margin:0; padding:24px; }
+  .wrap { max-width:1180px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  h2 { font-size:17px; margin:28px 0 10px; border-left:4px solid #2f6fb2; padding-left:8px; }
+  .sub { color:var(--muted); font-size:12.5px; margin-bottom:18px; }
+  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .stat { background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .stat .n { font-size:20px; font-weight:700; }
+  .stat .l { font-size:11.5px; color:var(--muted); margin-top:2px; }
+  table { border-collapse:collapse; width:100%; background:#fff; font-size:12.5px;
+          border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  th { background:#eef2f6; text-align:left; padding:7px 9px; font-weight:600;
+       border-bottom:1px solid var(--line); white-space:nowrap; }
+  td { padding:6px 9px; border-bottom:1px solid #f0f2f5; white-space:nowrap; }
+  tr:hover td { background:#f7fafd; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .chip { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px;
+          color:#fff; font-weight:600; }
+  .flags { color:#b45309; font-size:10.5px; }
+  .matrix-wrap { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; }
+  .mx { border-collapse:collapse; width:auto; }
+  .mx td { width:118px; height:74px; border:3px solid #fff; border-radius:6px;
+           vertical-align:top; padding:6px 7px; font-size:10.5px; color:#fff;
+           text-align:left; line-height:1.35; }
+  .mx .cell-name { font-weight:700; font-size:12px; }
+  .mx th.axis { background:transparent; color:var(--muted); font-size:11px;
+                padding:4px; text-align:center; width:118px; font-weight:600; }
+  .legend { font-size:11.5px; color:var(--muted); line-height:1.9; max-width:300px; }
+  .dot { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; }
+  .note { background:#fff8e6; border:1px solid #f2dfa9; border-radius:8px;
+          padding:10px 14px; font-size:12.5px; margin-top:16px; }
+  .llm { background:#fff; border:1px solid var(--line); border-radius:10px;
+         padding:14px 18px; font-size:13px; line-height:1.8; white-space:pre-wrap; }
+  .none { color:var(--muted); font-size:13px; background:#fff; border:1px dashed var(--line);
+          border-radius:10px; padding:14px; }
+  footer { margin-top:28px; color:var(--muted); font-size:11px; text-align:center; }
+</style>
+</head>
+<body><div class="wrap">
+  <h1>红利股周报 · 估值 × 质量双维矩阵</h1>
+  <div class="sub">数据截至 2026-10-02 · 生成于 2026-10-02 17:13 · 样本 119 只 ·
+    数据源：银河星耀数智 AmazingData · 版本 v2.3</div>
+
+  <div class="cards">
+    <div class="stat"><div class="n">119</div><div class="l">覆盖标的</div></div>
+    <div class="stat"><div class="n">119</div><div class="l">有效评级</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">数据缺失标记</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">价值陷阱区（low×C）</div></div>
+  </div>
+
+  <h2>一、双维矩阵总览</h2>
+  <div class="matrix-wrap">
+    <table class="mx">
+      <tr><th class="axis"></th><th class="axis">质量 C（弱）</th><th class="axis">质量 B（中）</th><th class="axis">质量 A（强）</th></tr>
+      
+      <tr>
+        <th class="axis">低估值<br>(s_val&lt;0.40)</th>
+        
+        <td style="background:#f0c93c">
+          <div class="cell-name">陷阱警示</div>
+          <div>2 只</div>
+        </td>
+        
+        <td style="background:#7bc47f">
+          <div class="cell-name">低估·质中</div>
+          <div>22 只</div>
+        </td>
+        
+        <td style="background:#1a7a3a">
+          <div class="cell-name">低估·质优</div>
+          <div>3 只</div>
+        </td>
+        
+      </tr>
+      
+      <tr>
+        <th class="axis">合理<br>(0.40–0.65)</th>
+        
+        <td style="background:#9db8a0">
+          <div class="cell-name">合理·质弱</div>
+          <div>1 只</div>
+        </td>
+        
+        <td style="background:#f0c93c">
+          <div class="cell-name">合理·质中</div>
+          <div>22 只</div>
+        </td>
+        
+        <td style="background:#5aa860">
+          <div class="cell-name">合理·质优</div>
+          <div>3 只</div>
+        </td>
+        
+      </tr>
+      
+      <tr>
+        <th class="axis">高估值<br>(&gt;0.65)</th>
+        
+        <td style="background:#a02622">
+          <div class="cell-name">高估·质弱</div>
+          <div>13 只</div>
+        </td>
+        
+        <td style="background:#d9534f">
+          <div class="cell-name">高估·质中</div>
+          <div>51 只</div>
+        </td>
+        
+        <td style="background:#e89a3c">
+          <div class="cell-name">高估·质优</div>
+          <div>2 只</div>
+        </td>
+        
+      </tr>
+      
+    </table>
+    <div class="legend">
+      
+      <div><span class="dot" style="background:#1a7a3a"></span>低估值×高质量 —— 核心候选</div>
+      
+      <div><span class="dot" style="background:#f0c93c"></span>低估值×低质量 —— <b>价值陷阱警示区</b>（不进入建议）</div>
+      
+      <div><span class="dot" style="background:#a02622"></span>高估值×低质量 —— 规避</div>
+      
+      <div><span class="dot" style="background:#e89a3c"></span>高估值×高质量 —— 优质但偏贵</div>
+      
+      <div><span class="dot" style="background:#9e9e9e"></span>数据缺失，无评级（缺失≥2项因子）</div>
+      
+      <div style="margin-top:6px">纵轴：s_val（利率中性估值分，越低越便宜）；<br>
+        横轴：q_rel = (0.5×s_sus + 0.5×s_q) / 板块中位数</div>
+    </div>
+  </div>
+
+
+  <h2>二、LLM 分析师点评</h2>
+  <div class="llm">**市场总结**  
+红利策略仍偏重估值×质量：低_A煤炭/油化股息与现金流强，但波动和tier偏高，宜等买入锚；mid_A与low_B中，兖矿、平安、南钢、海信、粤高速、申能、唐山港性价比更均衡，低波品种适合底仓。当前多数标的位于买入价与卖出价之间，操作以持有为主；仅贴近买入锚者可分批，接近卖出锚者勿追高，并控制高波动暴露。
+
+1. **陕西煤业**：现价26.03等于买入价26.03，卖出价41.65；低_A、现金流强但波动高，建议买入，分批控制仓位。  
+2. **中煤能源**：现价13.80高于买入价9.42、接近卖出价14.20；tier偏高且波动高，建议观望，勿追高。  
+3. **中国石油**：现价11.21高于买入价10.44、低于卖出价16.71；tier偏高，现金流强，建议持有，回调至10.44附近再买入。  
+4. **兖矿能源**：现价19.44高于买入价16.00、低于卖出价25.60；mid_A合理、股息率高，建议持有，回调近16.00可买。  
+5. **中国平安**：现价53.29高于买入价49.30、低于卖出价78.88；mid_A合理、波动较低，建议持有，49.30附近再买入。  
+6. **南钢股份**：现价4.54高于买入价3.85、低于卖出价6.17；mid_A合理，现金流一般，建议持有，3.85附近再考虑买入。  
+7. **海信家电**：现价26.78略高于买入价25.72、低于卖出价41.15；low_B低波、现金流强，建议持有，回踩25.72可买入。  
+8. **粤高速Ａ**：现价12.46高于买入价11.19、低于卖出价17.90；low_B低波、现金流强，建议持有，11.19附近加仓。  
+9. **申能股份**：现价8.78等于买入价8.78、低于卖出价14.05；low_B低波、现金流强，建议买入，分批参与。  
+10. **唐山港**：现价4.62高于买入价4.43、低于卖出价7.08；low_B低波，tier偏高，建议持有，跌破4.43再买入。</div>
+
+
+  <h2>三、候选标的（低估值 × 质量 A/B）</h2>
+  <table>
+    <tr><th>代码</th><th>名称</th><th>板块</th><th class="num">现价</th><th class="num">可持续股息率</th>
+        <th class="num">52w波动</th><th>低波/现金流</th>
+        <th>矩阵</th><th class="num">综合分</th><th>评级</th>
+        <th class="num">买入参考价</th><th class="num">卖出参考价</th><th>价格锚</th></tr>
+    
+    <tr>
+      <td>601225</td><td>陕西煤业</td><td>coal</td>
+      <td class="num">26.03</td>
+      <td class="num">5.60%</td>
+      <td class="num">36%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#1a7a3a">low_A</span></td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td class="num">26.03</td>
+      <td class="num">41.65</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601898</td><td>中煤能源</td><td>coal</td>
+      <td class="num">13.80</td>
+      <td class="num">3.12%</td>
+      <td class="num">46%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#1a7a3a">low_A</span></td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td class="num">9.42</td>
+      <td class="num">14.2</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601857</td><td>中国石油</td><td>oil_chem</td>
+      <td class="num">11.21</td>
+      <td class="num">4.19%</td>
+      <td class="num">36%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#1a7a3a">low_A</span></td>
+      <td class="num">50</td>
+      <td>偏高</td>
+      <td class="num">10.44</td>
+      <td class="num">16.71</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600188</td><td>兖矿能源</td><td>coal</td>
+      <td class="num">19.44</td>
+      <td class="num">8.02%</td>
+      <td class="num">49%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#5aa860">mid_A</span></td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td class="num">16.0</td>
+      <td class="num">25.6</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601318</td><td>中国平安</td><td>insurance</td>
+      <td class="num">53.29</td>
+      <td class="num">4.16%</td>
+      <td class="num">27%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#5aa860">mid_A</span></td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td class="num">49.3</td>
+      <td class="num">78.88</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600282</td><td>南钢股份</td><td>steel</td>
+      <td class="num">4.54</td>
+      <td class="num">3.82%</td>
+      <td class="num">32%</td>
+      <td>波动⚠️ 现金流✅</td>
+      <td><span class="chip" style="background:#5aa860">mid_A</span></td>
+      <td class="num">60</td>
+      <td>合理</td>
+      <td class="num">3.85</td>
+      <td class="num">6.17</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>000921</td><td>海信家电</td><td>consumer</td>
+      <td class="num">26.78</td>
+      <td class="num">4.32%</td>
+      <td class="num">24%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">68</td>
+      <td>合理</td>
+      <td class="num">25.72</td>
+      <td class="num">41.15</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>000429</td><td>粤高速Ａ</td><td>highway_port</td>
+      <td class="num">12.46</td>
+      <td class="num">4.04%</td>
+      <td class="num">22%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">62</td>
+      <td>合理</td>
+      <td class="num">11.19</td>
+      <td class="num">17.9</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600642</td><td>申能股份</td><td>power</td>
+      <td class="num">8.78</td>
+      <td class="num">4.88%</td>
+      <td class="num">24%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">60</td>
+      <td>偏高</td>
+      <td class="num">8.78</td>
+      <td class="num">14.05</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601000</td><td>唐山港</td><td>highway_port</td>
+      <td class="num">4.62</td>
+      <td class="num">4.31%</td>
+      <td class="num">23%</td>
+      <td>低波✅ 现金流✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">59</td>
+      <td>偏高</td>
+      <td class="num">4.43</td>
+      <td class="num">7.08</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601328</td><td>交通银行</td><td>bank</td>
+      <td class="num">7.75</td>
+      <td class="num">7.12%</td>
+      <td class="num">17%</td>
+      <td>低波✅ 🔥加速线 现金流✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">59</td>
+      <td>偏高</td>
+      <td class="num">7.75</td>
+      <td class="num">12.4</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600795</td><td>国电电力</td><td>power</td>
+      <td class="num">5.34</td>
+      <td class="num">3.76%</td>
+      <td class="num">25%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">58</td>
+      <td>偏高</td>
+      <td class="num">4.46</td>
+      <td class="num">7.14</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601939</td><td>建设银行</td><td>bank</td>
+      <td class="num">11.06</td>
+      <td class="num">5.32%</td>
+      <td class="num">19%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td class="num">11.06</td>
+      <td class="num">17.7</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601988</td><td>中国银行</td><td>bank</td>
+      <td class="num">6.73</td>
+      <td class="num">5.23%</td>
+      <td class="num">21%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">55</td>
+      <td>偏高</td>
+      <td class="num">6.73</td>
+      <td class="num">10.77</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601398</td><td>工商银行</td><td>bank</td>
+      <td class="num">8.28</td>
+      <td class="num">5.37%</td>
+      <td class="num">18%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td class="num">8.28</td>
+      <td class="num">13.25</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601298</td><td>青岛港</td><td>highway_port</td>
+      <td class="num">10.06</td>
+      <td class="num">3.37%</td>
+      <td class="num">20%</td>
+      <td>低波✅ 现金流✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td class="num">7.53</td>
+      <td class="num">12.04</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600919</td><td>江苏银行</td><td>bank</td>
+      <td class="num">12.38</td>
+      <td class="num">4.09%</td>
+      <td class="num">21%</td>
+      <td>低波✅ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td class="num">11.26</td>
+      <td class="num">18.01</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600750</td><td>江中药业</td><td>pharma</td>
+      <td class="num">22.53</td>
+      <td class="num">4.31%</td>
+      <td class="num">30%</td>
+      <td>波动⚠️ 现金流✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">64</td>
+      <td>合理</td>
+      <td class="num">21.58</td>
+      <td class="num">34.53</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600863</td><td>内蒙华电</td><td>power</td>
+      <td class="num">4.72</td>
+      <td class="num">4.39%</td>
+      <td class="num">55%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">63</td>
+      <td>合理</td>
+      <td class="num">4.6</td>
+      <td class="num">7.36</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600012</td><td>皖通高速</td><td>highway_port</td>
+      <td class="num">15.58</td>
+      <td class="num">3.72%</td>
+      <td class="num">30%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">63</td>
+      <td>合理</td>
+      <td class="num">12.87</td>
+      <td class="num">20.6</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600350</td><td>山东高速</td><td>highway_port</td>
+      <td class="num">10.16</td>
+      <td class="num">3.98%</td>
+      <td class="num">29%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">61</td>
+      <td>合理</td>
+      <td class="num">8.99</td>
+      <td class="num">14.39</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601288</td><td>农业银行</td><td>bank</td>
+      <td class="num">6.97</td>
+      <td class="num">4.97%</td>
+      <td class="num">27%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td class="num">6.97</td>
+      <td class="num">11.15</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601319</td><td>中国人保</td><td>insurance</td>
+      <td class="num">7.98</td>
+      <td class="num">2.58%</td>
+      <td class="num">30%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td class="num">4.57</td>
+      <td class="num">7.31</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601336</td><td>新华保险</td><td>insurance</td>
+      <td class="num">56.35</td>
+      <td class="num">3.53%</td>
+      <td class="num">32%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">53</td>
+      <td>偏高</td>
+      <td class="num">44.16</td>
+      <td class="num">70.66</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600938</td><td>中国海油</td><td>oil_chem</td>
+      <td class="num">33.42</td>
+      <td class="num">3.83%</td>
+      <td class="num">37%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">52</td>
+      <td>偏高</td>
+      <td class="num">28.25</td>
+      <td class="num">45.2</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601088</td><td>中国神华</td><td>coal</td>
+      <td class="num">47.80</td>
+      <td class="num">5.06%</td>
+      <td class="num">29%</td>
+      <td>波动⚠️ 现金流✅✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">46</td>
+      <td>偏高</td>
+      <td class="num">47.8</td>
+      <td class="num">76.48</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, D_composite_solve, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>601918</td><td>新集能源</td><td>coal</td>
+      <td class="num">11.29</td>
+      <td class="num">1.96%</td>
+      <td class="num">40%</td>
+      <td>波动⚠️ 现金流✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">43</td>
+      <td>偏高</td>
+      <td class="num">3.56</td>
+      <td class="num">4.92</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, G_gordon</td>
+    </tr>
+    
+    <tr>
+      <td>600989</td><td>宝丰能源</td><td>oil_chem</td>
+      <td class="num">22.46</td>
+      <td class="num">2.27%</td>
+      <td class="num">43%</td>
+      <td>波动⚠️ 现金流✅</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">42</td>
+      <td>偏高</td>
+      <td class="num">11.35</td>
+      <td class="num">18.16</td>
+      <td class="flags">A_target_yield, B_range_pos, C_yield_floor, D_composite_solve, G_gordon</td>
+    </tr>
+    
+  </table>
+
+  <h2>四、全样本明细</h2>
+  <table>
+    <tr><th>代码</th><th>名称</th><th>板块</th><th class="num">现价</th><th class="num">s_val</th>
+        <th class="num">s_sus</th><th class="num">s_cyc</th><th class="num">s_q</th><th class="num">q_rel</th>
+        <th class="num">OCF/NP</th>
+        <th class="num">综合分</th><th>评级</th><th>矩阵</th><th class="num">52w波动</th><th>缺失标记</th></tr>
+    
+    <tr>
+      <td>601225</td><td>陕西煤业</td><td>coal</td>
+      <td class="num">26.03</td>
+      <td class="num">0.32</td>
+      <td class="num">0.88</td>
+      <td class="num">0.41</td>
+      <td class="num">0.85</td>
+      <td class="num">1.31</td>
+      <td class="num">1.98</td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#1a7a3a">low_A</span></td>
+      <td class="num">36%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601898</td><td>中煤能源</td><td>coal</td>
+      <td class="num">13.80</td>
+      <td class="num">0.35</td>
+      <td class="num">0.90</td>
+      <td class="num">0.32</td>
+      <td class="num">0.89</td>
+      <td class="num">1.36</td>
+      <td class="num">1.77</td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#1a7a3a">low_A</span></td>
+      <td class="num">46%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601857</td><td>中国石油</td><td>oil_chem</td>
+      <td class="num">11.21</td>
+      <td class="num">0.24</td>
+      <td class="num">0.92</td>
+      <td class="num">0.23</td>
+      <td class="num">0.86</td>
+      <td class="num">1.18</td>
+      <td class="num">2.62</td>
+      <td class="num">50</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#1a7a3a">low_A</span></td>
+      <td class="num">36%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600188</td><td>兖矿能源</td><td>coal</td>
+      <td class="num">19.44</td>
+      <td class="num">0.57</td>
+      <td class="num">0.81</td>
+      <td class="num">0.77</td>
+      <td class="num">0.80</td>
+      <td class="num">1.23</td>
+      <td class="num">1.79</td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#5aa860">mid_A</span></td>
+      <td class="num">49%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601318</td><td>中国平安</td><td>insurance</td>
+      <td class="num">53.29</td>
+      <td class="num">0.63</td>
+      <td class="num">0.92</td>
+      <td class="num">0.23</td>
+      <td class="num">0.90</td>
+      <td class="num">1.19</td>
+      <td class="num">4.21</td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#5aa860">mid_A</span></td>
+      <td class="num">27%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600282</td><td>南钢股份</td><td>steel</td>
+      <td class="num">4.54</td>
+      <td class="num">0.53</td>
+      <td class="num">0.82</td>
+      <td class="num">0.50</td>
+      <td class="num">0.65</td>
+      <td class="num">1.58</td>
+      <td class="num">1.28</td>
+      <td class="num">60</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#5aa860">mid_A</span></td>
+      <td class="num">32%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000921</td><td>海信家电</td><td>consumer</td>
+      <td class="num">26.78</td>
+      <td class="num">0.36</td>
+      <td class="num">0.90</td>
+      <td class="num">0.14</td>
+      <td class="num">0.83</td>
+      <td class="num">1.02</td>
+      <td class="num">1.82</td>
+      <td class="num">68</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">24%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000429</td><td>粤高速Ａ</td><td>highway_port</td>
+      <td class="num">12.46</td>
+      <td class="num">0.28</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.90</td>
+      <td class="num">1.13</td>
+      <td class="num">2.08</td>
+      <td class="num">62</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600642</td><td>申能股份</td><td>power</td>
+      <td class="num">8.78</td>
+      <td class="num">0.31</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.79</td>
+      <td class="num">1.08</td>
+      <td class="num">2.12</td>
+      <td class="num">60</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">24%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601000</td><td>唐山港</td><td>highway_port</td>
+      <td class="num">4.62</td>
+      <td class="num">0.30</td>
+      <td class="num">0.86</td>
+      <td class="num">0.23</td>
+      <td class="num">0.83</td>
+      <td class="num">1.05</td>
+      <td class="num">1.18</td>
+      <td class="num">59</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">23%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601328</td><td>交通银行</td><td>bank</td>
+      <td class="num">7.75</td>
+      <td class="num">0.22</td>
+      <td class="num">0.90</td>
+      <td class="num">0.41</td>
+      <td class="num">0.82</td>
+      <td class="num">0.98</td>
+      <td class="num">1.39</td>
+      <td class="num">59</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">17%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600795</td><td>国电电力</td><td>power</td>
+      <td class="num">5.34</td>
+      <td class="num">0.33</td>
+      <td class="num">0.90</td>
+      <td class="num">0.14</td>
+      <td class="num">0.72</td>
+      <td class="num">1.02</td>
+      <td class="num">7.49</td>
+      <td class="num">58</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">25%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601939</td><td>建设银行</td><td>bank</td>
+      <td class="num">11.06</td>
+      <td class="num">0.13</td>
+      <td class="num">0.92</td>
+      <td class="num">0.23</td>
+      <td class="num">0.89</td>
+      <td class="num">1.03</td>
+      <td class="num">1.93</td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601988</td><td>中国银行</td><td>bank</td>
+      <td class="num">6.73</td>
+      <td class="num">0.15</td>
+      <td class="num">0.92</td>
+      <td class="num">0.18</td>
+      <td class="num">0.84</td>
+      <td class="num">1.00</td>
+      <td class="num">3.34</td>
+      <td class="num">55</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">21%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601398</td><td>工商银行</td><td>bank</td>
+      <td class="num">8.28</td>
+      <td class="num">0.15</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.86</td>
+      <td class="num">1.01</td>
+      <td class="num">3.89</td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">18%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601298</td><td>青岛港</td><td>highway_port</td>
+      <td class="num">10.06</td>
+      <td class="num">0.22</td>
+      <td class="num">0.76</td>
+      <td class="num">0.09</td>
+      <td class="num">0.86</td>
+      <td class="num">1.00</td>
+      <td class="num">1.05</td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">20%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600919</td><td>江苏银行</td><td>bank</td>
+      <td class="num">12.38</td>
+      <td class="num">0.14</td>
+      <td class="num">0.88</td>
+      <td class="num">0.05</td>
+      <td class="num">0.88</td>
+      <td class="num">1.00</td>
+      <td class="num">7.43</td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">21%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600750</td><td>江中药业</td><td>pharma</td>
+      <td class="num">22.53</td>
+      <td class="num">0.37</td>
+      <td class="num">0.74</td>
+      <td class="num">0.05</td>
+      <td class="num">0.87</td>
+      <td class="num">1.00</td>
+      <td class="num">1.07</td>
+      <td class="num">64</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">30%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600863</td><td>内蒙华电</td><td>power</td>
+      <td class="num">4.72</td>
+      <td class="num">0.37</td>
+      <td class="num">0.92</td>
+      <td class="num">0.09</td>
+      <td class="num">0.82</td>
+      <td class="num">1.10</td>
+      <td class="num">2.70</td>
+      <td class="num">63</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">55%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600012</td><td>皖通高速</td><td>highway_port</td>
+      <td class="num">15.58</td>
+      <td class="num">0.30</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.92</td>
+      <td class="num">1.14</td>
+      <td class="num">1.82</td>
+      <td class="num">63</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">30%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600350</td><td>山东高速</td><td>highway_port</td>
+      <td class="num">10.16</td>
+      <td class="num">0.29</td>
+      <td class="num">0.87</td>
+      <td class="num">0.68</td>
+      <td class="num">0.80</td>
+      <td class="num">1.03</td>
+      <td class="num">2.14</td>
+      <td class="num">61</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">29%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601288</td><td>农业银行</td><td>bank</td>
+      <td class="num">6.97</td>
+      <td class="num">0.19</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.88</td>
+      <td class="num">1.03</td>
+      <td class="num">6.78</td>
+      <td class="num">56</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">27%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601319</td><td>中国人保</td><td>insurance</td>
+      <td class="num">7.98</td>
+      <td class="num">0.38</td>
+      <td class="num">0.75</td>
+      <td class="num">0.05</td>
+      <td class="num">0.77</td>
+      <td class="num">1.00</td>
+      <td class="num">2.54</td>
+      <td class="num">54</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">30%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601336</td><td>新华保险</td><td>insurance</td>
+      <td class="num">56.35</td>
+      <td class="num">0.36</td>
+      <td class="num">0.81</td>
+      <td class="num">0.05</td>
+      <td class="num">0.72</td>
+      <td class="num">1.00</td>
+      <td class="num">3.67</td>
+      <td class="num">53</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">32%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600938</td><td>中国海油</td><td>oil_chem</td>
+      <td class="num">33.42</td>
+      <td class="num">0.27</td>
+      <td class="num">0.79</td>
+      <td class="num">0.44</td>
+      <td class="num">0.76</td>
+      <td class="num">1.03</td>
+      <td class="num">1.69</td>
+      <td class="num">52</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">37%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601088</td><td>中国神华</td><td>coal</td>
+      <td class="num">47.80</td>
+      <td class="num">0.26</td>
+      <td class="num">0.55</td>
+      <td class="num">0.32</td>
+      <td class="num">0.89</td>
+      <td class="num">1.10</td>
+      <td class="num">1.50</td>
+      <td class="num">46</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">29%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601918</td><td>新集能源</td><td>coal</td>
+      <td class="num">11.29</td>
+      <td class="num">0.25</td>
+      <td class="num">0.66</td>
+      <td class="num">0.23</td>
+      <td class="num">0.76</td>
+      <td class="num">1.08</td>
+      <td class="num">1.45</td>
+      <td class="num">43</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">40%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600989</td><td>宝丰能源</td><td>oil_chem</td>
+      <td class="num">22.46</td>
+      <td class="num">0.27</td>
+      <td class="num">0.84</td>
+      <td class="num">0.05</td>
+      <td class="num">0.80</td>
+      <td class="num">1.09</td>
+      <td class="num">1.48</td>
+      <td class="num">42</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#7bc47f">low_B</span></td>
+      <td class="num">43%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000999</td><td>华润三九</td><td>pharma</td>
+      <td class="num">24.19</td>
+      <td class="num">0.88</td>
+      <td class="num">0.92</td>
+      <td class="num">0.50</td>
+      <td class="num">0.91</td>
+      <td class="num">1.14</td>
+      <td class="num">1.47</td>
+      <td class="num">89</td>
+      <td>低估</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">18%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600548</td><td>深高速</td><td>highway_port</td>
+      <td class="num">8.12</td>
+      <td class="num">0.91</td>
+      <td class="num">0.92</td>
+      <td class="num">0.95</td>
+      <td class="num">0.76</td>
+      <td class="num">1.04</td>
+      <td class="num">3.25</td>
+      <td class="num">87</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">16%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600690</td><td>海尔智家</td><td>consumer</td>
+      <td class="num">20.42</td>
+      <td class="num">0.90</td>
+      <td class="num">0.91</td>
+      <td class="num">0.05</td>
+      <td class="num">0.93</td>
+      <td class="num">1.08</td>
+      <td class="num">1.40</td>
+      <td class="num">87</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002508</td><td>老板电器</td><td>consumer</td>
+      <td class="num">17.11</td>
+      <td class="num">0.84</td>
+      <td class="num">0.84</td>
+      <td class="num">0.95</td>
+      <td class="num">0.89</td>
+      <td class="num">1.02</td>
+      <td class="num">1.27</td>
+      <td class="num">86</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601390</td><td>中国中铁</td><td>infra</td>
+      <td class="num">4.33</td>
+      <td class="num">0.93</td>
+      <td class="num">0.85</td>
+      <td class="num">0.59</td>
+      <td class="num">0.87</td>
+      <td class="num">1.10</td>
+      <td class="num">1.15</td>
+      <td class="num">86</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">23%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600085</td><td>同仁堂</td><td>pharma</td>
+      <td class="num">23.74</td>
+      <td class="num">0.90</td>
+      <td class="num">0.85</td>
+      <td class="num">0.41</td>
+      <td class="num">0.89</td>
+      <td class="num">1.08</td>
+      <td class="num">1.12</td>
+      <td class="num">86</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601006</td><td>大秦铁路</td><td>highway_port</td>
+      <td class="num">4.74</td>
+      <td class="num">0.91</td>
+      <td class="num">0.81</td>
+      <td class="num">0.95</td>
+      <td class="num">0.74</td>
+      <td class="num">0.96</td>
+      <td class="num">1.03</td>
+      <td class="num">84</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">14%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600008</td><td>首创环保</td><td>utility</td>
+      <td class="num">2.73</td>
+      <td class="num">0.89</td>
+      <td class="num">0.92</td>
+      <td class="num">0.32</td>
+      <td class="num">0.73</td>
+      <td class="num">0.95</td>
+      <td class="num">2.12</td>
+      <td class="num">82</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000848</td><td>承德露露</td><td>consumer</td>
+      <td class="num">8.14</td>
+      <td class="num">0.80</td>
+      <td class="num">0.80</td>
+      <td class="num">0.32</td>
+      <td class="num">0.88</td>
+      <td class="num">0.99</td>
+      <td class="num">0.98</td>
+      <td class="num">81</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000895</td><td>双汇发展</td><td>consumer</td>
+      <td class="num">23.66</td>
+      <td class="num">0.78</td>
+      <td class="num">0.73</td>
+      <td class="num">0.41</td>
+      <td class="num">0.92</td>
+      <td class="num">0.97</td>
+      <td class="num">1.44</td>
+      <td class="num">80</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">18%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000651</td><td>格力电器</td><td>consumer</td>
+      <td class="num">38.28</td>
+      <td class="num">0.67</td>
+      <td class="num">0.90</td>
+      <td class="num">0.23</td>
+      <td class="num">0.89</td>
+      <td class="num">1.06</td>
+      <td class="num">1.60</td>
+      <td class="num">80</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">17%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600062</td><td>华润双鹤</td><td>pharma</td>
+      <td class="num">16.24</td>
+      <td class="num">0.80</td>
+      <td class="num">0.82</td>
+      <td class="num">0.05</td>
+      <td class="num">0.88</td>
+      <td class="num">1.05</td>
+      <td class="num">1.12</td>
+      <td class="num">79</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">13%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600461</td><td>洪城环境</td><td>utility</td>
+      <td class="num">8.81</td>
+      <td class="num">0.71</td>
+      <td class="num">0.90</td>
+      <td class="num">0.23</td>
+      <td class="num">0.89</td>
+      <td class="num">1.04</td>
+      <td class="num">1.60</td>
+      <td class="num">79</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">15%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601985</td><td>中国核电</td><td>power</td>
+      <td class="num">9.07</td>
+      <td class="num">0.73</td>
+      <td class="num">0.90</td>
+      <td class="num">0.32</td>
+      <td class="num">0.85</td>
+      <td class="num">1.10</td>
+      <td class="num">4.06</td>
+      <td class="num">79</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">16%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000598</td><td>兴蓉环境</td><td>utility</td>
+      <td class="num">7.06</td>
+      <td class="num">0.72</td>
+      <td class="num">0.89</td>
+      <td class="num">0.05</td>
+      <td class="num">0.90</td>
+      <td class="num">1.03</td>
+      <td class="num">1.84</td>
+      <td class="num">78</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">18%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600019</td><td>宝钢股份</td><td>steel</td>
+      <td class="num">5.93</td>
+      <td class="num">0.84</td>
+      <td class="num">0.92</td>
+      <td class="num">0.77</td>
+      <td class="num">0.56</td>
+      <td class="num">1.59</td>
+      <td class="num">3.25</td>
+      <td class="num">78</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#e89a3c">high_A</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000883</td><td>湖北能源</td><td>power</td>
+      <td class="num">4.39</td>
+      <td class="num">0.84</td>
+      <td class="num">0.92</td>
+      <td class="num">0.45</td>
+      <td class="num">0.62</td>
+      <td class="num">0.97</td>
+      <td class="num">3.31</td>
+      <td class="num">78</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">23%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601166</td><td>兴业银行</td><td>bank</td>
+      <td class="num">18.05</td>
+      <td class="num">0.74</td>
+      <td class="num">0.92</td>
+      <td class="num">0.41</td>
+      <td class="num">0.83</td>
+      <td class="num">1.00</td>
+      <td class="num">5.62</td>
+      <td class="num">78</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">18%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600017</td><td>日照港</td><td>highway_port</td>
+      <td class="num">2.83</td>
+      <td class="num">0.85</td>
+      <td class="num">0.87</td>
+      <td class="num">0.68</td>
+      <td class="num">0.59</td>
+      <td class="num">0.91</td>
+      <td class="num">4.28</td>
+      <td class="num">77</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600018</td><td>上港集团</td><td>highway_port</td>
+      <td class="num">5.45</td>
+      <td class="num">0.81</td>
+      <td class="num">0.72</td>
+      <td class="num">0.32</td>
+      <td class="num">0.84</td>
+      <td class="num">0.96</td>
+      <td class="num">0.87</td>
+      <td class="num">77</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">17%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002032</td><td>苏泊尔</td><td>consumer</td>
+      <td class="num">39.95</td>
+      <td class="num">0.88</td>
+      <td class="num">0.59</td>
+      <td class="num">0.23</td>
+      <td class="num">0.90</td>
+      <td class="num">0.88</td>
+      <td class="num">1.15</td>
+      <td class="num">77</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000538</td><td>云南白药</td><td>pharma</td>
+      <td class="num">50.44</td>
+      <td class="num">0.77</td>
+      <td class="num">0.76</td>
+      <td class="num">0.41</td>
+      <td class="num">0.82</td>
+      <td class="num">0.98</td>
+      <td class="num">0.89</td>
+      <td class="num">77</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">12%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600887</td><td>伊利股份</td><td>consumer</td>
+      <td class="num">27.30</td>
+      <td class="num">0.74</td>
+      <td class="num">0.76</td>
+      <td class="num">0.05</td>
+      <td class="num">0.89</td>
+      <td class="num">0.97</td>
+      <td class="num">1.75</td>
+      <td class="num">76</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">20%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600050</td><td>中国联通</td><td>telecom</td>
+      <td class="num">4.23</td>
+      <td class="num">0.85</td>
+      <td class="num">0.90</td>
+      <td class="num">0.09</td>
+      <td class="num">0.63</td>
+      <td class="num">1.03</td>
+      <td class="num">10.11</td>
+      <td class="num">76</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">23%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601669</td><td>中国电建</td><td>infra</td>
+      <td class="num">4.57</td>
+      <td class="num">0.84</td>
+      <td class="num">0.82</td>
+      <td class="num">0.32</td>
+      <td class="num">0.74</td>
+      <td class="num">1.00</td>
+      <td class="num">2.04</td>
+      <td class="num">76</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600535</td><td>天士力</td><td>pharma</td>
+      <td class="num">14.00</td>
+      <td class="num">0.79</td>
+      <td class="num">0.92</td>
+      <td class="num">0.59</td>
+      <td class="num">0.59</td>
+      <td class="num">0.94</td>
+      <td class="num">2.11</td>
+      <td class="num">75</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601158</td><td>重庆水务</td><td>utility</td>
+      <td class="num">4.02</td>
+      <td class="num">0.88</td>
+      <td class="num">0.76</td>
+      <td class="num">0.86</td>
+      <td class="num">0.54</td>
+      <td class="num">0.75</td>
+      <td class="num">2.30</td>
+      <td class="num">75</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">13%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600900</td><td>长江电力</td><td>power</td>
+      <td class="num">28.54</td>
+      <td class="num">0.60</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.90</td>
+      <td class="num">1.15</td>
+      <td class="num">1.84</td>
+      <td class="num">74</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">12%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601169</td><td>北京银行</td><td>bank</td>
+      <td class="num">5.57</td>
+      <td class="num">0.51</td>
+      <td class="num">0.92</td>
+      <td class="num">0.95</td>
+      <td class="num">0.79</td>
+      <td class="num">0.97</td>
+      <td class="num">5.02</td>
+      <td class="num">74</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">17%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000333</td><td>美的集团</td><td>consumer</td>
+      <td class="num">80.10</td>
+      <td class="num">0.44</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.91</td>
+      <td class="num">1.08</td>
+      <td class="num">1.57</td>
+      <td class="num">73</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">18%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601326</td><td>秦港股份</td><td>highway_port</td>
+      <td class="num">3.55</td>
+      <td class="num">0.74</td>
+      <td class="num">0.86</td>
+      <td class="num">0.05</td>
+      <td class="num">0.71</td>
+      <td class="num">0.97</td>
+      <td class="num">1.54</td>
+      <td class="num">73</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">24%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601607</td><td>上海医药</td><td>pharma</td>
+      <td class="num">16.22</td>
+      <td class="num">0.84</td>
+      <td class="num">0.69</td>
+      <td class="num">0.32</td>
+      <td class="num">0.70</td>
+      <td class="num">0.87</td>
+      <td class="num">1.28</td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">14%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600036</td><td>招商银行</td><td>bank</td>
+      <td class="num">41.26</td>
+      <td class="num">0.60</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.91</td>
+      <td class="num">1.04</td>
+      <td class="num">3.01</td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">17%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601658</td><td>邮储银行</td><td>bank</td>
+      <td class="num">5.46</td>
+      <td class="num">0.65</td>
+      <td class="num">0.83</td>
+      <td class="num">0.41</td>
+      <td class="num">0.77</td>
+      <td class="num">0.91</td>
+      <td class="num">4.59</td>
+      <td class="num">71</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">17%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600660</td><td>福耀玻璃</td><td>consumer</td>
+      <td class="num">53.58</td>
+      <td class="num">0.47</td>
+      <td class="num">0.84</td>
+      <td class="num">0.05</td>
+      <td class="num">0.86</td>
+      <td class="num">1.01</td>
+      <td class="num">1.29</td>
+      <td class="num">70</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002304</td><td>洋河股份</td><td>consumer</td>
+      <td class="num">37.25</td>
+      <td class="num">0.94</td>
+      <td class="num">0.25</td>
+      <td class="num">0.95</td>
+      <td class="num">0.83</td>
+      <td class="num">0.64</td>
+      <td class="num">0.61</td>
+      <td class="num">70</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>003816</td><td>中国广核</td><td>power</td>
+      <td class="num">4.23</td>
+      <td class="num">0.58</td>
+      <td class="num">0.83</td>
+      <td class="num">0.55</td>
+      <td class="num">0.76</td>
+      <td class="num">1.00</td>
+      <td class="num">3.09</td>
+      <td class="num">69</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">24%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600377</td><td>宁沪高速</td><td>highway_port</td>
+      <td class="num">13.00</td>
+      <td class="num">0.42</td>
+      <td class="num">0.92</td>
+      <td class="num">0.14</td>
+      <td class="num">0.91</td>
+      <td class="num">1.13</td>
+      <td class="num">1.47</td>
+      <td class="num">68</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002142</td><td>宁波银行</td><td>bank</td>
+      <td class="num">35.43</td>
+      <td class="num">0.50</td>
+      <td class="num">0.89</td>
+      <td class="num">0.05</td>
+      <td class="num">0.91</td>
+      <td class="num">1.02</td>
+      <td class="num">6.79</td>
+      <td class="num">68</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">21%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600886</td><td>国投电力</td><td>power</td>
+      <td class="num">15.24</td>
+      <td class="num">0.47</td>
+      <td class="num">0.92</td>
+      <td class="num">0.05</td>
+      <td class="num">0.84</td>
+      <td class="num">1.11</td>
+      <td class="num">3.71</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">22%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600025</td><td>华能水电</td><td>power</td>
+      <td class="num">9.89</td>
+      <td class="num">0.53</td>
+      <td class="num">0.87</td>
+      <td class="num">0.05</td>
+      <td class="num">0.79</td>
+      <td class="num">1.04</td>
+      <td class="num">2.23</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">20%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601009</td><td>南京银行</td><td>bank</td>
+      <td class="num">11.98</td>
+      <td class="num">0.41</td>
+      <td class="num">0.90</td>
+      <td class="num">0.27</td>
+      <td class="num">0.91</td>
+      <td class="num">1.03</td>
+      <td class="num">2.00</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">24%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600941</td><td>中国移动</td><td>telecom</td>
+      <td class="num">95.80</td>
+      <td class="num">0.56</td>
+      <td class="num">0.75</td>
+      <td class="num">0.19</td>
+      <td class="num">0.74</td>
+      <td class="num">1.00</td>
+      <td class="num">2.28</td>
+      <td class="num">64</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">15%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600926</td><td>杭州银行</td><td>bank</td>
+      <td class="num">17.11</td>
+      <td class="num">0.44</td>
+      <td class="num">0.80</td>
+      <td class="num">0.14</td>
+      <td class="num">0.87</td>
+      <td class="num">0.95</td>
+      <td class="num">5.02</td>
+      <td class="num">63</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">20%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601333</td><td>广深铁路</td><td>highway_port</td>
+      <td class="num">3.08</td>
+      <td class="num">0.72</td>
+      <td class="num">0.87</td>
+      <td class="num">0.05</td>
+      <td class="num">0.28</td>
+      <td class="num">0.71</td>
+      <td class="num">2.43</td>
+      <td class="num">59</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">21%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000963</td><td>华东医药</td><td>pharma</td>
+      <td class="num">27.69</td>
+      <td class="num">0.89</td>
+      <td class="num">0.87</td>
+      <td class="num">0.32</td>
+      <td class="num">0.92</td>
+      <td class="num">1.11</td>
+      <td class="num">1.24</td>
+      <td class="num">87</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">26%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601139</td><td>深圳燃气</td><td>utility</td>
+      <td class="num">6.25</td>
+      <td class="num">0.83</td>
+      <td class="num">0.92</td>
+      <td class="num">0.23</td>
+      <td class="num">0.82</td>
+      <td class="num">1.01</td>
+      <td class="num">2.54</td>
+      <td class="num">82</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">27%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600803</td><td>新奥股份</td><td>utility</td>
+      <td class="num">19.20</td>
+      <td class="num">0.80</td>
+      <td class="num">0.86</td>
+      <td class="num">0.23</td>
+      <td class="num">0.85</td>
+      <td class="num">0.99</td>
+      <td class="num">3.05</td>
+      <td class="num">80</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">33%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600028</td><td>中国石化</td><td>oil_chem</td>
+      <td class="num">5.28</td>
+      <td class="num">0.72</td>
+      <td class="num">0.80</td>
+      <td class="num">0.95</td>
+      <td class="num">0.69</td>
+      <td class="num">0.99</td>
+      <td class="num">2.97</td>
+      <td class="num">80</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">34%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000552</td><td>甘肃能化</td><td>coal</td>
+      <td class="num">2.50</td>
+      <td class="num">0.81</td>
+      <td class="num">0.84</td>
+      <td class="num">0.95</td>
+      <td class="num">0.46</td>
+      <td class="num">0.99</td>
+      <td class="num">1.06</td>
+      <td class="num">79</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">29%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600325</td><td>华发股份</td><td>realestate</td>
+      <td class="num">2.92</td>
+      <td class="num">0.90</td>
+      <td class="num">0.67</td>
+      <td class="num">0.95</td>
+      <td class="num">0.55</td>
+      <td class="num">1.21</td>
+      <td class="num">16.72</td>
+      <td class="num">74</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#e89a3c">high_A</span></td>
+      <td class="num">42%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000830</td><td>鲁西化工</td><td>oil_chem</td>
+      <td class="num">11.43</td>
+      <td class="num">0.79</td>
+      <td class="num">0.86</td>
+      <td class="num">0.68</td>
+      <td class="num">0.64</td>
+      <td class="num">1.00</td>
+      <td class="num">4.70</td>
+      <td class="num">74</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">47%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000983</td><td>山西焦煤</td><td>coal</td>
+      <td class="num">6.48</td>
+      <td class="num">0.79</td>
+      <td class="num">0.56</td>
+      <td class="num">0.77</td>
+      <td class="num">0.75</td>
+      <td class="num">1.00</td>
+      <td class="num">2.02</td>
+      <td class="num">73</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">34%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600426</td><td>华鲁恒升</td><td>oil_chem</td>
+      <td class="num">19.43</td>
+      <td class="num">0.88</td>
+      <td class="num">0.88</td>
+      <td class="num">0.50</td>
+      <td class="num">0.69</td>
+      <td class="num">1.04</td>
+      <td class="num">1.27</td>
+      <td class="num">73</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">53%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002422</td><td>科伦药业</td><td>pharma</td>
+      <td class="num">40.85</td>
+      <td class="num">0.42</td>
+      <td class="num">0.92</td>
+      <td class="num">0.32</td>
+      <td class="num">0.85</td>
+      <td class="num">1.10</td>
+      <td class="num">1.55</td>
+      <td class="num">72</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">40%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000937</td><td>冀中能源</td><td>coal</td>
+      <td class="num">4.40</td>
+      <td class="num">0.81</td>
+      <td class="num">0.42</td>
+      <td class="num">0.77</td>
+      <td class="num">0.76</td>
+      <td class="num">0.90</td>
+      <td class="num">2.06</td>
+      <td class="num">71</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">35%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600000</td><td>浦发银行</td><td>bank</td>
+      <td class="num">9.48</td>
+      <td class="num">0.62</td>
+      <td class="num">0.87</td>
+      <td class="num">0.77</td>
+      <td class="num">0.68</td>
+      <td class="num">0.89</td>
+      <td class="num">7.51</td>
+      <td class="num">71</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">27%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600123</td><td>兰花科创</td><td>coal</td>
+      <td class="num">6.86</td>
+      <td class="num">0.79</td>
+      <td class="num">0.36</td>
+      <td class="num">0.86</td>
+      <td class="num">0.70</td>
+      <td class="num">0.80</td>
+      <td class="num">1.27</td>
+      <td class="num">71</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">34%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600782</td><td>新钢股份</td><td>steel</td>
+      <td class="num">2.70</td>
+      <td class="num">0.82</td>
+      <td class="num">0.69</td>
+      <td class="num">0.91</td>
+      <td class="num">0.24</td>
+      <td class="num">0.99</td>
+      <td class="num">5.56</td>
+      <td class="num">71</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">32%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>001965</td><td>招商公路</td><td>highway_port</td>
+      <td class="num">10.05</td>
+      <td class="num">0.62</td>
+      <td class="num">0.84</td>
+      <td class="num">0.61</td>
+      <td class="num">0.70</td>
+      <td class="num">0.95</td>
+      <td class="num">1.34</td>
+      <td class="num">70</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">25%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600309</td><td>万华化学</td><td>oil_chem</td>
+      <td class="num">68.90</td>
+      <td class="num">0.80</td>
+      <td class="num">0.73</td>
+      <td class="num">0.50</td>
+      <td class="num">0.78</td>
+      <td class="num">1.00</td>
+      <td class="num">2.31</td>
+      <td class="num">69</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">35%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000932</td><td>华菱钢铁</td><td>steel</td>
+      <td class="num">3.54</td>
+      <td class="num">0.90</td>
+      <td class="num">0.77</td>
+      <td class="num">0.68</td>
+      <td class="num">0.28</td>
+      <td class="num">1.12</td>
+      <td class="num">2.52</td>
+      <td class="num">68</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">35%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600566</td><td>济川药业</td><td>pharma</td>
+      <td class="num">25.63</td>
+      <td class="num">0.59</td>
+      <td class="num">0.53</td>
+      <td class="num">0.59</td>
+      <td class="num">0.88</td>
+      <td class="num">0.87</td>
+      <td class="num">0.86</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">32%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600027</td><td>华电国际</td><td>power</td>
+      <td class="num">4.95</td>
+      <td class="num">0.67</td>
+      <td class="num">0.92</td>
+      <td class="num">0.14</td>
+      <td class="num">0.54</td>
+      <td class="num">0.92</td>
+      <td class="num">3.41</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">30%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600011</td><td>华能国际</td><td>power</td>
+      <td class="num">7.04</td>
+      <td class="num">0.67</td>
+      <td class="num">0.89</td>
+      <td class="num">0.14</td>
+      <td class="num">0.57</td>
+      <td class="num">0.92</td>
+      <td class="num">4.99</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">40%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601699</td><td>潞安环能</td><td>coal</td>
+      <td class="num">15.09</td>
+      <td class="num">0.57</td>
+      <td class="num">0.61</td>
+      <td class="num">0.77</td>
+      <td class="num">0.71</td>
+      <td class="num">1.00</td>
+      <td class="num">2.03</td>
+      <td class="num">67</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">44%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601601</td><td>中国太保</td><td>insurance</td>
+      <td class="num">31.06</td>
+      <td class="num">0.67</td>
+      <td class="num">0.75</td>
+      <td class="num">0.05</td>
+      <td class="num">0.88</td>
+      <td class="num">1.06</td>
+      <td class="num">3.65</td>
+      <td class="num">66</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">32%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601628</td><td>中国人寿</td><td>insurance</td>
+      <td class="num">36.70</td>
+      <td class="num">0.78</td>
+      <td class="num">0.63</td>
+      <td class="num">0.05</td>
+      <td class="num">0.83</td>
+      <td class="num">0.96</td>
+      <td class="num">3.54</td>
+      <td class="num">66</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">28%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002493</td><td>荣盛石化</td><td>oil_chem</td>
+      <td class="num">13.33</td>
+      <td class="num">0.73</td>
+      <td class="num">0.63</td>
+      <td class="num">0.86</td>
+      <td class="num">0.28</td>
+      <td class="num">0.60</td>
+      <td class="num">47.77</td>
+      <td class="num">66</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">43%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601666</td><td>平煤股份</td><td>coal</td>
+      <td class="num">8.82</td>
+      <td class="num">0.60</td>
+      <td class="num">0.35</td>
+      <td class="num">0.86</td>
+      <td class="num">0.65</td>
+      <td class="num">0.76</td>
+      <td class="num">2.51</td>
+      <td class="num">64</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#9db8a0">mid_C</span></td>
+      <td class="num">40%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600507</td><td>方大特钢</td><td>steel</td>
+      <td class="num">4.08</td>
+      <td class="num">0.82</td>
+      <td class="num">0.40</td>
+      <td class="num">0.68</td>
+      <td class="num">0.55</td>
+      <td class="num">1.01</td>
+      <td class="num">0.86</td>
+      <td class="num">64</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">37%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600048</td><td>保利发展</td><td>realestate</td>
+      <td class="num">5.77</td>
+      <td class="num">0.85</td>
+      <td class="num">0.38</td>
+      <td class="num">0.95</td>
+      <td class="num">0.47</td>
+      <td class="num">0.84</td>
+      <td class="num">1.25</td>
+      <td class="num">63</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">32%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600346</td><td>恒力石化</td><td>oil_chem</td>
+      <td class="num">16.07</td>
+      <td class="num">0.74</td>
+      <td class="num">0.87</td>
+      <td class="num">0.32</td>
+      <td class="num">0.64</td>
+      <td class="num">1.00</td>
+      <td class="num">3.41</td>
+      <td class="num">62</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">42%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600985</td><td>淮北矿业</td><td>coal</td>
+      <td class="num">15.87</td>
+      <td class="num">0.46</td>
+      <td class="num">0.47</td>
+      <td class="num">0.68</td>
+      <td class="num">0.82</td>
+      <td class="num">0.98</td>
+      <td class="num">2.09</td>
+      <td class="num">60</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">33%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600023</td><td>浙能电力</td><td>power</td>
+      <td class="num">5.22</td>
+      <td class="num">0.42</td>
+      <td class="num">0.89</td>
+      <td class="num">0.14</td>
+      <td class="num">0.64</td>
+      <td class="num">0.96</td>
+      <td class="num">1.76</td>
+      <td class="num">59</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">28%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000543</td><td>皖能电力</td><td>power</td>
+      <td class="num">7.15</td>
+      <td class="num">0.41</td>
+      <td class="num">0.90</td>
+      <td class="num">0.05</td>
+      <td class="num">0.62</td>
+      <td class="num">0.96</td>
+      <td class="num">1.82</td>
+      <td class="num">58</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">29%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601233</td><td>桐昆股份</td><td>oil_chem</td>
+      <td class="num">22.73</td>
+      <td class="num">0.72</td>
+      <td class="num">0.60</td>
+      <td class="num">0.59</td>
+      <td class="num">0.29</td>
+      <td class="num">0.59</td>
+      <td class="num">3.92</td>
+      <td class="num">57</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">49%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601728</td><td>中国电信</td><td>telecom</td>
+      <td class="num">6.28</td>
+      <td class="num">0.49</td>
+      <td class="num">0.75</td>
+      <td class="num">0.09</td>
+      <td class="num">0.61</td>
+      <td class="num">0.91</td>
+      <td class="num">4.40</td>
+      <td class="num">57</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#f0c93c">mid_B</span></td>
+      <td class="num">26%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>603156</td><td>养元饮品</td><td>consumer</td>
+      <td class="num">43.63</td>
+      <td class="num">0.14</td>
+      <td class="num">0.37</td>
+      <td class="num">0.95</td>
+      <td class="num">0.84</td>
+      <td class="num">0.71</td>
+      <td class="num">1.55</td>
+      <td class="num">49</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#f0c93c">low_C</span></td>
+      <td class="num">68%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601991</td><td>大唐发电</td><td>power</td>
+      <td class="num">5.31</td>
+      <td class="num">0.16</td>
+      <td class="num">0.89</td>
+      <td class="num">0.05</td>
+      <td class="num">0.15</td>
+      <td class="num">0.65</td>
+      <td class="num">5.80</td>
+      <td class="num">33</td>
+      <td>高估</td>
+      <td><span class="chip" style="background:#f0c93c">low_C</span></td>
+      <td class="num">64%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601668</td><td>中国建筑</td><td>infra</td>
+      <td class="num">4.34</td>
+      <td class="num">0.94</td>
+      <td class="num">0.69</td>
+      <td class="num">0.77</td>
+      <td class="num">0.87</td>
+      <td class="num">1.00</td>
+      <td class="num">0.34</td>
+      <td class="num">84</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">16%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601800</td><td>中国交建</td><td>infra</td>
+      <td class="num">5.94</td>
+      <td class="num">0.94</td>
+      <td class="num">0.74</td>
+      <td class="num">0.95</td>
+      <td class="num">0.71</td>
+      <td class="num">0.93</td>
+      <td class="num">0.53</td>
+      <td class="num">83</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601186</td><td>中国铁建</td><td>infra</td>
+      <td class="num">6.02</td>
+      <td class="num">0.93</td>
+      <td class="num">0.63</td>
+      <td class="num">0.68</td>
+      <td class="num">0.79</td>
+      <td class="num">0.91</td>
+      <td class="num">0.16</td>
+      <td class="num">79</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">15%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>601818</td><td>光大银行</td><td>bank</td>
+      <td class="num">3.04</td>
+      <td class="num">0.83</td>
+      <td class="num">0.71</td>
+      <td class="num">0.95</td>
+      <td class="num">0.75</td>
+      <td class="num">0.83</td>
+      <td class="num">-0.09</td>
+      <td class="num">79</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">16%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600016</td><td>民生银行</td><td>bank</td>
+      <td class="num">3.51</td>
+      <td class="num">0.83</td>
+      <td class="num">0.71</td>
+      <td class="num">0.95</td>
+      <td class="num">0.68</td>
+      <td class="num">0.79</td>
+      <td class="num">-5.15</td>
+      <td class="num">77</td>
+      <td>偏低</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>600674</td><td>川投能源</td><td>power</td>
+      <td class="num">16.62</td>
+      <td class="num">0.65</td>
+      <td class="num">0.71</td>
+      <td class="num">0.14</td>
+      <td class="num">0.88</td>
+      <td class="num">1.00</td>
+      <td class="num">0.16</td>
+      <td class="num">71</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">19%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000002</td><td>万科Ａ</td><td>realestate</td>
+      <td class="num">4.26</td>
+      <td class="num">0.84</td>
+      <td class="num">0.67</td>
+      <td class="num">0.95</td>
+      <td class="num">0.33</td>
+      <td class="num">1.00</td>
+      <td class="num">0.01</td>
+      <td class="num">66</td>
+      <td>合理</td>
+      <td><span class="chip" style="background:#d9534f">high_B</span></td>
+      <td class="num">42%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000898</td><td>鞍钢股份</td><td>steel</td>
+      <td class="num">2.06</td>
+      <td class="num">0.81</td>
+      <td class="num">0.15</td>
+      <td class="num">0.77</td>
+      <td class="num">0.13</td>
+      <td class="num">0.31</td>
+      <td class="num">-0.44</td>
+      <td class="num">53</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">28%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002110</td><td>三钢闽光</td><td>steel</td>
+      <td class="num">2.93</td>
+      <td class="num">0.84</td>
+      <td class="num">0.15</td>
+      <td class="num">0.68</td>
+      <td class="num">0.14</td>
+      <td class="num">0.31</td>
+      <td class="num">-1.74</td>
+      <td class="num">51</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">35%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>000825</td><td>太钢不锈</td><td>steel</td>
+      <td class="num">3.39</td>
+      <td class="num">0.82</td>
+      <td class="num">0.13</td>
+      <td class="num">0.68</td>
+      <td class="num">0.12</td>
+      <td class="num">0.27</td>
+      <td class="num">-2.47</td>
+      <td class="num">50</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">37%</td>
+      <td class="flags"></td>
+    </tr>
+    
+    <tr>
+      <td>002036</td><td>华特达因</td><td>pharma</td>
+      <td class="num">5.97</td>
+      <td class="num">0.82</td>
+      <td class="num">0.38</td>
+      <td class="num">0.95</td>
+      <td class="num">0.15</td>
+      <td class="num">0.33</td>
+      <td class="num">-0.35</td>
+      <td class="num">46</td>
+      <td>偏高</td>
+      <td><span class="chip" style="background:#a02622">high_C</span></td>
+      <td class="num">51%</td>
+      <td class="flags"></td>
+    </tr>
+    
+  </table>
+
+  <div class="note">
+    <b>免责声明与数据说明：</b>所有评分、颜色、价格锚均由固定算法计算（spec v2.3），
+    LLM 仅作解读不参与计算。缺失数据按协议显式标记（宁缺毋造），灰色卡片代表缺失因子≥2。
+    买卖参考价来自客观价格锚（A 股息率锚 / G 戈登锚 / B 区间锚 / C 收益率下限锚 / D 综合分反解锚），
+    其中 G 戈登锚依赖 ROE 数据——ROE 主源为业绩快报官方加权 ROE（约 7 成标的），
+    缺口由 akshare 业绩报表（东方财富）加权 ROE 补齐（全样本覆盖）。
+    现金流质量（OCF/NP，七维检验口径：≥1 合格、≥1.5 优秀、&lt;0.6 警示）数据源为东方财富
+    （akshare），覆盖全样本年报近 3 期取中位数；该维度按 15% 权重并入可持续性因子 s_sus。
+    不构成投资建议。星耀数据仅限授权使用，运行结束后已强制 logout。
+  </div>
+
+  <footer>hongli_weekly v2.3 · run_id 20261002-c514de · 本页面由固定流水线生成</footer>
+</div></body></html>
